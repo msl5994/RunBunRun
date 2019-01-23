@@ -9,6 +9,7 @@ public class GenerateObstacles : MonoBehaviour {
     public List<GameObject> Obstacles;
     private GameObject obstacle;
     private bool spawnObstacleHere = false; // boolean to determine whether or not to spawn an obstacle at that position for this run
+    public GameObject ObstacleListParent;
 
 	// Use this for initialization
 	void Start ()
@@ -39,8 +40,8 @@ public class GenerateObstacles : MonoBehaviour {
                     int xIndex = (Random.Range(i * 10, 1000) % 10) + i * 10;
                     int zIndex = (Random.Range(j * 10, 1000) % 10) + j * 10;
                     int obstacleIndex = Random.Range(0, obstaclePrefabs.Count);
-                    //float obstacleHeightOffset = obstacle.transform.localScale.y / 2.0f;
-                    float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y / 2.0f;
+                    //loat obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.position.y + (obstaclePrefabs[obstacleIndex].transform.localScale.y);
+                    float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y /2.0f;
                     Vector3 obstacleSpawnPosition = new Vector3(xIndex, obstacleHeightOffset, zIndex);
 
                     // get a random rotation for the obstacle
@@ -52,6 +53,9 @@ public class GenerateObstacles : MonoBehaviour {
 
                     // make an obstacle
                     GameObject tempObstacle = Instantiate(obstacle, obstacleSpawnPosition, obstacleQuat);
+
+                    // set the parent to help clean up the scene
+                    tempObstacle.transform.SetParent(ObstacleListParent.transform);
 
                     // add that object to the list of obstacles
                     Obstacles.Add(tempObstacle);
