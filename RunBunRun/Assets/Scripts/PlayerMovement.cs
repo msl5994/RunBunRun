@@ -28,23 +28,17 @@ public class PlayerMovement : MonoBehaviour {
         {
             if (turnTimer < .2f)
             {
+                transform.Rotate(new Vector3(0.0f, -angleIncrement, 0.0f));
+            }
+            turnTimer = 0.0f;
+        }
+        else if(Input.GetKeyUp(KeyCode.D))
+        {
+            if (turnTimer < .2f)
+            {
                 transform.Rotate(new Vector3(0.0f, angleIncrement, 0.0f));
             }
             turnTimer = 0.0f;
-            //transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y + 15.0f, transform.rotation.z, 0.0f);
-            //transform.rotation = Quaternion.Euler(0.0f, rb.rotation.y + angleIncrement, 0.0f);
-
-
-            //rb.MoveRotation(Quaternion.Euler(0.0f, angleIncrement%360, 0.0f));
-            //rb.rotation = new Quaternion(rb.rotation.x, rb.rotation.y + 45.0f, rb.rotation.z, 0.0f);
-        }
-        else if(Input.GetKeyUp(KeyCode.D) && turnTimer < .3f)
-        {
-            //transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y - 15.0f, transform.rotation.z, 0.0f);
-            //transform.rotation = Quaternion.Euler(0.0f, rb.rotation.y - angleIncrement, 0.0f);
-            transform.Rotate(new Vector3(0.0f, -angleIncrement, 0.0f));
-            //rb.MoveRotation(Quaternion.Euler(0.0f, -angleIncrement%360, 0.0f));
-            //rb.rotation = new Quaternion(rb.rotation.x, rb.rotation.y - 45.0f, rb.rotation.z, 0.0f);
         }
         else if (Input.GetKey(KeyCode.A))
         {
@@ -52,6 +46,14 @@ public class PlayerMovement : MonoBehaviour {
             if (turnTimer > .2f)
             {
                 transform.Rotate(new Vector3(0.0f, -30.0f * Time.deltaTime, 0.0f));
+            }
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            turnTimer += Time.deltaTime;
+            if (turnTimer > .2f)
+            {
+                transform.Rotate(new Vector3(0.0f, 30.0f * Time.deltaTime, 0.0f));
             }
         }
     }
