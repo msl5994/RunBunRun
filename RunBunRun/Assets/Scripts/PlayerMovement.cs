@@ -48,7 +48,27 @@ public class PlayerMovement : MonoBehaviour {
             {
                 case TouchPhase.Began:
                     touchVectorStart = touch.position;
-                    if(touch.position.x > Screen.width / 2.0f)
+                    if (touch.position.x > (Display.main.systemWidth / 2.0f) + (Display.main.systemWidth / 4.0f))
+                    {
+                        turnRight = true;
+                        turnLeft = false;
+                    }
+                    else if (touch.position.x < (Display.main.systemWidth / 2.0f) - (Display.main.systemWidth/4.0f))
+                    {
+                        turnLeft = true;
+                        turnRight = false;
+                    }
+                    else
+                    {
+                        Jump();
+                        //isGrounded = false;
+                    }
+                    turnTimerActive = true;
+                    
+                    break;
+                case TouchPhase.Moved:
+                    touchVectorStart = touch.position;
+                    if (touch.position.x > Display.main.systemWidth / 2.0f)
                     {
                         turnRight = true;
                         turnLeft = false;
@@ -59,9 +79,18 @@ public class PlayerMovement : MonoBehaviour {
                         turnRight = false;
                     }
                     turnTimerActive = true;
-                    
+                    if (turnTimer > .2f)
+                    {
+                        if (turnRight)
+                        {
+                            transform.Rotate(new Vector3(0.0f, 30.0f * Time.deltaTime, 0.0f));
+                        }
+                        else
+                        {
+                            transform.Rotate(new Vector3(0.0f, -30.0f * Time.deltaTime, 0.0f));
+                        }
+                    }
                     break;
-                case TouchPhase.Moved:
                 case TouchPhase.Stationary:
                     if (turnTimer > .2f)
                     {
