@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour {
             }
             turnTimer = 0.0f;
         }
-        else if(Input.GetKeyUp(KeyCode.D))
+        if(Input.GetKeyUp(KeyCode.D))
         {
             if (turnTimer < .2f)
             {
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour {
             }
             turnTimer = 0.0f;
         }
-        else if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             turnTimer += Time.deltaTime;
             if (turnTimer > .2f)
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour {
                 transform.Rotate(new Vector3(0.0f, -30.0f * Time.deltaTime, 0.0f));
             }
         }
-        else if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             turnTimer += Time.deltaTime;
             if (turnTimer > .2f)
