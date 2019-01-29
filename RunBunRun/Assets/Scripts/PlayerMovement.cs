@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 touchVectorStart;
     private Vector3 touchVectorEnd;
     private bool turnTimerActive = false;
-    private bool turnRight, turnLeft;
+    private bool turnRight, turnLeft = false;
 
     // Use this for initialization
     void Start ()
@@ -36,17 +36,21 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        // start the timer
         if(turnTimerActive)
         {
             turnTimer += Time.deltaTime;
         }
 
+        // if there has been a touch
         if(Input.touchCount > 0)
         {
+            // find out which phase it is in
             Touch touch = Input.GetTouch(0);
             switch(touch.phase)
             {
                 case TouchPhase.Began:
+                    // determine which side of the screen it was on
                     touchVectorStart = touch.position;
                     if (touch.position.x > (Display.main.systemWidth / 2.0f) + (Display.main.systemWidth / 4.0f))
                     {
@@ -61,12 +65,13 @@ public class PlayerMovement : MonoBehaviour {
                     else
                     {
                         Jump();
-                        //isGrounded = false;
+                        isGrounded = false;
                     }
+                    // start the timer
                     turnTimerActive = true;
-                    
                     break;
                 case TouchPhase.Moved:
+                    // if the finger has moved, find out if it moved to a different side of the screen
                     touchVectorStart = touch.position;
                     if (touch.position.x > Display.main.systemWidth / 2.0f)
                     {
@@ -78,6 +83,7 @@ public class PlayerMovement : MonoBehaviour {
                         turnLeft = true;
                         turnRight = false;
                     }
+                    // start fine tuning the turn instead of a sharp turn if the timer has been going
                     turnTimerActive = true;
                     if (turnTimer > .2f)
                     {
@@ -92,6 +98,7 @@ public class PlayerMovement : MonoBehaviour {
                     }
                     break;
                 case TouchPhase.Stationary:
+                    // if the finger has not moved we don't need to recalculate the side of the screen, but do need to fine tune turn
                     if (turnTimer > .2f)
                     {
                         if(turnRight)
@@ -105,6 +112,7 @@ public class PlayerMovement : MonoBehaviour {
                     }
                     break;
                 case TouchPhase.Ended:
+                    // sharp turning on the key-up of the touch if it wasn't held
                     touchVectorEnd = touch.position;
                     if (turnTimer < .2f)
                     {
@@ -121,7 +129,7 @@ public class PlayerMovement : MonoBehaviour {
                     break;
             }
         }
-
+        
         CheckTurning();
         if(Input.GetKeyDown(KeyCode.Space) && rb.position.y == 1)
         {
