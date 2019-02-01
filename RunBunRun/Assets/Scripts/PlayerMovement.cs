@@ -10,13 +10,12 @@ public class PlayerMovement : MonoBehaviour {
 
     public float speed = 1.0f;
     public float maxSpeed = 10.0f;
-
     public float angleIncrement = 45.0f;
     public float turnTimer = 0.0f;
 
-    public Vector3 jumpVector = new Vector3(0.0f, 5.0f, 0.0f);
-    public float jumpForce = 10.0f;
-    private bool isGrounded;
+    //public Vector3 jumpVector = new Vector3(0.0f, 5.0f, 0.0f);
+    public float jumpForce = 500.0f;
+    private bool isGrounded = true;
 
     private Vector3 touchVectorStart;
     private Vector3 touchVectorEnd;
@@ -36,6 +35,12 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if(transform.position.y <= 1.0f)
+        {
+            //Debug.Log("Y-pos is 1");
+            //isGrounded = true;
+        }
+
         // start the timer
         if(turnTimerActive)
         {
@@ -64,8 +69,11 @@ public class PlayerMovement : MonoBehaviour {
                     }
                     else
                     {
-                        Jump();
-                        isGrounded = false;
+                        if(isGrounded)
+                        {
+                            Jump();
+                            isGrounded = false;
+                        }
                     }
                     // start the timer
                     turnTimerActive = true;
@@ -131,23 +139,27 @@ public class PlayerMovement : MonoBehaviour {
         }
         
         CheckTurning();
-        if(Input.GetKeyDown(KeyCode.Space) && rb.position.y == 1)
-        {
-            Debug.Log("Jumping!");
-            Jump();
-            isGrounded = false;
-        }
     }
 
     private void Jump()
     {
-        transform.Translate(Vector3.up * 260 * Time.deltaTime, Space.World);
+        rb.AddForce(Vector3.up * jumpForce);
     }
 
     // for rigidbody physics and movement
     private void FixedUpdate()
     {
         rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
+        // jump moved here because it uses physics
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isGrounded)
+            {
+                Debug.Log("Jumping!");
+                Jump();
+                isGrounded = false;
+            }
+        }
     }
 
     private void CheckTurning()
@@ -186,9 +198,19 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        isGrounded = true;
+        if(collision.gameObject.tag == "Obstacle")
+        {
+            Debug.Log("Hit obstacle");
+            isGrounded = true;
+        }
+        /*
+        if(collision.gameObject.tag == "Ground")
+        {
+            Debug.Log("Landed");
+            isGrounded = true;
+        }*/
     }
 
 
