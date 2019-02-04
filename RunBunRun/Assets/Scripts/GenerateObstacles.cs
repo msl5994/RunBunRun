@@ -10,12 +10,15 @@ public class GenerateObstacles : MonoBehaviour {
     private GameObject obstacle;
     private bool spawnObstacleHere = false; // boolean to determine whether or not to spawn an obstacle at that position for this run
     public GameObject ObstacleListParent;
+    private CollectibleSpawner collectibleSpawner;
 
 	// Use this for initialization
 	void Start ()
     {
-        // call the method to create the list of obstacle prefabs
-        //CreateObstacleList();
+        // get script reference
+        collectibleSpawner = gameObject.GetComponent<CollectibleSpawner>();
+
+        // instantiate the list
         Obstacles = new List<GameObject>();
 
         // loop through the places in the playspace
@@ -62,19 +65,17 @@ public class GenerateObstacles : MonoBehaviour {
                 }
             }
         }
-	}
+
+        // loop to create collectibles
+        for (int i = 0; i < collectibleSpawner.numCollectiblesToSpawn; i++)
+        {
+            collectibleSpawner.SpawnCollectible();
+        }
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
-
-    /*
-    // method to create the list of obstacle models
-    private void CreateObstacleList()
-    {
-        obstaclePrefabs = new List<GameObject>();
-        obstaclePrefabs.Add(obstacle);
-    }
-    */
 }
