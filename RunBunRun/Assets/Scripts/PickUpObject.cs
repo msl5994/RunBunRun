@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PickUpObject : MonoBehaviour {
 
-    private GameObject gameManager;
-    private ScoreManager scoreManager;
+    private GameObject gameManagerObject;
+    private GameManager gameManager;
     private CollectibleSpawner collectibleSpawner;
 
 	// Use this for initialization
@@ -14,9 +14,9 @@ public class PickUpObject : MonoBehaviour {
     {
         // use this method to find the object instead of making it a public gameobject above
         // because this script will be attached to a prefab
-        gameManager = GameObject.Find("GameManager");
-        collectibleSpawner = gameManager.GetComponent<CollectibleSpawner>();
-        scoreManager = gameManager.GetComponent<ScoreManager>();
+        gameManagerObject = GameObject.Find("GameManager");
+        collectibleSpawner = gameManagerObject.GetComponent<CollectibleSpawner>();
+        gameManager = gameManagerObject.GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -29,16 +29,33 @@ public class PickUpObject : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         // if this object is hit by the player
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player" && gameObject.tag == "Carrot")
         {
             // add to the score
-            scoreManager.UpdateScore();
+            gameManager.UpdateCarrotScore();
+
+            // reset the stamina timer
+            gameManager.ResetStamina();
 
             // remove it from the collectible list
-            collectibleSpawner.collectibles.Remove(gameObject);
+            collectibleSpawner.carrotCollectibles.Remove(gameObject);
 
             // spawn a new collectible to replace this one
-            collectibleSpawner.SpawnCollectible();
+            collectibleSpawner.SpawnCarrotCollectible();
+
+            // delete the object
+            Destroy(gameObject);
+        }
+        else if(collision.gameObject.tag == "Player" && gameObject.tag == "Feather")
+        {
+            // add to the score
+            gameManager.UpdateFeatherScore();
+
+            // remove it from the collectible list
+            collectibleSpawner.featherCollectibles.Remove(gameObject);
+
+            // spawn a new collectible to replace this one
+            collectibleSpawner.SpawnFeatherCollectible();
 
             // delete the object
             Destroy(gameObject);

@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour {
     public Vector3 teleportPoint;
     private Rigidbody rb;
 
-    public float speed = 1.0f;
-    public float maxSpeed = 10.0f;
+    public float speed = 25.0f;
+    public float maxSpeed = 100.0f;
     public float angleIncrement = 45.0f;
     public float turnTimer = 0.0f;
     public float leftTurnTimer = 0.0f;
@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 touchVectorEnd;
     private bool turnTimerActive = false;
     private bool turnRight, turnLeft = false;
+    public bool outOfStamina = false;
 
     // Use this for initialization
     void Start ()
@@ -57,99 +58,6 @@ public class PlayerMovement : MonoBehaviour {
                 transform.Rotate(new Vector3(0.0f, 30.0f * Time.deltaTime, 0.0f));
             }
         }
-
-        /*
-        // if there has been a touch
-        if(Input.touchCount > 0)
-        {
-            // find out which phase it is in
-            Touch touch = Input.GetTouch(0);
-            switch(touch.phase)
-            {
-                case TouchPhase.Began:
-                    // determine which side of the screen it was on
-                    touchVectorStart = touch.position;
-                    if (touch.position.x > (Display.main.systemWidth / 2.0f) + (Display.main.systemWidth / 4.0f))
-                    {
-                        turnRight = true;
-                        turnLeft = false;
-                    }
-                    else if (touch.position.x < (Display.main.systemWidth / 2.0f) - (Display.main.systemWidth/4.0f))
-                    {
-                        turnLeft = true;
-                        turnRight = false;
-                    }
-                    else
-                    {
-                        if(isGrounded)
-                        {
-                            Jump();
-                            isGrounded = false;
-                        }
-                    }
-                    // start the timer
-                    turnTimerActive = true;
-                    break;
-                case TouchPhase.Moved:
-                    // if the finger has moved, find out if it moved to a different side of the screen
-                    touchVectorStart = touch.position;
-                    if (touch.position.x > Display.main.systemWidth / 2.0f)
-                    {
-                        turnRight = true;
-                        turnLeft = false;
-                    }
-                    else
-                    {
-                        turnLeft = true;
-                        turnRight = false;
-                    }
-                    // start fine tuning the turn instead of a sharp turn if the timer has been going
-                    turnTimerActive = true;
-                    if (turnTimer > .2f)
-                    {
-                        if (turnRight)
-                        {
-                            transform.Rotate(new Vector3(0.0f, 30.0f * Time.deltaTime, 0.0f));
-                        }
-                        else
-                        {
-                            transform.Rotate(new Vector3(0.0f, -30.0f * Time.deltaTime, 0.0f));
-                        }
-                    }
-                    break;
-                case TouchPhase.Stationary:
-                    // if the finger has not moved we don't need to recalculate the side of the screen, but do need to fine tune turn
-                    if (turnTimer > .2f)
-                    {
-                        if(turnRight)
-                        {
-                            transform.Rotate(new Vector3(0.0f, 30.0f * Time.deltaTime, 0.0f));
-                        }
-                        else
-                        {
-                            transform.Rotate(new Vector3(0.0f, -30.0f * Time.deltaTime, 0.0f));
-                        }
-                    }
-                    break;
-                case TouchPhase.Ended:
-                    // sharp turning on the key-up of the touch if it wasn't held
-                    touchVectorEnd = touch.position;
-                    if (turnTimer < .2f)
-                    {
-                        if(turnRight)
-                        {
-                            transform.Rotate(new Vector3(0.0f, angleIncrement, 0.0f));
-                        }
-                        else
-                        {
-                            transform.Rotate(new Vector3(0.0f, -angleIncrement, 0.0f));
-                        }    
-                    }
-                    turnTimer = 0.0f;
-                    break;
-            }
-        }*/
-
         CheckTurning();
     }
 
@@ -166,7 +74,15 @@ public class PlayerMovement : MonoBehaviour {
     // for rigidbody physics and movement
     private void FixedUpdate()
     {
-        rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
+        if(outOfStamina)
+        {
+            rb.MovePosition(transform.position + transform.forward * Time.deltaTime * (speed/4.0f));
+        }
+        else
+        {
+            rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
+        }
+
         //rb.velocity = new Vector3(transform.forward.x * speed, 0.0f, transform.forward.z * speed);
         // jump moved here because it uses physics
         if (Input.GetKeyDown(KeyCode.Space))
@@ -179,7 +95,7 @@ public class PlayerMovement : MonoBehaviour {
     // start turn
     public void StartLeftTurnTimer()
     {
-        Debug.Log("Started");
+        //Debug.Log("Started");
         turnLeft = true;
         leftTurnTimer = 0.0f;
     }
@@ -187,7 +103,7 @@ public class PlayerMovement : MonoBehaviour {
     // stop turn
     public void StopLeftTurnTimer()
     {
-        Debug.Log("Stopped");
+        //Debug.Log("Stopped");
         turnLeft = false;
         if (leftTurnTimer < .2f)
         {
@@ -200,7 +116,7 @@ public class PlayerMovement : MonoBehaviour {
     // start turn
     public void StartRightTurnTimer()
     {
-        Debug.Log("Started");
+        //Debug.Log("Started");
         turnRight = true;
         rightTurnTimer = 0.0f;
     }
@@ -208,7 +124,7 @@ public class PlayerMovement : MonoBehaviour {
     // stop turn
     public void StopRightTurnTimer()
     {
-        Debug.Log("Stopped");
+        //Debug.Log("Stopped");
         turnRight = false;
         if (rightTurnTimer < .2f)
         {
@@ -260,12 +176,12 @@ public class PlayerMovement : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Obstacle")
         {
-            Debug.Log("Hit obstacle");
+            //Debug.Log("Hit obstacle");
             isGrounded = true;
         }
         if(collision.gameObject.tag == "Ground")
         {
-            Debug.Log("Landed");
+            //Debug.Log("Landed");
             isGrounded = true;
         }
     }

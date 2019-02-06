@@ -66,10 +66,16 @@ public class GenerateObstacles : MonoBehaviour {
             }
         }
 
-        // loop to create collectibles
-        for (int i = 0; i < collectibleSpawner.numCollectiblesToSpawn; i++)
+        // loop to create carrot collectibles
+        for (int i = 0; i < collectibleSpawner.numCarrotsToSpawn; i++)
         {
-            collectibleSpawner.SpawnCollectible();
+            collectibleSpawner.SpawnCarrotCollectible();
+        }
+
+        // loop to create feather collectibles
+        for(int i = 0; i < collectibleSpawner.numFeathersToSpawn; i++)
+        {
+            collectibleSpawner.SpawnFeatherCollectible();
         }
     }
 	

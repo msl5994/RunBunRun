@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Obstacle
+  - Carrot
+  - Feather
   layers:
   - Default
   - TransparentFX
