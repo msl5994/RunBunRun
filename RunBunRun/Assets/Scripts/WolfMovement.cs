@@ -22,6 +22,7 @@ public class WolfMovement : MonoBehaviour {
         velocity += acceleration; // add a to v
         wolfPos += velocity; // add v to p
         direction = velocity.normalized; // get d from v
+        transform.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
         transform.position = wolfPos; // update transform.position
         acceleration = Vector3.zero; // start fresh each frame
 
@@ -37,7 +38,7 @@ public class WolfMovement : MonoBehaviour {
     private Vector3 SeekForce(Vector3 bunnyPos)
     {
         Vector3 desiredV = bunnyPos - wolfPos;
-        desiredV.Normalize();
+        desiredV = desiredV.normalized;
 
         desiredV *= maxSpeed;
 
