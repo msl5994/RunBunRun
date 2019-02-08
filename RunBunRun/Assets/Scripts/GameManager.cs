@@ -12,14 +12,17 @@ public class GameManager : MonoBehaviour
     public int featherScoreNum = 0;
     public float maxStamina = 60.0f; // 1 minute for now
     public float staminaTimer = 0.0f;
+    public float wolfTimer = 0.0f;
 
     public GameObject player;
     private PlayerMovement playerMovement;
+    private WolfSpawner wolfSpawner;
 
     // Use this for initialization
     void Start ()
     {
         playerMovement = player.GetComponent<PlayerMovement>();
+        wolfSpawner = gameObject.GetComponent<WolfSpawner>();
 	}
 	
 	// Update is called once per frame
@@ -39,6 +42,14 @@ public class GameManager : MonoBehaviour
 
             // let the playerMovement script know
             playerMovement.outOfStamina = true;
+        }
+
+        wolfTimer += Time.deltaTime;
+
+        if(wolfTimer >= 5.0f)
+        {
+            wolfSpawner.SpawnWolf();
+            wolfTimer = 0.0f;
         }
     }
 

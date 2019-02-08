@@ -13,10 +13,11 @@ public class WolfMovement : MonoBehaviour {
 
     private Rigidbody rb;
 
-    public GameObject bunny;
+    private GameObject bunny;
     void Start () {
         wolfPos = transform.position;
         rb = gameObject.GetComponent<Rigidbody>();
+        bunny = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
