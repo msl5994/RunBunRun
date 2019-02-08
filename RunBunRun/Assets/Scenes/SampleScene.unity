@@ -976,7 +976,7 @@ Prefab:
     - target: {fileID: 114444617971439480, guid: 36a7367f67fc4584aba4b52583779adb,
         type: 2}
       propertyPath: maxSpeed
-      value: 0.5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 114444617971439480, guid: 36a7367f67fc4584aba4b52583779adb,
         type: 2}
@@ -997,6 +997,11 @@ Prefab:
         type: 2}
       propertyPath: direction.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54183987564273098, guid: 36a7367f67fc4584aba4b52583779adb,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36a7367f67fc4584aba4b52583779adb, type: 2}

@@ -11,23 +11,40 @@ public class WolfMovement : MonoBehaviour {
 
     public float maxSpeed;
 
+    private Rigidbody rb;
+
     public GameObject bunny;
     void Start () {
         wolfPos = transform.position;
+        rb = gameObject.GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        wolfPos = transform.position;
-        velocity += acceleration; // add a to v
-        wolfPos += velocity; // add v to p
-        direction = velocity.normalized; // get d from v
-        transform.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
-        transform.position = wolfPos; // update transform.position
-        acceleration = Vector3.zero; // start fresh each frame
 
-        Vector3 seekForce = SeekForce(bunny.transform.position);
-        ApplyForce(seekForce);
+        //velocity += acceleration; // add a to v
+        //wolfPos += velocity; // add v to p
+        //direction = velocity.normalized; // get d from v
+        //transform.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
+        //transform.position = wolfPos; // update transform.position
+        //acceleration = Vector3.zero; // start fresh each frame
+
+        //Vector3 seekForce = SeekForce(bunny.transform.position);
+        //ApplyForce(seekForce);
+
+    }
+
+    // for physics calculations
+    private void FixedUpdate()
+    {
+        wolfPos = transform.position;
+        direction = bunny.transform.position - wolfPos;
+        direction = direction.normalized;
+        //rb.AddForce(SeekForce(bunny.transform.position));
+        rb.AddForceAtPosition(SeekForce(bunny.transform.position), wolfPos);
+        //rb.MoveRotation(Quaternion.Euler(direction.x, direction.y, direction.z));
+        rb.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
+        transform.forward = direction;
     }
 
     private void ApplyForce(Vector3 force)
