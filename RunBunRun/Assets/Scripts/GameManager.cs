@@ -13,43 +13,77 @@ public class GameManager : MonoBehaviour
     public float maxStamina = 60.0f; // 1 minute for now
     public float staminaTimer = 0.0f;
     public float wolfTimer = 0.0f;
+    public float wolfSpawnTimer = 30.0f;
 
     public GameObject player;
     private PlayerMovement playerMovement;
     private WolfSpawner wolfSpawner;
 
+    public bool gameOver = false;
+
+    public GameObject gameOverPanel;
+    public GameObject splashScreenPanel;
+
+    // more script references
+    private GenerateObstacles obstacleGenerator;
+    private CollectibleSpawner collectibleSpawner;
+
+    // game states enum
+    public enum GameState {SplashScreen, MainMenu, Game, GameOver};
+    public GameState gameState;
+
     // Use this for initialization
     void Start ()
     {
+        // set the game state
+        gameState = GameState.SplashScreen;
+
         playerMovement = player.GetComponent<PlayerMovement>();
+        playerMovement.enabled = false; // start the player as not moving
         wolfSpawner = gameObject.GetComponent<WolfSpawner>();
+        obstacleGenerator = gameObject.GetComponent<GenerateObstacles>();
+        collectibleSpawner = gameObject.GetComponent<CollectibleSpawner>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        // update the timer
-        staminaTimer += Time.deltaTime;
-
-        // updates the visual
-        staminaRing.fillAmount = staminaTimer / maxStamina;
-
-        // check for stamina
-        if(staminaTimer >= maxStamina)
+        if(gameState == GameState.SplashScreen)
         {
-            // clamp the value
-            staminaTimer = maxStamina;
-
-            // let the playerMovement script know
-            playerMovement.outOfStamina = true;
+            splashScreenPanel.SetActive(true);
         }
 
-        wolfTimer += Time.deltaTime;
-
-        if(wolfTimer >= 5.0f)
+        // only update timers while the game is running
+        if(gameState == GameState.Game)
         {
-            wolfSpawner.SpawnWolf();
-            wolfTimer = 0.0f;
+            // update the timer
+            staminaTimer += Time.deltaTime;
+
+            // updates the visual
+            staminaRing.fillAmount = staminaTimer / maxStamina;
+
+            // check for stamina
+            if (staminaTimer >= maxStamina)
+            {
+                // clamp the value
+                staminaTimer = maxStamina;
+
+                // let the playerMovement script know
+                playerMovement.outOfStamina = true;
+            }
+
+            // wolf spawning
+            wolfTimer += Time.deltaTime;
+            if (wolfTimer >= wolfSpawnTimer)
+            {
+                wolfSpawner.SpawnWolf();
+                wolfTimer = 0.0f;
+            }
+        }
+
+        if(gameState == GameState.GameOver)
+        {
+            gameOverPanel.SetActive(true);
         }
     }
 
@@ -72,5 +106,124 @@ public class GameManager : MonoBehaviour
     {
         staminaTimer = 0.0f; // reset timer
         playerMovement.outOfStamina = false; // reset boolean
+    }
+
+    // method to end the game
+    public void GameOver()
+    {
+        List<GameObject> wolves = wolfSpawner.wolfList;
+        foreach(GameObject wolf in wolves)
+        {
+            // stop all of the wolves movement
+            wolf.GetComponent<WolfMovement>().enabled = false;
+            //wolf.GetComponent<Rigidbody>().isKinematic = true;
+            //wolf.GetComponent<Rigidbody>().freezeRotation = true;
+        }
+
+        // stop the player movement
+        playerMovement.enabled = false;
+        player.GetComponent<MeshRenderer>().enabled = false;
+
+        // reset all necessary timers
+        wolfTimer = 0.0f;
+
+        // set the UI panel to be active
+        gameOverPanel.SetActive(true);
+    }
+
+    // method to show the splash screen
+    public void SplashScreen()
+    {
+        splashScreenPanel.SetActive(true);
+        gameOverPanel.SetActive(false);
+
+        // stop the player movement
+        player.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
+        playerMovement.enabled = false;
+        player.GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    // method to start the game
+    public void GamePlayStart()
+    {
+        // disable the other screens
+        splashScreenPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+
+        // reset the timers
+        staminaTimer = 0.0f;
+        wolfTimer = 0.0f;
+
+        // reset scores
+        featherScoreNum = 0;
+        carrotScoreNum = 0;
+
+        // reset the wolf and obstacle lists
+        for(int i = 0; i < wolfSpawner.wolfList.Count; i++)
+        {
+            GameObject temp = wolfSpawner.wolfList[i];
+            Destroy(temp);
+            wolfSpawner.wolfList.Remove(temp);
+        }
+        /*
+        foreach(GameObject wolf in wolfSpawner.wolfList)
+        {
+            Destroy(wolf);
+            wolfSpawner.wolfList.Remove(wolf);
+        }
+        */
+        for (int i = 0; i < obstacleGenerator.Obstacles.Count; i++)
+        {
+            GameObject temp = obstacleGenerator.Obstacles[i];
+            Destroy(temp);
+            obstacleGenerator.Obstacles.Remove(temp);
+        }
+        /*
+        foreach (GameObject obstacle in obstacleGenerator.Obstacles)
+        {
+            Destroy(obstacle);
+            obstacleGenerator.Obstacles.Remove(obstacle);
+        }*/
+        for (int i = 0; i < collectibleSpawner.carrotCollectibles.Count; i++)
+        {
+            GameObject temp = collectibleSpawner.carrotCollectibles[i];
+            Destroy(temp);
+            collectibleSpawner.carrotCollectibles.Remove(temp);
+        }
+        /*
+        foreach (GameObject collectible in collectibleSpawner.carrotCollectibles)
+        {
+            Destroy(collectible);
+            collectibleSpawner.carrotCollectibles.Remove(collectible);
+        }
+        */
+        for (int i = 0; i < collectibleSpawner.featherCollectibles.Count; i++)
+        {
+            GameObject temp = collectibleSpawner.featherCollectibles[i];
+            Destroy(temp);
+            collectibleSpawner.featherCollectibles.Remove(temp);
+        }
+        /*
+        foreach (GameObject collectible in collectibleSpawner.featherCollectibles)
+        {
+            Destroy(collectible);
+            collectibleSpawner.featherCollectibles.Remove(collectible);
+        }*/
+        // reinitialize the lists
+        /*
+        wolfSpawner.wolfList = new List<GameObject>();
+        obstacleGenerator.Obstacles = new List<GameObject>();
+        collectibleSpawner.carrotCollectibles = new List<GameObject>();
+        collectibleSpawner.featherCollectibles = new List<GameObject>();
+        */
+
+        // reset the player variables
+        player.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
+        playerMovement.enabled = true;
+        player.GetComponent<MeshRenderer>().enabled = true;
+        playerMovement.outOfStamina = false;
+
+        // spawn new objects
+        obstacleGenerator.SpawnObstacles(); // this method calls the collectible spawner as well
     }
 }

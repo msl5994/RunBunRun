@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Carrot
   - Feather
+  - Wolf
   layers:
   - Default
   - TransparentFX
