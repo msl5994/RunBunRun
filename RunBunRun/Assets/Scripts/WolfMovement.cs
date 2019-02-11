@@ -46,24 +46,6 @@ public class WolfMovement : MonoBehaviour {
         //rb.MoveRotation(Quaternion.Euler(direction.x, direction.y, direction.z));
         rb.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
         transform.forward = direction;
-
-        // clamp the speed
-        if (rb.velocity.magnitude > maxSpeed)
-        {
-
-        }
-        if (rb.velocity.x > maxSpeed)
-        {
-            rb.velocity = new Vector3(maxSpeed, rb.velocity.y, rb.velocity.z);
-        }
-        if (rb.velocity.y > maxSpeed)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, maxSpeed, rb.velocity.z);
-        }
-        if (rb.velocity.z > maxSpeed)
-        {
-            rb.velocity = new Vector3(maxSpeed, rb.velocity.y, maxSpeed);
-        }
     }
 
     private void ApplyForce(Vector3 force)

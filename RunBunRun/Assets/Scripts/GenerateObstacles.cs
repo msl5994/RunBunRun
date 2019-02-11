@@ -20,24 +20,15 @@ public class GenerateObstacles : MonoBehaviour {
 
         // instantiate the list
         Obstacles = new List<GameObject>();
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
 
-    public void SpawnObstacles()
-    {
         // loop through the places in the playspace
-        for (int i = -50; i < 50; i += 2)
+        for(int i = -50; i < 50; i += 2)
         {
-            for (int j = -50; j < 50; j += 2)
+            for(int j = -50; j < 50; j +=2)
             {
                 // determine whether or not to spawn an obstacle at this location
                 int spawnCheck = Random.Range(0, 100);
-                if (spawnCheck % 5 == 0)
+                if(spawnCheck%5==0)
                 {
                     spawnObstacleHere = true;
                 }
@@ -46,14 +37,14 @@ public class GenerateObstacles : MonoBehaviour {
                     spawnObstacleHere = false;
                 }
 
-                if (spawnObstacleHere)
+                if(spawnObstacleHere)
                 {
                     // set a random position in the area
                     int xIndex = (Random.Range(i * 10, 1000) % 10) + i * 10;
                     int zIndex = (Random.Range(j * 10, 1000) % 10) + j * 10;
                     int obstacleIndex = Random.Range(0, obstaclePrefabs.Count);
                     //loat obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.position.y + (obstaclePrefabs[obstacleIndex].transform.localScale.y);
-                    float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y / 2.0f;
+                    float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y /2.0f;
                     Vector3 obstacleSpawnPosition = new Vector3(xIndex, obstacleHeightOffset, zIndex);
 
                     // get a random rotation for the obstacle
@@ -82,9 +73,15 @@ public class GenerateObstacles : MonoBehaviour {
         }
 
         // loop to create feather collectibles
-        for (int i = 0; i < collectibleSpawner.numFeathersToSpawn; i++)
+        for(int i = 0; i < collectibleSpawner.numFeathersToSpawn; i++)
         {
             collectibleSpawner.SpawnFeatherCollectible();
         }
     }
+	
+	// Update is called once per frame
+	void Update ()
+    {
+		
+	}
 }

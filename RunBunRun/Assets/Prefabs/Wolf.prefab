@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 54183987564273098}
   m_Layer: 0
   m_Name: Wolf
-  m_TagString: Wolf
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,4 +129,5 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   wolfPos: {x: 0, y: 0, z: 0}
   mass: 5
-  maxSpeed: 15
+  maxSpeed: 20
+  bunny: {fileID: 0}
