@@ -116,8 +116,7 @@ public class GameManager : MonoBehaviour
         {
             // stop all of the wolves movement
             wolf.GetComponent<WolfMovement>().enabled = false;
-            //wolf.GetComponent<Rigidbody>().isKinematic = true;
-            //wolf.GetComponent<Rigidbody>().freezeRotation = true;
+            wolf.GetComponent<Rigidbody>().isKinematic = true;
         }
 
         // stop the player movement
@@ -165,57 +164,25 @@ public class GameManager : MonoBehaviour
             Destroy(temp);
             wolfSpawner.wolfList.Remove(temp);
         }
-        /*
-        foreach(GameObject wolf in wolfSpawner.wolfList)
-        {
-            Destroy(wolf);
-            wolfSpawner.wolfList.Remove(wolf);
-        }
-        */
         for (int i = 0; i < obstacleGenerator.Obstacles.Count; i++)
         {
             GameObject temp = obstacleGenerator.Obstacles[i];
             Destroy(temp);
             obstacleGenerator.Obstacles.Remove(temp);
         }
-        /*
-        foreach (GameObject obstacle in obstacleGenerator.Obstacles)
-        {
-            Destroy(obstacle);
-            obstacleGenerator.Obstacles.Remove(obstacle);
-        }*/
         for (int i = 0; i < collectibleSpawner.carrotCollectibles.Count; i++)
         {
             GameObject temp = collectibleSpawner.carrotCollectibles[i];
             Destroy(temp);
             collectibleSpawner.carrotCollectibles.Remove(temp);
         }
-        /*
-        foreach (GameObject collectible in collectibleSpawner.carrotCollectibles)
-        {
-            Destroy(collectible);
-            collectibleSpawner.carrotCollectibles.Remove(collectible);
-        }
-        */
+
         for (int i = 0; i < collectibleSpawner.featherCollectibles.Count; i++)
         {
             GameObject temp = collectibleSpawner.featherCollectibles[i];
             Destroy(temp);
             collectibleSpawner.featherCollectibles.Remove(temp);
         }
-        /*
-        foreach (GameObject collectible in collectibleSpawner.featherCollectibles)
-        {
-            Destroy(collectible);
-            collectibleSpawner.featherCollectibles.Remove(collectible);
-        }*/
-        // reinitialize the lists
-        /*
-        wolfSpawner.wolfList = new List<GameObject>();
-        obstacleGenerator.Obstacles = new List<GameObject>();
-        collectibleSpawner.carrotCollectibles = new List<GameObject>();
-        collectibleSpawner.featherCollectibles = new List<GameObject>();
-        */
 
         // reset the player variables
         player.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
