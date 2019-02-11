@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour {
     private bool turnRight, turnLeft = false;
     public bool outOfStamina = false;
 
+    public GameObject gameManagerObject;
+    private GameManager gameManager;
+
     // Use this for initialization
     void Start ()
     {
@@ -32,6 +35,8 @@ public class PlayerMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         rb.rotation = Quaternion.identity;
+
+        gameManager = gameManagerObject.GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -184,7 +189,10 @@ public class PlayerMovement : MonoBehaviour {
             //Debug.Log("Landed");
             isGrounded = true;
         }
+        if(collision.gameObject.tag == "Wolf")
+        {
+            gameManager.gameState = GameManager.GameState.GameOver;
+            gameManager.GameOver();
+        }
     }
-
-
 }

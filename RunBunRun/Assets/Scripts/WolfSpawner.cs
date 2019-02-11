@@ -8,7 +8,7 @@ public class WolfSpawner : MonoBehaviour {
     public GameObject wolfPrefab;
     public Terrain ground;
     private float groundHeight;
-    private List<GameObject> wolfList;
+    public List<GameObject> wolfList;
     private GameObject wolfParent;
     void Start () {
         wolfList = new List<GameObject>();
