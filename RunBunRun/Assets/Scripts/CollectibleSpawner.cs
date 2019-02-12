@@ -12,7 +12,6 @@ public class CollectibleSpawner : MonoBehaviour {
     public int numFeathersToSpawn = 5;
     public List<GameObject> carrotCollectibles;
     public List<GameObject> featherCollectibles;
-    private GameObject collectibleParent;
     public GameObject collectibleParent;
 
 
