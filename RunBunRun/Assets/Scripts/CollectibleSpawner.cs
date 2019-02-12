@@ -13,6 +13,8 @@ public class CollectibleSpawner : MonoBehaviour {
     public List<GameObject> carrotCollectibles;
     public List<GameObject> featherCollectibles;
     private GameObject collectibleParent;
+    public GameObject collectibleParent;
+
 
 	// Use this for initialization
 	void Start ()
@@ -48,6 +50,9 @@ public class CollectibleSpawner : MonoBehaviour {
         GameObject tempCollectible = Instantiate(carrotCollectiblePrefab, spawnPos, Quaternion.identity);
 
         // set its parent
+
+        // set the parent of the collectibles
+
         tempCollectible.transform.parent = collectibleParent.transform;
 
         // add it to a list of collectibles
@@ -68,6 +73,8 @@ public class CollectibleSpawner : MonoBehaviour {
         GameObject tempCollectible = Instantiate(featherCollectiblePrefab, spawnPos, Quaternion.identity);
 
         // set its parent
+
+        // set the parent of the collectibles
         tempCollectible.transform.parent = collectibleParent.transform;
 
         // add it to a list of collectibles
