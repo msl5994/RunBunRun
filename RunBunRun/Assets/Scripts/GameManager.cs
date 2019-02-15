@@ -156,9 +156,11 @@ public class GameManager : MonoBehaviour
         // reset scores
         featherScoreNum = 0;
         carrotScoreNum = 0;
+        carrotScoreText.text = "Carrots: " + carrotScoreNum;
+        featherScoreText.text = "Feathers: " + featherScoreNum;
 
         // reset the wolf and obstacle lists
-        for(int i = 0; i < wolfSpawner.wolfList.Count; i++)
+        for (int i = 0; i < wolfSpawner.wolfList.Count; i++)
         {
             GameObject temp = wolfSpawner.wolfList[i];
             Destroy(temp);
