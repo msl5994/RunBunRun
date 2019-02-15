@@ -44,11 +44,20 @@ public class WolfMovement : MonoBehaviour {
         //direction = bunny.transform.position - wolfPos;
         direction = rb.velocity.normalized;
         //direction = direction.normalized;
-        //rb.AddForce(SeekForce(bunny.transform.position));
-
+        rb.AddForce(SeekForce(bunny.transform.position));
         //rb.AddForceAtPosition(SeekForce(bunny.transform.position), wolfPos);
-        rb.AddForceAtPosition(WanderForce(), wolfPos);
-        
+        /*
+        if (Vector3.Distance(wolfPos, bunny.transform.position) < 100)
+        {
+            Debug.Log("seeking");
+            rb.AddForceAtPosition(SeekForce(bunny.transform.position), wolfPos);
+        }*/
+        /*
+        else
+        {
+            rb.AddForceAtPosition(WanderForce(), wolfPos);
+        }*/
+
         //rb.MoveRotation(Quaternion.Euler(direction.x, direction.y, direction.z));
         rb.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
         transform.forward = direction;
