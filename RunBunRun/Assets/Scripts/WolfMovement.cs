@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,11 +13,14 @@ public class WolfMovement : MonoBehaviour {
     private Rigidbody rb;
 
     private GameObject bunny;
+
+    private float angle;
     void Start () {
         wolfPos = transform.position;
         rb = gameObject.GetComponent<Rigidbody>();
         bunny = GameObject.FindGameObjectWithTag("Player");
-	}
+        angle = Random.Range(0f, 2f * Mathf.PI);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -39,10 +41,14 @@ public class WolfMovement : MonoBehaviour {
     private void FixedUpdate()
     {
         wolfPos = transform.position;
-        direction = bunny.transform.position - wolfPos;
-        direction = direction.normalized;
+        //direction = bunny.transform.position - wolfPos;
+        direction = rb.velocity.normalized;
+        //direction = direction.normalized;
         //rb.AddForce(SeekForce(bunny.transform.position));
-        rb.AddForceAtPosition(SeekForce(bunny.transform.position), wolfPos);
+
+        //rb.AddForceAtPosition(SeekForce(bunny.transform.position), wolfPos);
+        rb.AddForceAtPosition(WanderForce(), wolfPos);
+        
         //rb.MoveRotation(Quaternion.Euler(direction.x, direction.y, direction.z));
         rb.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
         transform.forward = direction;
@@ -50,7 +56,7 @@ public class WolfMovement : MonoBehaviour {
         // clamp the speed
         if (rb.velocity.magnitude > maxSpeed)
         {
-
+            
         }
         if (rb.velocity.x > maxSpeed)
         {
@@ -79,5 +85,32 @@ public class WolfMovement : MonoBehaviour {
         desiredV *= maxSpeed;
 
         return desiredV - velocity;
+    }
+
+    public Vector3 WanderForce()
+    {
+        //Debug.Log("wandering");
+
+        Vector3 circleCenter = wolfPos + this.gameObject.transform.forward;
+        float radius = maxSpeed / 4;
+
+        // slightly changing direction in which the wolf wanders
+        float angleAdd = Random.Range(0.0f, 0.01f);
+
+        // wandering left or right randomly
+        int leftOrRight = (int)Random.Range(0.0f, 1.0f) * 100000;
+        if(leftOrRight % 2 == 0)
+        {
+            angleAdd *= -1;
+        }
+        angle += angleAdd;
+
+        float randX = radius * Mathf.Cos(angle);
+        float yLoc = 0f;
+        float randZ = radius * Mathf.Sin(angle);
+
+        Vector3 target = circleCenter + new Vector3(randX, yLoc, randZ);
+
+        return SeekForce(target);
     }
 }

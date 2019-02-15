@@ -1943,6 +1943,7 @@ MonoBehaviour:
   maxStamina: 60
   staminaTimer: 0
   wolfTimer: 0
+  wolfSpawnTimer: 30
   player: {fileID: 2064295622}
   gameOver: 0
   gameOverPanel: {fileID: 461831503}
