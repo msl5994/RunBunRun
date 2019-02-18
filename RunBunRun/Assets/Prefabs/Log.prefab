@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33204049843654804}
   - component: {fileID: 23096587327454296}
   - component: {fileID: 136437421826133714}
+  - component: {fileID: 135042205317518620}
   m_Layer: 0
   m_Name: Log
   m_TagString: Obstacle
@@ -84,6 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1868575095104620}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &135042205317518620
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1868575095104620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.0000002
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940699}
 --- !u!136 &136437421826133714
 CapsuleCollider:
   m_ObjectHideFlags: 1
