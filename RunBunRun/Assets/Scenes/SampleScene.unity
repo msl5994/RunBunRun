@@ -2042,7 +2042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1beb434baa46f5643a91d1000ec177dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carrotCollectiblePrefab: {fileID: 1507793579110516, guid: 7bff474c9af47c64c95e832b30f560ec,
+  carrotCollectiblePrefab: {fileID: 1562739441914102, guid: b22c13aaa6db3eb44a6d6a6155d9099d,
     type: 2}
   featherCollectiblePrefab: {fileID: 1358032400113130, guid: 954e1fae24775684db8574374d52f37c,
     type: 2}

@@ -43,7 +43,7 @@ public class CollectibleSpawner : MonoBehaviour {
         int zPos = Random.Range((int)-(ground.terrainData.size.z) / 2, (int)(ground.terrainData.size.z) / 2);
         groundHeight = ground.terrainData.GetHeight(xPos, zPos);
 
-        Vector3 spawnPos = new Vector3(xPos, groundHeight + 1.0f, zPos);
+        Vector3 spawnPos = new Vector3(xPos, groundHeight + .5f, zPos);
 
         // instantiate the collectible
         GameObject tempCollectible = Instantiate(carrotCollectiblePrefab, spawnPos, Quaternion.identity);
