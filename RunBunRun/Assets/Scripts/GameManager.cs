@@ -111,14 +111,15 @@ public class GameManager : MonoBehaviour
     // method to end the game
     public void GameOver()
     {
-        List<GameObject> wolves = wolfSpawner.wolfList;
-        foreach(GameObject wolf in wolves)
+        //List<GameObject> wolves = wolfSpawner.wolfList;
+        
+        foreach(GameObject wolf in wolfSpawner.wolfList)
         {
             // stop all of the wolves movement
             wolf.GetComponent<WolfMovement>().enabled = false;
             wolf.GetComponent<Rigidbody>().isKinematic = true;
         }
-
+        //wolfSpawner.wolfList.Clear();
         // stop the player movement
         playerMovement.enabled = false;
         player.GetComponent<MeshRenderer>().enabled = false;
@@ -160,12 +161,12 @@ public class GameManager : MonoBehaviour
         featherScoreText.text = "Feathers: " + featherScoreNum;
 
         // reset the wolf and obstacle lists
-        for (int i = 0; i < wolfSpawner.wolfList.Count; i++)
+        foreach (GameObject wolf in wolfSpawner.wolfList)
         {
-            GameObject temp = wolfSpawner.wolfList[i];
-            Destroy(temp);
-            wolfSpawner.wolfList.Remove(temp);
+            // stop all of the wolves movement
+            Destroy(wolf);
         }
+        wolfSpawner.wolfList.Clear();
         for (int i = 0; i < obstacleGenerator.Obstacles.Count; i++)
         {
             GameObject temp = obstacleGenerator.Obstacles[i];
