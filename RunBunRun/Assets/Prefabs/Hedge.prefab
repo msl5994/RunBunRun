@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23569700130510704}
   - component: {fileID: 65630802443110424}
   - component: {fileID: 135561999749800872}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hedge
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1956632163484498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 5, y: 4, z: 1}
+  m_LocalScale: {x: 15, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 2485a5b9b7660ee44abf81753cf3caf3, type: 2}
+  - {fileID: 2100000, guid: 55947e1986033a64caa97e7cc5e2006e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

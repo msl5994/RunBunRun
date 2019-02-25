@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 7145956}
   - component: {fileID: 7145958}
   - component: {fileID: 7145957}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FeatherScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,6 +275,78 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 26537267}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &45620211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 45620212}
+  - component: {fileID: 45620214}
+  - component: {fileID: 45620213}
+  m_Layer: 0
+  m_Name: Mountains
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &45620212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 45620211}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -600}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 106773779}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!154 &45620213
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 45620211}
+  m_Material: {fileID: 0}
+  m_Enabled: 1
+  m_TerrainData: {fileID: 15600000, guid: a80b3606a545fbd44b678a9c6f583d98, type: 2}
+  m_EnableTreeColliders: 1
+--- !u!218 &45620214
+Terrain:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 45620211}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_TerrainData: {fileID: 15600000, guid: a80b3606a545fbd44b678a9c6f583d98, type: 2}
+  m_TreeDistance: 2000
+  m_TreeBillboardDistance: 50
+  m_TreeCrossFadeLength: 5
+  m_TreeMaximumFullLODCount: 50
+  m_DetailObjectDistance: 80
+  m_DetailObjectDensity: 1
+  m_HeightmapPixelError: 5
+  m_SplatMapDistance: 1000
+  m_HeightmapMaximumLOD: 0
+  m_CastShadows: 1
+  m_DrawHeightmap: 1
+  m_DrawTreesAndFoliage: 1
+  m_ReflectionProbeUsage: 1
+  m_MaterialType: 0
+  m_LegacySpecular:
+    serializedVersion: 2
+    rgba: 4286545791
+  m_LegacyShininess: 0.078125
+  m_MaterialTemplate: {fileID: 0}
+  m_BakeLightProbesForTrees: 1
+  m_PreserveTreePrototypeLayers: 0
+  m_ScaleInLightmap: 0.1024
+  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &59664687
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +357,7 @@ GameObject:
   - component: {fileID: 59664688}
   - component: {fileID: 59664690}
   - component: {fileID: 59664689}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: SplashScreenBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,6 +416,78 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 59664687}
   m_CullTransparentMesh: 0
+--- !u!1 &64834369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 64834370}
+  - component: {fileID: 64834372}
+  - component: {fileID: 64834371}
+  m_Layer: 0
+  m_Name: Mountains2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &64834370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 64834369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -300, y: 0, z: -600}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1100348324}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!154 &64834371
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 64834369}
+  m_Material: {fileID: 0}
+  m_Enabled: 1
+  m_TerrainData: {fileID: 15600000, guid: a80b3606a545fbd44b678a9c6f583d98, type: 2}
+  m_EnableTreeColliders: 1
+--- !u!218 &64834372
+Terrain:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 64834369}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_TerrainData: {fileID: 15600000, guid: a80b3606a545fbd44b678a9c6f583d98, type: 2}
+  m_TreeDistance: 2000
+  m_TreeBillboardDistance: 50
+  m_TreeCrossFadeLength: 5
+  m_TreeMaximumFullLODCount: 50
+  m_DetailObjectDistance: 80
+  m_DetailObjectDensity: 1
+  m_HeightmapPixelError: 5
+  m_SplatMapDistance: 1000
+  m_HeightmapMaximumLOD: 0
+  m_CastShadows: 1
+  m_DrawHeightmap: 1
+  m_DrawTreesAndFoliage: 1
+  m_ReflectionProbeUsage: 1
+  m_MaterialType: 0
+  m_LegacySpecular:
+    serializedVersion: 2
+    rgba: 4286545791
+  m_LegacyShininess: 0.078125
+  m_MaterialTemplate: {fileID: 0}
+  m_BakeLightProbesForTrees: 1
+  m_PreserveTreePrototypeLayers: 0
+  m_ScaleInLightmap: 0.1024
+  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &106773777
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1098164110}
+  - {fileID: 45620212}
   m_Father: {fileID: 892667726}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -560,6 +705,61 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 132798937}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &152952217
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 954974854}
+    m_Modifications:
+    - target: {fileID: 400002, guid: 3d5f662ee8f060b4aabc729f0a5962c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 222
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 3d5f662ee8f060b4aabc729f0a5962c4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 3d5f662ee8f060b4aabc729f0a5962c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 3d5f662ee8f060b4aabc729f0a5962c4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 3d5f662ee8f060b4aabc729f0a5962c4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 3d5f662ee8f060b4aabc729f0a5962c4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 3d5f662ee8f060b4aabc729f0a5962c4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 3d5f662ee8f060b4aabc729f0a5962c4, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 3d5f662ee8f060b4aabc729f0a5962c4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 3d5f662ee8f060b4aabc729f0a5962c4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 500
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3d5f662ee8f060b4aabc729f0a5962c4, type: 3}
+  m_IsPrefabAsset: 0
+--- !u!4 &152952218 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400002, guid: 3d5f662ee8f060b4aabc729f0a5962c4,
+    type: 3}
+  m_PrefabInternal: {fileID: 152952217}
 --- !u!1 &181095260
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +770,7 @@ GameObject:
   - component: {fileID: 181095263}
   - component: {fileID: 181095262}
   - component: {fileID: 181095261}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CarrotScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -795,7 +995,7 @@ GameObject:
   - component: {fileID: 288051010}
   - component: {fileID: 288051009}
   - component: {fileID: 288051008}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -942,7 +1142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &312807956
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1234,7 +1434,7 @@ GameObject:
   - component: {fileID: 446088020}
   - component: {fileID: 446088022}
   - component: {fileID: 446088021}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SplashScreenPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1392,7 +1592,7 @@ GameObject:
   - component: {fileID: 461831504}
   - component: {fileID: 461831506}
   - component: {fileID: 461831505}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameOverPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1465,7 +1665,7 @@ GameObject:
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1551,7 +1751,7 @@ GameObject:
   - component: {fileID: 546322651}
   - component: {fileID: 546322653}
   - component: {fileID: 546322652}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MinimapCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1628,7 +1828,7 @@ GameObject:
   - component: {fileID: 597721843}
   - component: {fileID: 597721845}
   - component: {fileID: 597721844}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ears
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1784,7 +1984,7 @@ GameObject:
   - component: {fileID: 678002462}
   - component: {fileID: 678002464}
   - component: {fileID: 678002463}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MinimapPositioningParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1944,7 +2144,7 @@ GameObject:
   - component: {fileID: 692376869}
   - component: {fileID: 692376871}
   - component: {fileID: 692376870}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ScorePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2190,7 +2390,7 @@ GameObject:
   - component: {fileID: 757287274}
   - component: {fileID: 757287273}
   - component: {fileID: 757287272}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Play Again
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2399,7 +2599,7 @@ GameObject:
   - component: {fileID: 785952177}
   - component: {fileID: 785952179}
   - component: {fileID: 785952178}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2563,7 +2763,7 @@ GameObject:
   - component: {fileID: 818360719}
   - component: {fileID: 818360721}
   - component: {fileID: 818360720}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StaminaRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2664,78 +2864,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 1000, z: 1000}
   m_Center: {x: 25, y: 500, z: 0}
---- !u!1001 &865872667
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4834800656708046, guid: b22c13aaa6db3eb44a6d6a6155d9099d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -86.77696
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834800656708046, guid: b22c13aaa6db3eb44a6d6a6155d9099d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834800656708046, guid: b22c13aaa6db3eb44a6d6a6155d9099d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 378.79492
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834800656708046, guid: b22c13aaa6db3eb44a6d6a6155d9099d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834800656708046, guid: b22c13aaa6db3eb44a6d6a6155d9099d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834800656708046, guid: b22c13aaa6db3eb44a6d6a6155d9099d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834800656708046, guid: b22c13aaa6db3eb44a6d6a6155d9099d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834800656708046, guid: b22c13aaa6db3eb44a6d6a6155d9099d, type: 2}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 23638294269296396, guid: b22c13aaa6db3eb44a6d6a6155d9099d,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: df6b605a4c01a1e4f9b9e8f21c54e55e, type: 2}
-    - target: {fileID: 23638294269296396, guid: b22c13aaa6db3eb44a6d6a6155d9099d,
-        type: 2}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: df6b605a4c01a1e4f9b9e8f21c54e55e, type: 2}
-    - target: {fileID: 23638294269296396, guid: b22c13aaa6db3eb44a6d6a6155d9099d,
-        type: 2}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: df6b605a4c01a1e4f9b9e8f21c54e55e, type: 2}
-    - target: {fileID: 23638294269296396, guid: b22c13aaa6db3eb44a6d6a6155d9099d,
-        type: 2}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: df6b605a4c01a1e4f9b9e8f21c54e55e, type: 2}
-    - target: {fileID: 23638294269296396, guid: b22c13aaa6db3eb44a6d6a6155d9099d,
-        type: 2}
-      propertyPath: m_Materials.Array.data[4]
-      value: 
-      objectReference: {fileID: 2100000, guid: df6b605a4c01a1e4f9b9e8f21c54e55e, type: 2}
-    - target: {fileID: 23638294269296396, guid: b22c13aaa6db3eb44a6d6a6155d9099d,
-        type: 2}
-      propertyPath: m_Materials.Array.data[5]
-      value: 
-      objectReference: {fileID: 2100000, guid: df6b605a4c01a1e4f9b9e8f21c54e55e, type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b22c13aaa6db3eb44a6d6a6155d9099d, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &892667723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2835,7 +2963,7 @@ GameObject:
   - component: {fileID: 902248601}
   - component: {fileID: 902248603}
   - component: {fileID: 902248602}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3014,6 +3142,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 300917456}
+  - {fileID: 152952218}
   m_Father: {fileID: 892667726}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -3127,7 +3256,7 @@ GameObject:
   - component: {fileID: 986536769}
   - component: {fileID: 986536768}
   - component: {fileID: 986536767}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3406,6 +3535,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1840972158}
+  - {fileID: 64834370}
   m_Father: {fileID: 892667726}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3593,7 +3723,7 @@ GameObject:
   - component: {fileID: 1199253648}
   - component: {fileID: 1199253650}
   - component: {fileID: 1199253649}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3694,6 +3824,8 @@ MonoBehaviour:
   - {fileID: 1089579188654260, guid: 2fd0461a80fe041468daafc45eed53c8, type: 2}
   - {fileID: 1868575095104620, guid: 8663eed0c40e405488eb70c097af6ae3, type: 2}
   - {fileID: 1643793509729718, guid: a1f26db4eac164248b06fb0cc90eb8a5, type: 2}
+  - {fileID: 1523310339313442, guid: ae704baeebdbb5646982781f32efa6a1, type: 2}
+  - {fileID: 1004211416397328, guid: cc7abd2205ec1f14392b05fb51d9cef8, type: 2}
   Obstacles: []
   ObstacleListParent: {fileID: 338269426}
 --- !u!4 &1203359234
@@ -3791,7 +3923,7 @@ GameObject:
   - component: {fileID: 1221885978}
   - component: {fileID: 1221885977}
   - component: {fileID: 1221885976}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: JumpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4202,7 +4334,7 @@ GameObject:
   - component: {fileID: 1262637994}
   - component: {fileID: 1262637996}
   - component: {fileID: 1262637995}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4286,7 +4418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1268468389
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4463,7 +4595,7 @@ GameObject:
   - component: {fileID: 1321542718}
   - component: {fileID: 1321542720}
   - component: {fileID: 1321542719}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4935,7 +5067,7 @@ GameObject:
   - component: {fileID: 1472248739}
   - component: {fileID: 1472248741}
   - component: {fileID: 1472248740}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StaminaBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5092,7 +5224,7 @@ GameObject:
   - component: {fileID: 1537494491}
   - component: {fileID: 1537494490}
   - component: {fileID: 1537494489}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: TapToStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5389,7 +5521,7 @@ GameObject:
   - component: {fileID: 1566121772}
   - component: {fileID: 1566121774}
   - component: {fileID: 1566121773}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StraightEar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5545,7 +5677,7 @@ GameObject:
   - component: {fileID: 1587696875}
   - component: {fileID: 1587696877}
   - component: {fileID: 1587696876}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5708,7 +5840,7 @@ GameObject:
   - component: {fileID: 1629482543}
   - component: {fileID: 1629482542}
   - component: {fileID: 1629482541}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5878,7 +6010,7 @@ GameObject:
   - component: {fileID: 1644204260}
   - component: {fileID: 1644204262}
   - component: {fileID: 1644204261}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5957,7 +6089,7 @@ GameObject:
   - component: {fileID: 1650122707}
   - component: {fileID: 1650122706}
   - component: {fileID: 1650122705}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TurnRightButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6133,7 +6265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1666899087
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6397,7 +6529,7 @@ GameObject:
   - component: {fileID: 1804518920}
   - component: {fileID: 1804518922}
   - component: {fileID: 1804518921}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MinimapImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7215,7 +7347,8 @@ GameObject:
   - component: {fileID: 2064295623}
   - component: {fileID: 2064295627}
   - component: {fileID: 2064295628}
-  m_Layer: 0
+  - component: {fileID: 2064295629}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -7327,6 +7460,18 @@ MonoBehaviour:
   rightTurnTimer: 0
   outOfStamina: 0
   gameManagerObject: {fileID: 1203359232}
+--- !u!65 &2064295629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2064295622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2108682240
 GameObject:
   m_ObjectHideFlags: 0
@@ -7424,7 +7569,7 @@ GameObject:
   - component: {fileID: 2113007628}
   - component: {fileID: 2113007630}
   - component: {fileID: 2113007629}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BentEar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7495,7 +7640,7 @@ GameObject:
   - component: {fileID: 2117292584}
   - component: {fileID: 2117292583}
   - component: {fileID: 2117292586}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TurnLeftButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}

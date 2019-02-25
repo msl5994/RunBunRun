@@ -36,6 +36,9 @@ public class PlayerMovement : MonoBehaviour {
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         rb.rotation = Quaternion.identity;
 
+        // ignore collisions with certain obstacles
+        Physics.IgnoreLayerCollision(9,10);
+
         gameManager = gameManagerObject.GetComponent<GameManager>();
 	}
 	
@@ -72,6 +75,7 @@ public class PlayerMovement : MonoBehaviour {
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            //rb.AddForce(transform.forward * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
     }
@@ -87,6 +91,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
         }
+
 
         //rb.velocity = new Vector3(transform.forward.x * speed, 0.0f, transform.forward.z * speed);
         // jump moved here because it uses physics
@@ -181,8 +186,8 @@ public class PlayerMovement : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Obstacle")
         {
-            //Debug.Log("Hit obstacle");
             isGrounded = true;
+            //Debug.Log("Hit obstacle");
         }
         if(collision.gameObject.tag == "Ground")
         {
