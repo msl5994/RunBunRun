@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a76bdfe6296fcf44be2b4343e009ea7
+guid: eb3510b5728f8354abccecbfd231fc0d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -27,7 +27,7 @@ ModelImporter:
     100042: pasted__pasted__pasted__pCylinder1
     100044: pasted__pCylinder1
     100046: pCone1
-    100048: pCone1 1
+    100048: pCone1_ncl1_1
     100050: pCylinder1
     100052: transform1
     100054: transform2
@@ -59,7 +59,7 @@ ModelImporter:
     400042: pasted__pasted__pasted__pCylinder1
     400044: pasted__pCylinder1
     400046: pCone1
-    400048: pCone1 1
+    400048: pCone1_ncl1_1
     400050: pCylinder1
     400052: transform1
     400054: transform2
@@ -73,10 +73,9 @@ ModelImporter:
     2100006: pasted__stalksLambert1
     2100008: stalksLambert
     2100010: pasted__pasted__pasted__stalksLambert
-    2300000: pCone1
-    3300000: pCone1
-    4300000: pCone1
-    2186277476908879412: ImportLogs
+    2300000: pCone1_ncl1_1
+    3300000: pCone1_ncl1_1
+    4300000: pCone1_ncl1_1
   externalObjects: {}
   materials:
     importMaterials: 1

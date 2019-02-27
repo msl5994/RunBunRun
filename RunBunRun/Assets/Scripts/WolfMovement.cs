@@ -16,6 +16,10 @@ public class WolfMovement : MonoBehaviour {
     private GenerateObstacles obstacleSpawner;
     private float wanderTimer = 0.0f;
 
+    // for increasing difficulty
+    private float wolfBalanceTimer = 0.0f;
+    private float maxSeekRange = 100.0f;
+
     // references to the invisible walls
     private GameObject terrain;
     private GameObject wall1;
@@ -56,6 +60,15 @@ public class WolfMovement : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         wanderTimer += Time.deltaTime;
+
+        // ramping difficulty - every 10 seconds, the wolves get faster and they can seek the bunny from farther away
+        wolfBalanceTimer += Time.deltaTime;
+        if(wolfBalanceTimer >= 10.0f)
+        {
+            maxSpeed++;
+            maxSeekRange += 10.0f;
+            wolfBalanceTimer = 0.0f;
+        }
         //velocity += acceleration; // add a to v
         //wolfPos += velocity; // add v to p
         //direction = velocity.normalized; // get d from v
@@ -78,7 +91,7 @@ public class WolfMovement : MonoBehaviour {
         //rb.AddForce(SeekForce(bunny.transform.position));
         //rb.AddForceAtPosition(SeekForce(bunny.transform.position), wolfPos);
         
-        if (Vector3.Distance(wolfPos, bunny.transform.position) < 100.0f)
+        if (Vector3.Distance(wolfPos, bunny.transform.position) < maxSeekRange)
         {
             Debug.Log("seeking");
             rb.AddForceAtPosition(PursueForce(bunny.transform.position), wolfPos);

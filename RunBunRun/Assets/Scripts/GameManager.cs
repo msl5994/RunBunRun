@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public float staminaTimer = 0.0f;
     public float wolfTimer = 0.0f;
     public float wolfSpawnTimer = 30.0f;
+    private float balanceTimer = 0.0f;
 
     public GameObject player;
     private PlayerMovement playerMovement;
@@ -79,6 +80,16 @@ public class GameManager : MonoBehaviour
                 wolfSpawner.SpawnWolf();
                 wolfTimer = 0.0f;
             }
+
+            /*
+            // bunny running out of stamina quicker for ramping difficulty - maybe implemented in the future
+            balanceTimer += Time.deltaTime;
+            if (balanceTimer >= 60.0f)
+            {
+                maxStamina -= 2.0f;
+                balanceTimer = 0.0f;
+            }
+            */
         }
 
         if(gameState == GameState.GameOver)

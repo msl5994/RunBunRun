@@ -53,7 +53,7 @@ public class GenerateObstacles : MonoBehaviour {
                     int zIndex = (Random.Range(j * 10, 1000) % 10) + j * 10;
                     int obstacleIndex = Random.Range(0, obstaclePrefabs.Count);
                     //loat obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.position.y + (obstaclePrefabs[obstacleIndex].transform.localScale.y);
-                    float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y / 2.0f;
+                    float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y / 4.0f;
                     Vector3 obstacleSpawnPosition = new Vector3(xIndex, obstacleHeightOffset, zIndex);
 
                     // get a random rotation for the obstacle

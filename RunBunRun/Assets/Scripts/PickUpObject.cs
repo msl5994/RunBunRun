@@ -31,34 +31,38 @@ public class PickUpObject : MonoBehaviour {
         // if this object is hit by the player
         if(collision.gameObject.tag == "Player" && gameObject.tag == "Carrot")
         {
+            // remove it from the collectible list
+            collectibleSpawner.carrotCollectibles.Remove(gameObject);
+
+            // delete the object
+            Destroy(gameObject);
+
             // add to the score
             gameManager.UpdateCarrotScore();
 
             // reset the stamina timer
             gameManager.ResetStamina();
 
-            // remove it from the collectible list
-            collectibleSpawner.carrotCollectibles.Remove(gameObject);
-
             // spawn a new collectible to replace this one
             collectibleSpawner.SpawnCarrotCollectible();
 
-            // delete the object
-            Destroy(gameObject);
+            
         }
         else if(collision.gameObject.tag == "Player" && gameObject.tag == "Feather")
         {
-            // add to the score
-            gameManager.UpdateFeatherScore();
-
             // remove it from the collectible list
             collectibleSpawner.featherCollectibles.Remove(gameObject);
+
+            // delete the object
+            Destroy(gameObject);
+
+            // add to the score
+            gameManager.UpdateFeatherScore();
 
             // spawn a new collectible to replace this one
             collectibleSpawner.SpawnFeatherCollectible();
 
-            // delete the object
-            Destroy(gameObject);
+            
         }
     }
 }

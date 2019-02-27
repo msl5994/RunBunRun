@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3852,7 +3852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1beb434baa46f5643a91d1000ec177dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carrotCollectiblePrefab: {fileID: 1562739441914102, guid: b22c13aaa6db3eb44a6d6a6155d9099d,
+  carrotCollectiblePrefab: {fileID: 1327800456643234, guid: b22c13aaa6db3eb44a6d6a6155d9099d,
     type: 2}
   featherCollectiblePrefab: {fileID: 1358032400113130, guid: 954e1fae24775684db8574374d52f37c,
     type: 2}
@@ -7347,7 +7347,6 @@ GameObject:
   - component: {fileID: 2064295623}
   - component: {fileID: 2064295627}
   - component: {fileID: 2064295628}
-  - component: {fileID: 2064295629}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -7454,24 +7453,12 @@ MonoBehaviour:
   teleportPoint: {x: 0, y: 0, z: 0}
   speed: 25
   maxSpeed: 100
-  angleIncrement: 45
+  angleIncrement: 30
   turnTimer: 0
   leftTurnTimer: 0
   rightTurnTimer: 0
   outOfStamina: 0
   gameManagerObject: {fileID: 1203359232}
---- !u!65 &2064295629
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2064295622}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2108682240
 GameObject:
   m_ObjectHideFlags: 0
