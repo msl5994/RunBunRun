@@ -22,6 +22,7 @@ public class ButtonManager : MonoBehaviour {
     // method to load the gameplay scene
     public void StartGame()
     {
+        gameManager.firstFrame = true;
         gameManager.GamePlayStart();
         gameManager.gameState = GameManager.GameState.Game;
         //SceneManager.LoadScene("SampleScene");
@@ -30,6 +31,7 @@ public class ButtonManager : MonoBehaviour {
     // method to load the splashScreen/mainScreen
     public void LoadSplashScreen()
     {
+        gameManager.firstFrame = true;
         gameManager.gameState = GameManager.GameState.SplashScreen;
         gameManager.SplashScreen();
         //SceneManager.LoadScene("SplashScreen");

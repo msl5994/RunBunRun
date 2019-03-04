@@ -93,7 +93,7 @@ public class WolfMovement : MonoBehaviour {
         
         if (Vector3.Distance(wolfPos, bunny.transform.position) < maxSeekRange)
         {
-            Debug.Log("seeking");
+            //Debug.Log("seeking");
             rb.AddForceAtPosition(PursueForce(bunny.transform.position), wolfPos);
             //rb.AddForceAtPosition(SeekForce(bunny.transform.position), wolfPos);
         }
@@ -270,7 +270,7 @@ public class WolfMovement : MonoBehaviour {
     {
         if(collider.gameObject.name == "TurnZone")
         {
-            Debug.Log("Steering To Center");
+            //Debug.Log("Steering To Center");
             rb.AddForce(StayInBounds());
         }
     }
@@ -279,7 +279,7 @@ public class WolfMovement : MonoBehaviour {
     {
         if (collider.gameObject.name == "TurnZone")
         {
-            Debug.Log("Steering To Center");
+            //Debug.Log("Steering To Center");
             rb.AddForce(StayInBounds());
         }
     }

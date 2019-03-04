@@ -33,6 +33,13 @@ public class GameManager : MonoBehaviour
     public enum GameState {SplashScreen, MainMenu, Game, GameOver};
     public GameState gameState;
 
+    // audio variables
+    private AudioSource audioSource;
+    public AudioClip menuMusic;
+    public AudioClip runMusic;
+    public AudioClip gameOverMusic;
+    public bool firstFrame;
+
     // Use this for initialization
     void Start ()
     {
@@ -44,6 +51,8 @@ public class GameManager : MonoBehaviour
         wolfSpawner = gameObject.GetComponent<WolfSpawner>();
         obstacleGenerator = gameObject.GetComponent<GenerateObstacles>();
         collectibleSpawner = gameObject.GetComponent<CollectibleSpawner>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+        firstFrame = true;
 	}
 	
 	// Update is called once per frame
@@ -51,12 +60,27 @@ public class GameManager : MonoBehaviour
     {
         if(gameState == GameState.SplashScreen)
         {
-            splashScreenPanel.SetActive(true);
+            if(firstFrame)
+            {
+                splashScreenPanel.SetActive(true);
+                audioSource.clip = menuMusic;
+                audioSource.Play();
+                audioSource.loop = true;
+                firstFrame = false;
+            }
         }
 
         // only update timers while the game is running
         if(gameState == GameState.Game)
         {
+            if(firstFrame)
+            {
+                audioSource.clip = runMusic;
+                audioSource.Play();
+                audioSource.loop = true;
+                firstFrame = false;
+            }
+
             // update the timer
             staminaTimer += Time.deltaTime;
 
@@ -94,7 +118,14 @@ public class GameManager : MonoBehaviour
 
         if(gameState == GameState.GameOver)
         {
-            gameOverPanel.SetActive(true);
+            if(firstFrame)
+            {
+                gameOverPanel.SetActive(true);
+                audioSource.Stop(); // stop the run music first
+                audioSource.PlayOneShot(gameOverMusic, 1.0f);
+                audioSource.loop = false;
+                firstFrame = false;
+            }
         }
     }
 

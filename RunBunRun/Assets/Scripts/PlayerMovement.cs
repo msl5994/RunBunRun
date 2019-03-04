@@ -28,6 +28,15 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject gameManagerObject;
     private GameManager gameManager;
 
+    // audio variables
+    int currentJumpSoundNum = 0;
+    AudioSource audioSource;
+    private AudioClip currentJumpSound;
+    public AudioClip jump01;
+    public AudioClip jump02;
+    public AudioClip jump03;
+    public AudioClip jump04;
+
     // Use this for initialization
     void Start ()
     {
@@ -38,7 +47,7 @@ public class PlayerMovement : MonoBehaviour {
 
         // ignore collisions with certain obstacles
         Physics.IgnoreLayerCollision(9,10);
-
+        audioSource = gameObject.GetComponent<AudioSource>();
         gameManager = gameManagerObject.GetComponent<GameManager>();
 	}
 	
@@ -77,6 +86,23 @@ public class PlayerMovement : MonoBehaviour {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             //rb.AddForce(transform.forward * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+
+            // randomly select the audio clip
+            currentJumpSoundNum = UnityEngine.Random.Range(1,5);
+            switch(currentJumpSoundNum)
+            {
+                case 1: currentJumpSound = jump01;
+                    break;
+                case 2: currentJumpSound = jump02;
+                    break;
+                case 3: currentJumpSound = jump03;
+                    break;
+                case 4: currentJumpSound = jump04;
+                    break;
+                default: currentJumpSound = jump02;
+                    break;
+            }
+            audioSource.PlayOneShot(currentJumpSound, 1.0f);
         }
     }
 
@@ -196,6 +222,7 @@ public class PlayerMovement : MonoBehaviour {
         }
         if(collision.gameObject.tag == "Wolf")
         {
+            gameManager.firstFrame = true;
             gameManager.gameState = GameManager.GameState.GameOver;
             gameManager.GameOver();
         }
