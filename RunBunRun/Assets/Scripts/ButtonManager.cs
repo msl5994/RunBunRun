@@ -36,4 +36,11 @@ public class ButtonManager : MonoBehaviour {
         gameManager.SplashScreen();
         //SceneManager.LoadScene("SplashScreen");
     }
+
+    // method to load the help screen
+    public void LoadHelpScreen()
+    {
+        gameManager.gameState = GameManager.GameState.Help;
+        gameManager.HelpScreen();
+    }
 }

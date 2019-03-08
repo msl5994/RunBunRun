@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,13 +25,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameOverPanel;
     public GameObject splashScreenPanel;
+    public GameObject helpScreenPanel;
 
     // more script references
     private GenerateObstacles obstacleGenerator;
     private CollectibleSpawner collectibleSpawner;
 
     // game states enum
-    public enum GameState {SplashScreen, MainMenu, Game, GameOver};
+    public enum GameState {SplashScreen, MainMenu, Game, GameOver, Help};
+
     public GameState gameState;
 
     // audio variables
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         // set the game state
         gameState = GameState.SplashScreen;
+        helpScreenPanel.SetActive(false);
 
         playerMovement = player.GetComponent<PlayerMovement>();
         playerMovement.enabled = false; // start the player as not moving
@@ -127,6 +131,8 @@ public class GameManager : MonoBehaviour
                 firstFrame = false;
             }
         }
+
+        
     }
 
     // method to update the carrot score
@@ -177,12 +183,20 @@ public class GameManager : MonoBehaviour
     public void SplashScreen()
     {
         splashScreenPanel.SetActive(true);
+        helpScreenPanel.SetActive(false);
         gameOverPanel.SetActive(false);
 
         // stop the player movement
         player.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
         playerMovement.enabled = false;
         player.GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    // method to show the help screen
+    public void HelpScreen()
+    {
+        helpScreenPanel.SetActive(true);
+        splashScreenPanel.SetActive(false);
     }
 
     // method to start the game
