@@ -26,13 +26,13 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject splashScreenPanel;
     public GameObject helpScreenPanel;
-
+    public GameObject creditsScreenPanel;
     // more script references
     private GenerateObstacles obstacleGenerator;
     private CollectibleSpawner collectibleSpawner;
 
     // game states enum
-    public enum GameState {SplashScreen, MainMenu, Game, GameOver, Help};
+    public enum GameState {SplashScreen, MainMenu, Game, GameOver, Help, Credits};
 
     public GameState gameState;
 
@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         // set the game state
         gameState = GameState.SplashScreen;
         helpScreenPanel.SetActive(false);
+        creditsScreenPanel.SetActive(false);
 
         playerMovement = player.GetComponent<PlayerMovement>();
         playerMovement.enabled = false; // start the player as not moving
@@ -184,6 +185,7 @@ public class GameManager : MonoBehaviour
     {
         splashScreenPanel.SetActive(true);
         helpScreenPanel.SetActive(false);
+        creditsScreenPanel.SetActive(false);
         gameOverPanel.SetActive(false);
 
         // stop the player movement
@@ -199,6 +201,12 @@ public class GameManager : MonoBehaviour
         splashScreenPanel.SetActive(false);
     }
 
+    // method to show the credits screen
+    public void CreditsScreen()
+    {
+        creditsScreenPanel.SetActive(true);
+        splashScreenPanel.SetActive(false);
+    }
     // method to start the game
     public void GamePlayStart()
     {

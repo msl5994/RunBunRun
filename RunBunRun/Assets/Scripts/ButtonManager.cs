@@ -43,4 +43,11 @@ public class ButtonManager : MonoBehaviour {
         gameManager.gameState = GameManager.GameState.Help;
         gameManager.HelpScreen();
     }
+
+    // method to load the credits screen
+    public void LoadCreditsScreen()
+    {
+        gameManager.gameState = GameManager.GameState.Credits;
+        gameManager.CreditsScreen();
+    }
 }
