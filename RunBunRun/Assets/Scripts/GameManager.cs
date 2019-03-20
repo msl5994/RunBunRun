@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public enum GameState {SplashScreen, MainMenu, Game, GameOver, Help, Credits};
 
     public GameState gameState;
+    public GameState prevGameState;
 
     // audio variables
     private AudioSource audioSource;
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
     {
         // set the game state
         gameState = GameState.SplashScreen;
+        prevGameState = GameState.GameOver;
         helpScreenPanel.SetActive(false);
         creditsScreenPanel.SetActive(false);
 
@@ -65,7 +67,7 @@ public class GameManager : MonoBehaviour
     {
         if(gameState == GameState.SplashScreen)
         {
-            if(firstFrame)
+            if(firstFrame && prevGameState == GameState.GameOver)
             {
                 splashScreenPanel.SetActive(true);
                 audioSource.clip = menuMusic;
