@@ -37,6 +37,9 @@ public class PlayerMovement : MonoBehaviour {
     public AudioClip jump03;
     public AudioClip jump04;
 
+    // animation
+    Animator anim;
+
     // Use this for initialization
     void Start ()
     {
@@ -49,6 +52,8 @@ public class PlayerMovement : MonoBehaviour {
         Physics.IgnoreLayerCollision(9,10);
         audioSource = gameObject.GetComponent<AudioSource>();
         gameManager = gameManagerObject.GetComponent<GameManager>();
+
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -76,6 +81,7 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
         CheckTurning();
+        anim.SetTrigger("Run");
     }
 
     // method to jump
