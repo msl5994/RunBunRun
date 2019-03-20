@@ -224,6 +224,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             gameManager.firstFrame = true;
             gameManager.gameState = GameManager.GameState.GameOver;
+            gameManager.prevGameState = GameManager.GameState.Game;
             gameManager.GameOver();
         }
     }

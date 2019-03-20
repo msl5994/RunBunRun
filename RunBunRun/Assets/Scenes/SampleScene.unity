@@ -4821,6 +4821,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1203359238}
+        m_MethodName: OnGameOverMainMenuPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &986536768
@@ -5572,8 +5583,9 @@ MonoBehaviour:
   helpScreenPanel: {fileID: 1379581257}
   creditsScreenPanel: {fileID: 1652473220}
   gameState: 0
-  menuMusic: {fileID: 8300000, guid: b158e70d943ea134b8de895b6f934252, type: 3}
-  runMusic: {fileID: 8300000, guid: e74a22c07f57e5c47873eba2b540f21d, type: 3}
+  prevGameState: 0
+  menuMusic: {fileID: 8300000, guid: c3e5a6d0b388441409aa6d5e10895e97, type: 3}
+  runMusic: {fileID: 8300000, guid: 0b77b8340f2096e4798790172c2c0cbd, type: 3}
   gameOverMusic: {fileID: 8300000, guid: 21a402ead34d67e40ab4413904dcd0d2, type: 3}
   firstFrame: 1
 --- !u!114 &1203359237

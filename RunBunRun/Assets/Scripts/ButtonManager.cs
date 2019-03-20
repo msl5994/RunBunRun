@@ -25,6 +25,7 @@ public class ButtonManager : MonoBehaviour {
         gameManager.firstFrame = true;
         gameManager.GamePlayStart();
         gameManager.gameState = GameManager.GameState.Game;
+        gameManager.prevGameState = GameManager.GameState.SplashScreen;
         //SceneManager.LoadScene("SampleScene");
     }
 
@@ -41,6 +42,7 @@ public class ButtonManager : MonoBehaviour {
     public void LoadHelpScreen()
     {
         gameManager.gameState = GameManager.GameState.Help;
+        gameManager.prevGameState = GameManager.GameState.SplashScreen;
         gameManager.HelpScreen();
     }
 
@@ -48,6 +50,13 @@ public class ButtonManager : MonoBehaviour {
     public void LoadCreditsScreen()
     {
         gameManager.gameState = GameManager.GameState.Credits;
+        gameManager.prevGameState = GameManager.GameState.SplashScreen;
         gameManager.CreditsScreen();
+    }
+
+    // call this method in addition to the LoadSplashScreen method to reset the music properly
+    public void OnGameOverMainMenuPress()
+    {
+        gameManager.prevGameState = GameManager.GameState.GameOver;
     }
 }
