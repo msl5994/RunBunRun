@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour {
                 default: currentJumpSound = jump02;
                     break;
             }
-            audioSource.PlayOneShot(currentJumpSound, 1.0f);
+            audioSource.PlayOneShot(currentJumpSound, gameManager.sfxSlider.value);
         }
     }
 

@@ -59,4 +59,18 @@ public class ButtonManager : MonoBehaviour {
     {
         gameManager.prevGameState = GameManager.GameState.GameOver;
     }
+
+    // method to load the options screen
+    public void LoadOptionsScreen()
+    {
+        gameManager.gameState = GameManager.GameState.Options;
+        gameManager.OptionsScreen();
+    }
+
+    // method to mute the volume sliders
+    public void MuteAll()
+    {
+        gameManager.musicSlider.value = 0;
+        gameManager.sfxSlider.value = 0;
+    }
 }

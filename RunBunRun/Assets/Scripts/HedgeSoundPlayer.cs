@@ -6,12 +6,13 @@ public class HedgeSoundPlayer : MonoBehaviour {
 
     private AudioSource audioSource;
     public AudioClip bushRustle;
-
-	// Use this for initialization
-	void Start ()
+    private GameManager gameManager;
+    // Use this for initialization
+    void Start ()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
-	}
+        gameManager = gameObject.GetComponent<GameManager>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -24,7 +25,7 @@ public class HedgeSoundPlayer : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            audioSource.PlayOneShot(bushRustle, 1.0f);
+            audioSource.PlayOneShot(bushRustle, gameManager.sfxSlider.value);
         }
     }
 }

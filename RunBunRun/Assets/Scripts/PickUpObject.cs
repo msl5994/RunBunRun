@@ -50,10 +50,10 @@ public class PickUpObject : MonoBehaviour {
         if(collision.gameObject.tag == "Player" && gameObject.tag == "Carrot")
         {
             // play the sound
-            audioSource.PlayOneShot(audioClip, 1.0f);
+            audioSource.PlayOneShot(audioClip, gameManager.sfxSlider.value);
 
             // disable the renderers
-            foreach(GameObject carrot in collectibleSpawner.carrotCollectibles)
+            foreach (GameObject carrot in collectibleSpawner.carrotCollectibles)
             {
                 if (carrot == gameObject)
                 {
@@ -82,7 +82,7 @@ public class PickUpObject : MonoBehaviour {
         else if(collision.gameObject.tag == "Player" && gameObject.tag == "Feather")
         {
             // play the sound
-            audioSource.PlayOneShot(audioClip, 5.0f);
+            audioSource.PlayOneShot(audioClip, gameManager.sfxSlider.value * 5.0f);
 
             // disable the renderers
             foreach (GameObject feather in collectibleSpawner.featherCollectibles)

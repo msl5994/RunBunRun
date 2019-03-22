@@ -27,12 +27,13 @@ public class GameManager : MonoBehaviour
     public GameObject splashScreenPanel;
     public GameObject helpScreenPanel;
     public GameObject creditsScreenPanel;
+    public GameObject optionsPanel;
     // more script references
     private GenerateObstacles obstacleGenerator;
     private CollectibleSpawner collectibleSpawner;
 
     // game states enum
-    public enum GameState {SplashScreen, MainMenu, Game, GameOver, Help, Credits};
+    public enum GameState {SplashScreen, MainMenu, Game, GameOver, Help, Credits, Options};
 
     public GameState gameState;
     public GameState prevGameState;
@@ -42,6 +43,8 @@ public class GameManager : MonoBehaviour
     public AudioClip menuMusic;
     public AudioClip runMusic;
     public AudioClip gameOverMusic;
+    public Slider musicSlider;
+    public Slider sfxSlider;
     public bool firstFrame;
 
     // Use this for initialization
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour
         prevGameState = GameState.GameOver;
         helpScreenPanel.SetActive(false);
         creditsScreenPanel.SetActive(false);
+        optionsPanel.SetActive(false);
 
         playerMovement = player.GetComponent<PlayerMovement>();
         playerMovement.enabled = false; // start the player as not moving
@@ -65,7 +69,8 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if(gameState == GameState.SplashScreen)
+        audioSource.volume = musicSlider.value;
+        if (gameState == GameState.SplashScreen)
         {
             if(firstFrame && prevGameState == GameState.GameOver)
             {
@@ -129,7 +134,7 @@ public class GameManager : MonoBehaviour
             {
                 gameOverPanel.SetActive(true);
                 audioSource.Stop(); // stop the run music first
-                audioSource.PlayOneShot(gameOverMusic, 1.0f);
+                audioSource.PlayOneShot(gameOverMusic, musicSlider.value);
                 audioSource.loop = false;
                 firstFrame = false;
             }
@@ -189,6 +194,7 @@ public class GameManager : MonoBehaviour
         helpScreenPanel.SetActive(false);
         creditsScreenPanel.SetActive(false);
         gameOverPanel.SetActive(false);
+        optionsPanel.SetActive(false);
 
         // stop the player movement
         player.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
@@ -207,6 +213,13 @@ public class GameManager : MonoBehaviour
     public void CreditsScreen()
     {
         creditsScreenPanel.SetActive(true);
+        splashScreenPanel.SetActive(false);
+    }
+
+    // method to show the options screen
+    public void OptionsScreen()
+    {
+        optionsPanel.SetActive(true);
         splashScreenPanel.SetActive(false);
     }
     // method to start the game
