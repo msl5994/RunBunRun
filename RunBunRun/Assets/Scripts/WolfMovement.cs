@@ -69,16 +69,6 @@ public class WolfMovement : MonoBehaviour {
             maxSeekRange += 10.0f;
             wolfBalanceTimer = 0.0f;
         }
-        //velocity += acceleration; // add a to v
-        //wolfPos += velocity; // add v to p
-        //direction = velocity.normalized; // get d from v
-        //transform.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
-        //transform.position = wolfPos; // update transform.position
-        //acceleration = Vector3.zero; // start fresh each frame
-
-        //Vector3 seekForce = SeekForce(bunny.transform.position);
-        //ApplyForce(seekForce);
-
     }
 
     // for physics calculations
@@ -119,19 +109,6 @@ public class WolfMovement : MonoBehaviour {
             Vector3 tempVelocity = rb.velocity.normalized;
             tempVelocity *= maxSpeed;
             rb.velocity = tempVelocity;
-            /*
-            if (rb.velocity.x > maxSpeed)
-            {
-                rb.velocity = new Vector3(maxSpeed, rb.velocity.y, rb.velocity.z);
-            }
-            if (rb.velocity.y > maxSpeed)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, maxSpeed, rb.velocity.z);
-            }
-            if (rb.velocity.z > maxSpeed)
-            {
-                rb.velocity = new Vector3(maxSpeed, rb.velocity.y, maxSpeed);
-            }*/
         }
 
         // call the method for avoidance continuously because if an obstacle is not threatening
