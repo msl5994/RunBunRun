@@ -178,6 +178,7 @@ public class GameManager : MonoBehaviour
         //wolfSpawner.wolfList.Clear();
         // stop the player movement
         playerMovement.enabled = false;
+        player.GetComponent<Animator>().enabled = false;
         player.GetComponent<MeshRenderer>().enabled = false;
 
         // reset all necessary timers
@@ -270,6 +271,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
         playerMovement.enabled = true;
         player.GetComponent<MeshRenderer>().enabled = true;
+        player.GetComponent<Animator>().enabled = true;
         playerMovement.outOfStamina = false;
 
         // spawn new objects

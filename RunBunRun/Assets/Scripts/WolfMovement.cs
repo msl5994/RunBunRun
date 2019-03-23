@@ -86,8 +86,7 @@ public class WolfMovement : MonoBehaviour {
             //Debug.Log("seeking");
             rb.AddForceAtPosition(PursueForce(bunny.transform.position), wolfPos);
             //rb.AddForceAtPosition(SeekForce(bunny.transform.position), wolfPos);
-        }
-        
+        }        
         else
         {
             if(wanderTimer >= 5.0f)

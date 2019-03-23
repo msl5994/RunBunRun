@@ -64,6 +64,7 @@ public class ButtonManager : MonoBehaviour {
     public void LoadOptionsScreen()
     {
         gameManager.gameState = GameManager.GameState.Options;
+        gameManager.prevGameState = GameManager.GameState.SplashScreen;
         gameManager.OptionsScreen();
     }
 

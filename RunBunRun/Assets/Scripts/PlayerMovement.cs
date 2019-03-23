@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -27,6 +28,10 @@ public class PlayerMovement : MonoBehaviour {
 
     public GameObject gameManagerObject;
     private GameManager gameManager;
+    public GameObject wolfIndicatorPanel;
+    public bool changeAlpha = false;
+    public bool upAlpha = true;
+    private Image indicatorImage;
 
     // audio variables
     int currentJumpSoundNum = 0;
@@ -36,6 +41,9 @@ public class PlayerMovement : MonoBehaviour {
     public AudioClip jump02;
     public AudioClip jump03;
     public AudioClip jump04;
+    bool firstframe;
+    bool chasing;
+    private WolfSpawner wolfSpawner;
 
     // animation
     Animator anim;
@@ -52,8 +60,14 @@ public class PlayerMovement : MonoBehaviour {
         Physics.IgnoreLayerCollision(9,10);
         audioSource = gameObject.GetComponent<AudioSource>();
         gameManager = gameManagerObject.GetComponent<GameManager>();
+        wolfSpawner = gameManagerObject.GetComponent<WolfSpawner>();
+        indicatorImage = wolfIndicatorPanel.GetComponent<Image>();
 
         anim = GetComponent<Animator>();
+
+        chasing = false;
+        firstframe = false;
+        upAlpha = true;
 	}
 	
 	// Update is called once per frame
@@ -82,6 +96,37 @@ public class PlayerMovement : MonoBehaviour {
         }
         CheckTurning();
         anim.SetTrigger("Run");
+
+        // flashing border
+        if(changeAlpha)
+        {
+            if(upAlpha)
+            {
+                Debug.Log("In Up Alpha");
+                Color temp = indicatorImage.color;
+                temp.a += 0.5f * Time.deltaTime;
+                indicatorImage.color = temp;
+                if (indicatorImage.color.a >= 0.9f)
+                {
+                    Debug.Log("Alpha Down");
+                    upAlpha = false;
+                }
+            }
+            else
+            {
+                Debug.Log("In Down Alpha");
+                Color temp = indicatorImage.color;
+                temp.a -= 0.5f * Time.deltaTime;
+                indicatorImage.color = temp;
+                if (indicatorImage.color.a <= 0.02f)
+                {
+                    upAlpha = true;
+                    Debug.Log("Alpha Up");
+                }
+            }
+
+
+        }
     }
 
     // method to jump
@@ -228,10 +273,35 @@ public class PlayerMovement : MonoBehaviour {
         }
         if(collision.gameObject.tag == "Wolf")
         {
+            gameManagerObject.GetComponent<AudioSource>().pitch = 1.0f;
+            wolfIndicatorPanel.SetActive(false);
+            changeAlpha = false;
             gameManager.firstFrame = true;
             gameManager.gameState = GameManager.GameState.GameOver;
             gameManager.prevGameState = GameManager.GameState.Game;
             gameManager.GameOver();
+        }
+    }
+
+    // trigger zone for wolves and changing sound pitch
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Wolf")
+        {
+            Debug.Log("Pitched Up");
+            gameManagerObject.GetComponent<AudioSource>().pitch = 1.5f;
+            wolfIndicatorPanel.SetActive(true);
+            changeAlpha = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Wolf")
+        {
+            Debug.Log("Pitched Down");
+            gameManagerObject.GetComponent<AudioSource>().pitch = 1.0f;
+            wolfIndicatorPanel.SetActive(false);
+            changeAlpha = false;
         }
     }
 }
