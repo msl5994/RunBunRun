@@ -201,6 +201,9 @@ public class GameManager : MonoBehaviour
         player.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
         playerMovement.enabled = false;
         player.GetComponent<MeshRenderer>().enabled = false;
+
+        // reset audio to normal speed
+        audioSource.pitch = 1.0f;
     }
 
     // method to show the help screen

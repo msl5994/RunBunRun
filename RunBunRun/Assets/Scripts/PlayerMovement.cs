@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour {
                 Color temp = indicatorImage.color;
                 temp.a += 0.5f * Time.deltaTime;
                 indicatorImage.color = temp;
-                if (indicatorImage.color.a >= 0.9f)
+                if (indicatorImage.color.a >= 0.8f)
                 {
                     Debug.Log("Alpha Down");
                     upAlpha = false;
@@ -273,9 +273,9 @@ public class PlayerMovement : MonoBehaviour {
         }
         if(collision.gameObject.tag == "Wolf")
         {
-            gameManagerObject.GetComponent<AudioSource>().pitch = 1.0f;
             wolfIndicatorPanel.SetActive(false);
             changeAlpha = false;
+            gameManagerObject.GetComponent<AudioSource>().pitch = 1.0f;
             gameManager.firstFrame = true;
             gameManager.gameState = GameManager.GameState.GameOver;
             gameManager.prevGameState = GameManager.GameState.Game;
