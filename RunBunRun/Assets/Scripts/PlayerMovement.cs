@@ -97,8 +97,14 @@ public class PlayerMovement : MonoBehaviour {
         CheckTurning();
         anim.SetTrigger("Run");
 
+        if(!isGrounded)
+        {
+            rb.AddForce(Vector3.down * 750);
+            Debug.Log("falling");
+        }
+
         // flashing border
-        if(changeAlpha)
+        if (changeAlpha)
         {
             if(upAlpha)
             {
@@ -134,7 +140,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpForce * 5000);
             //rb.velocity += gameObject.transform.up.normalized * 1000.0f;
             //rb.AddForce(transform.forward * jumpForce, ForceMode.Impulse);
             isGrounded = false;
