@@ -97,10 +97,11 @@ public class PlayerMovement : MonoBehaviour {
         CheckTurning();
         anim.SetTrigger("Run");
 
-        if(!isGrounded)
+        rb.AddForce(Vector3.down * 750);
+        Debug.Log("falling");
+        if (!isGrounded)
         {
-            rb.AddForce(Vector3.down * 750);
-            Debug.Log("falling");
+            
         }
 
         // flashing border
@@ -172,15 +173,15 @@ public class PlayerMovement : MonoBehaviour {
 
         if(outOfStamina)
         {
-            //rb.velocity += gameObject.transform.forward.normalized * speed / 4.0f;
+            rb.velocity += gameObject.transform.forward.normalized * speed / 4.0f;
             //rb.velocity += (gameObject.transform.up.normalized * -1.0f); // account for gravity
-            rb.MovePosition(transform.position + transform.forward * Time.deltaTime * (speed/4.0f));
+            //rb.MovePosition(transform.position + transform.forward * Time.deltaTime * (speed/4.0f));
         }
         else
         {
-            //rb.velocity += gameObject.transform.forward.normalized * speed;
+            rb.velocity += gameObject.transform.forward.normalized * speed;
             //rb.velocity += (gameObject.transform.up.normalized * -1.0f); // account for gravity
-            rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
+            //rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
         }
 
 
