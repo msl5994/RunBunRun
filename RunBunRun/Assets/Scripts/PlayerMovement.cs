@@ -135,6 +135,7 @@ public class PlayerMovement : MonoBehaviour {
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            //rb.velocity += gameObject.transform.up.normalized * 1000.0f;
             //rb.AddForce(transform.forward * jumpForce, ForceMode.Impulse);
             isGrounded = false;
 
@@ -160,12 +161,19 @@ public class PlayerMovement : MonoBehaviour {
     // for rigidbody physics and movement
     private void FixedUpdate()
     {
+        // reset velocity
+        rb.velocity = new Vector3(0.0f,0.0f,0.0f);
+
         if(outOfStamina)
         {
+            //rb.velocity += gameObject.transform.forward.normalized * speed / 4.0f;
+            //rb.velocity += (gameObject.transform.up.normalized * -1.0f); // account for gravity
             rb.MovePosition(transform.position + transform.forward * Time.deltaTime * (speed/4.0f));
         }
         else
         {
+            //rb.velocity += gameObject.transform.forward.normalized * speed;
+            //rb.velocity += (gameObject.transform.up.normalized * -1.0f); // account for gravity
             rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
         }
 
