@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     //public Vector3 jumpVector = new Vector3(0.0f, 5.0f, 0.0f);
     private float jumpForce = 5f;
     private bool isGrounded = true;
+    private bool isJumping = false;
 
     private Vector3 touchVectorStart;
     private Vector3 touchVectorEnd;
@@ -97,11 +98,10 @@ public class PlayerMovement : MonoBehaviour {
         CheckTurning();
         anim.SetTrigger("Run");
 
-        rb.AddForce(Vector3.down * 750);
-        Debug.Log("falling");
-        if (!isGrounded)
+        // check if at max jump height
+        if(this.transform.position.y >= 7f)
         {
-            
+            isJumping = false;
         }
 
         // flashing border
@@ -131,8 +131,6 @@ public class PlayerMovement : MonoBehaviour {
                     Debug.Log("Alpha Up");
                 }
             }
-
-
         }
     }
 
@@ -141,11 +139,8 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpForce * 5000);
-            //rb.velocity += gameObject.transform.up.normalized * 1000.0f;
-            //rb.AddForce(transform.forward * jumpForce, ForceMode.Impulse);
             isGrounded = false;
-
+            isJumping = true;
             // randomly select the audio clip
             currentJumpSoundNum = UnityEngine.Random.Range(1,5);
             switch(currentJumpSoundNum)
@@ -162,6 +157,9 @@ public class PlayerMovement : MonoBehaviour {
                     break;
             }
             audioSource.PlayOneShot(currentJumpSound, gameManager.sfxSlider.value);
+
+            //rb.velocity += gameObject.transform.up.normalized * 1000.0f;
+            //rb.AddForce(transform.forward * jumpForce, ForceMode.Impulse);
         }
     }
 
@@ -173,17 +171,21 @@ public class PlayerMovement : MonoBehaviour {
 
         if(outOfStamina)
         {
-            rb.velocity += gameObject.transform.forward.normalized * speed / 4.0f;
+            //rb.velocity += gameObject.transform.forward.normalized * speed / 4.0f;
             //rb.velocity += (gameObject.transform.up.normalized * -1.0f); // account for gravity
-            //rb.MovePosition(transform.position + transform.forward * Time.deltaTime * (speed/4.0f));
+            rb.MovePosition(transform.position + transform.forward * Time.deltaTime * (speed/4.0f));
         }
         else
         {
-            rb.velocity += gameObject.transform.forward.normalized * speed;
+           // rb.velocity += gameObject.transform.forward.normalized * speed;
             //rb.velocity += (gameObject.transform.up.normalized * -1.0f); // account for gravity
-            //rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
+            rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
         }
-
+        if(isJumping)
+        {
+            rb.AddForce(Vector3.up * 80f, ForceMode.Impulse);
+        }
+        rb.AddForce(Vector3.down * 40f, ForceMode.Impulse);
 
         //rb.velocity = new Vector3(transform.forward.x * speed, 0.0f, transform.forward.z * speed);
         // jump moved here because it uses physics
