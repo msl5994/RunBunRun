@@ -183,9 +183,9 @@ public class PlayerMovement : MonoBehaviour {
         }
         if(isJumping)
         {
-            rb.AddForce(Vector3.up * 80f, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 40f, ForceMode.Impulse);
         }
-        rb.AddForce(Vector3.down * 40f, ForceMode.Impulse);
+        rb.AddForce(Vector3.down * 20f, ForceMode.Impulse);
 
         //rb.velocity = new Vector3(transform.forward.x * speed, 0.0f, transform.forward.z * speed);
         // jump moved here because it uses physics
