@@ -84,7 +84,7 @@ public class WolfMovement : MonoBehaviour {
         if (Vector3.Distance(wolfPos, bunny.transform.position) < maxSeekRange)
         {
             //Debug.Log("seeking");
-            rb.AddForceAtPosition(PursueForce(bunny.transform.position), wolfPos);
+            rb.AddForceAtPosition(PursueForce(bunny.transform.position) * 5, wolfPos);
             //rb.AddForceAtPosition(SeekForce(bunny.transform.position), wolfPos);
         }        
         else
@@ -129,8 +129,7 @@ public class WolfMovement : MonoBehaviour {
         desiredV = desiredV.normalized;
 
         desiredV *= maxSpeed;
-
-        return desiredV - velocity;
+        return desiredV - velocity; 
     }
 
     private Vector3 SeekForce(Vector3 bunnyPos)

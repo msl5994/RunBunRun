@@ -96,7 +96,6 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
         CheckTurning();
-        anim.SetTrigger("Run");
 
         // check if at max jump height
         if(this.transform.position.y >= 7f)
