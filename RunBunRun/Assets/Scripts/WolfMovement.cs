@@ -122,14 +122,20 @@ public class WolfMovement : MonoBehaviour {
 
     private Vector3 PursueForce(Vector3 bunnyPos)
     {
-        // seek to the future position of the bunny
+        /*// seek to the future position of the bunny
         Vector3 futureBunnyPos = bunnyPos + bunny.GetComponent<Rigidbody>().velocity;
 
         Vector3 desiredV = futureBunnyPos - wolfPos;
         desiredV = desiredV.normalized;
 
         desiredV *= maxSpeed;
-        return desiredV - velocity; 
+        return desiredV - velocity;*/
+
+        Vector3 targetVelocity = bunny.GetComponent<Rigidbody>().velocity;
+        float targetMaxSpeed = bunny.GetComponent<PlayerMovement>().speed;
+        Vector3.ClampMagnitude(targetVelocity, targetMaxSpeed);
+        Vector3 targetFuturePos = bunny.transform.position + targetVelocity * Time.deltaTime;
+        return SeekForce(targetFuturePos);
     }
 
     private Vector3 SeekForce(Vector3 bunnyPos)
