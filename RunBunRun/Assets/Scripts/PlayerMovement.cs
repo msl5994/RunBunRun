@@ -17,12 +17,14 @@ public class PlayerMovement : MonoBehaviour {
     public float rightTurnTimer = 0.0f;
 
     //public Vector3 jumpVector = new Vector3(0.0f, 5.0f, 0.0f);
-    private float jumpForce = 5f;
+    private float jumpForce = 500.0f;
     private bool isGrounded = true;
     private bool isJumping = false;
+    private float jumpTimer = 0.0f;
 
     private Vector3 touchVectorStart;
     private Vector3 touchVectorEnd;
+    private Vector3 gravity;
     private bool turnTimerActive = false;
     private bool turnRight, turnLeft = false;
     public bool outOfStamina = false;
@@ -69,6 +71,9 @@ public class PlayerMovement : MonoBehaviour {
         chasing = false;
         firstframe = false;
         upAlpha = true;
+
+        gravity = new Vector3(0.0f,-1000.0f, 0.0f);
+        Physics.gravity = gravity;
 	}
 	
 	// Update is called once per frame
@@ -97,12 +102,6 @@ public class PlayerMovement : MonoBehaviour {
         }
         CheckTurning();
 
-        // check if at max jump height
-        if(this.transform.position.y >= 7f)
-        {
-            isJumping = false;
-        }
-
         // flashing border
         if (changeAlpha)
         {
@@ -112,7 +111,7 @@ public class PlayerMovement : MonoBehaviour {
                 Color temp = indicatorImage.color;
                 temp.a += 0.5f * Time.deltaTime;
                 indicatorImage.color = temp;
-                if (indicatorImage.color.a >= 0.8f)
+                if (indicatorImage.color.a >= 0.5f)
                 {
                     Debug.Log("Alpha Down");
                     upAlpha = false;
@@ -157,34 +156,38 @@ public class PlayerMovement : MonoBehaviour {
             }
             audioSource.PlayOneShot(currentJumpSound, gameManager.sfxSlider.value);
 
-            //rb.velocity += gameObject.transform.up.normalized * 1000.0f;
-            //rb.AddForce(transform.forward * jumpForce, ForceMode.Impulse);
+            //rb.velocity += gameObject.transform.up.normalized * 100.0f;
+            //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            Physics.gravity = -1.0f * gravity;
         }
     }
 
     // for rigidbody physics and movement
     private void FixedUpdate()
     {
+        if(!isGrounded && isJumping)
+        {
+            jumpTimer += Time.deltaTime;
+            if (jumpTimer >= 0.2f)
+            {
+                Physics.gravity = gravity;
+                isJumping = false;
+            }
+        }
+
         // reset velocity
         rb.velocity = new Vector3(0.0f,0.0f,0.0f);
 
         if(outOfStamina)
         {
-            //rb.velocity += gameObject.transform.forward.normalized * speed / 4.0f;
-            //rb.velocity += (gameObject.transform.up.normalized * -1.0f); // account for gravity
-            rb.MovePosition(transform.position + transform.forward * Time.deltaTime * (speed/4.0f));
+            rb.velocity += gameObject.transform.forward.normalized * speed / 4.0f;
+            //rb.MovePosition(transform.position + transform.forward * Time.deltaTime * (speed/4.0f));
         }
         else
         {
-           // rb.velocity += gameObject.transform.forward.normalized * speed;
-            //rb.velocity += (gameObject.transform.up.normalized * -1.0f); // account for gravity
-            rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
+            rb.velocity += gameObject.transform.forward.normalized * speed;
+            //rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
         }
-        if(isJumping)
-        {
-            rb.AddForce(Vector3.up * 40f, ForceMode.Impulse);
-        }
-        rb.AddForce(Vector3.down * 20f, ForceMode.Impulse);
 
         //rb.velocity = new Vector3(transform.forward.x * speed, 0.0f, transform.forward.z * speed);
         // jump moved here because it uses physics
@@ -279,13 +282,15 @@ public class PlayerMovement : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Obstacle")
         {
-            isGrounded = true;
+            //isGrounded = true;
+            //jumpTimer = 0.0f;
             //Debug.Log("Hit obstacle");
         }
         if(collision.gameObject.tag == "Ground")
         {
             //Debug.Log("Landed");
             isGrounded = true;
+            jumpTimer = 0.0f;
         }
         if(collision.gameObject.tag == "Wolf")
         {
