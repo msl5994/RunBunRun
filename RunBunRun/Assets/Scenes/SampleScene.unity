@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6212,6 +6212,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022620583}
   m_CullTransparentMesh: 0
+--- !u!1 &1056552197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1056552200}
+  - component: {fileID: 1056552199}
+  - component: {fileID: 1056552198}
+  m_Layer: 0
+  m_Name: Water4SimpleReflectionMain Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!45 &1056552198
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056552197}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: ac114bb59a34ea34ab4bafdae0e6c97f, type: 2}
+--- !u!20 &1056552199
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056552197}
+  m_Enabled: 0
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_projectionMatrixMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_GateFitMode: 2
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_RenderingPath: 1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1056552200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056552197}
+  m_LocalRotation: {x: 0.030390905, y: -0.38911352, z: 0.012845511, w: 0.9205988}
+  m_LocalPosition: {x: -32.841713, y: -0.29247493, z: 472.01657}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066012312
 GameObject:
   m_ObjectHideFlags: 0
@@ -6775,7 +6858,7 @@ MonoBehaviour:
   obstaclePrefabs:
   - {fileID: 1956632163484498, guid: f09c11f45f62b8949a4658d2ac13c3bb, type: 3}
   - {fileID: 1606204798672353369, guid: d0562c0fd4e8e7947a4e37d3591f1f56, type: 3}
-  - {fileID: 1868575095104620, guid: 8663eed0c40e405488eb70c097af6ae3, type: 3}
+  - {fileID: 8782165569693529998, guid: b1c9edcdf0ab35b4ea0f0edf10365df2, type: 3}
   - {fileID: 1643793509729718, guid: a1f26db4eac164248b06fb0cc90eb8a5, type: 3}
   - {fileID: 1523310339313442, guid: ae704baeebdbb5646982781f32efa6a1, type: 3}
   - {fileID: 1004211416397328, guid: cc7abd2205ec1f14392b05fb51d9cef8, type: 3}
@@ -6809,7 +6892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carrotCollectiblePrefab: {fileID: 1483418659349598, guid: b22c13aaa6db3eb44a6d6a6155d9099d,
     type: 3}
-  featherCollectiblePrefab: {fileID: 1358032400113130, guid: 954e1fae24775684db8574374d52f37c,
+  featherCollectiblePrefab: {fileID: 3807392003471636320, guid: f50df0a0cef111c4bb8cb0ee5092c6cf,
     type: 3}
   ground: {fileID: 892667725}
   numCarrotsToSpawn: 10
@@ -6817,6 +6900,9 @@ MonoBehaviour:
   carrotCollectibles: []
   featherCollectibles: []
   collectibleParent: {fileID: 1347643884}
+  featherImgLight: {fileID: 21300000, guid: 42204491276173a49af5a66e99702127, type: 3}
+  featherImgMed: {fileID: 21300000, guid: 461b4067d4241054f9781f156fb78988, type: 3}
+  featherImgDark: {fileID: 21300000, guid: 23cec8c12ffb35c4595cbb0495b05082, type: 3}
 --- !u!114 &1203359236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11239,8 +11325,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776244625}
-  m_LocalRotation: {x: -0.3154768, y: 0.6297895, z: 0.3114735, w: 0.63782746}
-  m_LocalPosition: {x: -1312.6836, y: -1037.51, z: 617.0157}
+  m_LocalRotation: {x: -0.066300556, y: 0.77021825, z: 0.08117161, w: 0.62911}
+  m_LocalPosition: {x: -12.366102, y: -9.988566, z: 0.64295053}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

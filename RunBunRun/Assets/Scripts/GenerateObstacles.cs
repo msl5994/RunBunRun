@@ -64,7 +64,7 @@ public class GenerateObstacles : MonoBehaviour {
                             obstacleHeightOffset = 1.75f;
                             break;
                         case 2:
-                            obstacleHeightOffset = 7.0f;
+                            obstacleHeightOffset = 5.0f;
                             break;
                         case 3:
                             obstacleHeightOffset = 0.0f;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1718663154282279780}
   - component: {fileID: 375595565896383496}
   - component: {fileID: 1113512556253749211}
-  - component: {fileID: 467971631650963893}
+  - component: {fileID: 2484679977989064502}
   m_Layer: 0
   m_Name: Feather
   m_TagString: Feather
@@ -105,7 +105,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3e5d9fced3f2e7d41b3e88c156d8cc40, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -190,8 +190,8 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &467971631650963893
-BoxCollider:
+--- !u!135 &2484679977989064502
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -201,5 +201,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.21, y: 7.2, z: 0.2}
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}

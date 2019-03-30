@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour {
     bool firstframe;
     bool chasing;
     private WolfSpawner wolfSpawner;
+    public int numWolvesChasing = 0;
 
     // animation
     Animator anim;
@@ -69,6 +70,7 @@ public class PlayerMovement : MonoBehaviour {
         chasing = false;
         firstframe = false;
         upAlpha = true;
+        numWolvesChasing = 0;
 	}
 	
 	// Update is called once per frame
@@ -308,11 +310,17 @@ public class PlayerMovement : MonoBehaviour {
             gameManagerObject.GetComponent<AudioSource>().pitch = 1.5f;
             wolfIndicatorPanel.SetActive(true);
             changeAlpha = true;
+            numWolvesChasing++;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Wolf")
+        {
+            numWolvesChasing--;
+        }
+        // only stop the panic if no more wolves are chasing
+        if (numWolvesChasing == 0)
         {
             Debug.Log("Pitched Down");
             gameManagerObject.GetComponent<AudioSource>().pitch = 1.0f;

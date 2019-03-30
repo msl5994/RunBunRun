@@ -91,7 +91,7 @@ public class PickUpObject : MonoBehaviour {
                 {
                     // disable mesh renderer and collider
                     feather.GetComponent<SpriteRenderer>().enabled = false;
-                    feather.GetComponent<BoxCollider>().enabled = false;
+                    feather.GetComponent<SphereCollider>().enabled = false;
                     //feather.GetComponentInChildren<MeshRenderer>().enabled = false;
                 }
             }
