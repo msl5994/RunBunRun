@@ -140,6 +140,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        foreach(GameObject feather in collectibleSpawner.featherCollectibles)
+        {
+            feather.transform.LookAt(player.transform.position);
+        }
+
         
     }
 

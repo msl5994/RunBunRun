@@ -13,12 +13,18 @@ public class CollectibleSpawner : MonoBehaviour {
     public List<GameObject> carrotCollectibles;
     public List<GameObject> featherCollectibles;
     public GameObject collectibleParent;
-
+    public Sprite featherImgLight;
+    public Sprite featherImgMed;
+    public Sprite featherImgDark;
+    private Sprite[] spriteArray;
 
 	// Use this for initialization
 	void Start ()
     {
-        
+        spriteArray = new Sprite[3];
+        spriteArray[0] = featherImgLight;
+        spriteArray[1] = featherImgMed;
+        spriteArray[2] = featherImgDark;
 	}
 
     private void Awake()
@@ -70,6 +76,9 @@ public class CollectibleSpawner : MonoBehaviour {
 
         // instantiate the collectible
         GameObject tempCollectible = Instantiate(featherCollectiblePrefab, spawnPos, Quaternion.identity);
+
+        int num = Random.Range(0, spriteArray.Length);
+        tempCollectible.GetComponent<SpriteRenderer>().sprite = spriteArray[num];
 
         // set its parent
 

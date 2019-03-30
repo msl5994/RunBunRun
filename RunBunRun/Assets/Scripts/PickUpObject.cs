@@ -90,8 +90,8 @@ public class PickUpObject : MonoBehaviour {
                 if (feather == gameObject)
                 {
                     // disable mesh renderer and collider
-                    feather.GetComponent<MeshRenderer>().enabled = false;
-                    feather.GetComponent<SphereCollider>().enabled = false;
+                    feather.GetComponent<SpriteRenderer>().enabled = false;
+                    feather.GetComponent<BoxCollider>().enabled = false;
                     //feather.GetComponentInChildren<MeshRenderer>().enabled = false;
                 }
             }
