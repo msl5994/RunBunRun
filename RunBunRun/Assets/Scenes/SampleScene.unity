@@ -843,6 +843,7 @@ MonoBehaviour:
   jump02: {fileID: 8300000, guid: 1269e6ee5c59c0a4c8c8ddd95f805c79, type: 3}
   jump03: {fileID: 8300000, guid: 7cea0af9dbef4b043b52a5ba1a539f0e, type: 3}
   jump04: {fileID: 8300000, guid: a13aa5b9e5bb6754c8f038763d8bd608, type: 3}
+  numWolvesChasing: 0
 --- !u!54 &68137574
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6288,8 +6289,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056552197}
-  m_LocalRotation: {x: 0.030390905, y: -0.38911352, z: 0.012845511, w: 0.9205988}
-  m_LocalPosition: {x: -32.841713, y: -0.29247493, z: 472.01657}
+  m_LocalRotation: {x: -0.0045503736, y: 0.6519031, z: 0.0039129276, w: 0.75827855}
+  m_LocalPosition: {x: -76.97238, y: -7.748801, z: -76.60253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7215,7 +7216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235302274}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11325,8 +11326,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776244625}
-  m_LocalRotation: {x: -0.066300556, y: 0.77021825, z: 0.08117161, w: 0.62911}
-  m_LocalPosition: {x: -12.366102, y: -9.988566, z: 0.64295053}
+  m_LocalRotation: {x: -0.038102847, y: 0.7256498, z: 0.040316433, w: 0.6858245}
+  m_LocalPosition: {x: -76.97241, y: -7.7487893, z: -76.6025}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12635,7 +12636,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0.000061035156}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1974638520
