@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     public float rightTurnTimer = 0.0f;
 
     //public Vector3 jumpVector = new Vector3(0.0f, 5.0f, 0.0f);
-    private float jumpForce = 5f;
+    private float jumpForce = 40.0f;
     private bool isGrounded = true;
     private bool isJumping = false;
 
@@ -184,9 +184,9 @@ public class PlayerMovement : MonoBehaviour {
         }
         if(isJumping)
         {
-            rb.AddForce(Vector3.up * 40f, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-        rb.AddForce(Vector3.down * 20f, ForceMode.Impulse);
+        rb.AddForce(Vector3.down * (jumpForce/2.0f), ForceMode.Impulse);
 
         //rb.velocity = new Vector3(transform.forward.x * speed, 0.0f, transform.forward.z * speed);
         // jump moved here because it uses physics
@@ -318,14 +318,14 @@ public class PlayerMovement : MonoBehaviour {
         if (other.gameObject.tag == "Wolf")
         {
             numWolvesChasing--;
-        }
-        // only stop the panic if no more wolves are chasing
-        if (numWolvesChasing == 0)
-        {
-            Debug.Log("Pitched Down");
-            gameManagerObject.GetComponent<AudioSource>().pitch = 1.0f;
-            wolfIndicatorPanel.SetActive(false);
-            changeAlpha = false;
+            // only stop the panic if no more wolves are chasing
+            if (numWolvesChasing == 0)
+            {
+                Debug.Log("Pitched Down");
+                gameManagerObject.GetComponent<AudioSource>().pitch = 1.0f;
+                wolfIndicatorPanel.SetActive(false);
+                changeAlpha = false;
+            }
         }
     }
 }

@@ -17,6 +17,12 @@ public class GameManager : MonoBehaviour
     public float wolfSpawnTimer = 30.0f;
     private float balanceTimer = 0.0f;
 
+    // player pref data variables
+    public int currentFeatherCount = 0;
+    public float currentSpeed = 0.0f;
+    public float currentTurnRate = 0.0f;
+    public float currentJumpHeight = 0.0f;
+
     public GameObject player;
     private PlayerMovement playerMovement;
     private WolfSpawner wolfSpawner;
@@ -46,6 +52,41 @@ public class GameManager : MonoBehaviour
     public Slider musicSlider;
     public Slider sfxSlider;
     public bool firstFrame;
+
+    // check for the data as the app loads up
+    private void Awake()
+    {
+        if(PlayerPrefs.GetInt("Feathers") > 0)
+        {
+            currentFeatherCount = PlayerPrefs.GetInt("Feathers"); // kept result of 3 after a test run
+        }
+        else
+        {
+            currentFeatherCount = 0;
+        }
+        if(PlayerPrefs.GetFloat("CurrentSpeed") > 25.0f)
+        {
+            currentSpeed = PlayerPrefs.GetFloat("CurrentSpeed");
+        }
+        else
+        {
+            currentSpeed = 25.0f; // playerMovement.speed;
+        }
+        /*
+        if(PlayerPrefs.GetFloat("CurrentTurnRate") > 1.0f)
+        {
+            currentTurnRate = PlayerPrefs.GetFloat("CurrentTurnRate");
+        }
+        */
+        if(PlayerPrefs.GetFloat("CurrentJumpHeight") > 40.0f)
+        {
+            currentJumpHeight = PlayerPrefs.GetFloat("CurrentJumpHeight");
+        }
+        else
+        {
+            currentJumpHeight = 40.0f;
+        }
+    }
 
     // Use this for initialization
     void Start ()
@@ -159,6 +200,7 @@ public class GameManager : MonoBehaviour
     public void UpdateFeatherScore()
     {
         featherScoreNum++;
+        currentFeatherCount++;
         featherScoreText.text = "Feathers: " + featherScoreNum;
     }
 
@@ -173,6 +215,12 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         //List<GameObject> wolves = wolfSpawner.wolfList;
+        // save data to the player prefs
+        PlayerPrefs.SetInt("Feathers",currentFeatherCount);
+        //PlayerPrefs.SetFloat("CurrentSpeed",currentMaxSpeed);
+        //PlayerPrefs.SetFloat("CurrentTurnRate", currentTurnSpeed);
+        //PlayerPrefs.SetFloat("CurrentJumpHeight", player.JumpHeight);
+        PlayerPrefs.Save();
         
         foreach(GameObject wolf in wolfSpawner.wolfList)
         {
