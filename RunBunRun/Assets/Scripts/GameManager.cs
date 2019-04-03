@@ -34,12 +34,13 @@ public class GameManager : MonoBehaviour
     public GameObject helpScreenPanel;
     public GameObject creditsScreenPanel;
     public GameObject optionsPanel;
+    public GameObject shopPanel;
     // more script references
     private GenerateObstacles obstacleGenerator;
     private CollectibleSpawner collectibleSpawner;
 
     // game states enum
-    public enum GameState {SplashScreen, MainMenu, Game, GameOver, Help, Credits, Options};
+    public enum GameState {SplashScreen, MainMenu, Game, GameOver, Help, Credits, Options, Shop};
 
     public GameState gameState;
     public GameState prevGameState;
@@ -101,6 +102,7 @@ public class GameManager : MonoBehaviour
         helpScreenPanel.SetActive(false);
         creditsScreenPanel.SetActive(false);
         optionsPanel.SetActive(false);
+        shopPanel.SetActive(false);
 
         playerMovement = player.GetComponent<PlayerMovement>();
         playerMovement.enabled = false; // start the player as not moving
@@ -253,6 +255,7 @@ public class GameManager : MonoBehaviour
         creditsScreenPanel.SetActive(false);
         gameOverPanel.SetActive(false);
         optionsPanel.SetActive(false);
+        shopPanel.SetActive(false);
 
         // stop the player movement
         player.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
@@ -281,6 +284,13 @@ public class GameManager : MonoBehaviour
     public void OptionsScreen()
     {
         optionsPanel.SetActive(true);
+        splashScreenPanel.SetActive(false);
+    }
+
+    // method to show the shop
+    public void ShopScreen()
+    {
+        shopPanel.SetActive(true);
         splashScreenPanel.SetActive(false);
     }
     // method to start the game

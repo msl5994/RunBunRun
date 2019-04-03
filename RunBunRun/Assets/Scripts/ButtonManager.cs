@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour {
 
     private GameManager gameManager;
-
+    private ShopManager shopManager;
 	// Use this for initialization
 	void Start ()
     {
         gameManager = gameObject.GetComponent<GameManager>();
+        shopManager = gameObject.GetComponent<ShopManager>();
 	}
 	
 	// Update is called once per frame
@@ -68,10 +69,32 @@ public class ButtonManager : MonoBehaviour {
         gameManager.OptionsScreen();
     }
 
+    // method to load the options screen
+    public void LoadShopScreen()
+    {
+        gameManager.gameState = GameManager.GameState.Shop;
+        gameManager.prevGameState = GameManager.GameState.SplashScreen;
+        gameManager.ShopScreen();
+    }
+
     // method to mute the volume sliders
     public void MuteAll()
     {
         gameManager.musicSlider.value = 0;
         gameManager.sfxSlider.value = 0;
+    }
+
+    // methods that will call shopManager's upgrade methods
+    public void UpgradeJump()
+    {
+        shopManager.UpgradeJump();
+    }
+    public void UpgradeTurn()
+    {
+        shopManager.UpgradeTurn();
+    }
+    public void UpgradeSpeed()
+    {
+        shopManager.UpgradeSpeed();
     }
 }
