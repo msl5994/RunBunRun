@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour {
     public int numWolvesChasing = 0;
 
     // animation
-    Animator anim;
+    public Animator anim;
 
     // Use this for initialization
     void Start ()
@@ -76,6 +76,16 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        // don't animate while jumping
+        if(!isJumping && isGrounded)
+        {
+            anim.enabled = true;
+        }
+        else
+        {
+            anim.enabled = false;
+        }
+
         // start the timer
         if(turnTimerActive)
         {
@@ -185,6 +195,8 @@ public class PlayerMovement : MonoBehaviour {
         if(isJumping)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            //disable the run animation while in the air
+            //anim.enabled = false;
         }
         rb.AddForce(Vector3.down * (jumpForce/2.0f), ForceMode.Impulse);
 
