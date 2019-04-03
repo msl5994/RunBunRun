@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     public float rightTurnTimer = 0.0f;
 
     //public Vector3 jumpVector = new Vector3(0.0f, 5.0f, 0.0f);
-    private float jumpForce = 40.0f;
+    public float jumpForce = 40.0f;
     private bool isGrounded = true;
     private bool isJumping = false;
 
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour {
             leftTurnTimer += Time.deltaTime;
             if(leftTurnTimer > 0.2f)
             {
-                transform.Rotate(new Vector3(0.0f, -30.0f * Time.deltaTime, 0.0f));
+                transform.Rotate(new Vector3(0.0f, -angleIncrement * Time.deltaTime, 0.0f));
             }
         }
         if (turnRight)
@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour {
             rightTurnTimer += Time.deltaTime;
             if (rightTurnTimer > 0.2f)
             {
-                transform.Rotate(new Vector3(0.0f, 30.0f * Time.deltaTime, 0.0f));
+                transform.Rotate(new Vector3(0.0f, angleIncrement * Time.deltaTime, 0.0f));
             }
         }
         CheckTurning();

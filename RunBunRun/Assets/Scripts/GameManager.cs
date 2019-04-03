@@ -53,6 +53,10 @@ public class GameManager : MonoBehaviour
     public Slider sfxSlider;
     public bool firstFrame;
 
+    public int speedLvl;
+    public int turnLvl;
+    public int jumpLvl;
+
     // check for the data as the app loads up
     private void Awake()
     {
