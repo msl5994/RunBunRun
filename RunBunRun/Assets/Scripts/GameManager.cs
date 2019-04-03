@@ -76,12 +76,14 @@ public class GameManager : MonoBehaviour
         {
             currentSpeed = 25.0f; // playerMovement.speed;
         }
-        /*
-        if(PlayerPrefs.GetFloat("CurrentTurnRate") > 1.0f)
+        if(PlayerPrefs.GetFloat("CurrentTurnRate") > 30.0f)
         {
             currentTurnRate = PlayerPrefs.GetFloat("CurrentTurnRate");
         }
-        */
+        else
+        {
+            currentTurnRate = 30.0f;
+        }
         if(PlayerPrefs.GetFloat("CurrentJumpHeight") > 40.0f)
         {
             currentJumpHeight = PlayerPrefs.GetFloat("CurrentJumpHeight");
@@ -289,6 +291,11 @@ public class GameManager : MonoBehaviour
         // disable the other screens
         splashScreenPanel.SetActive(false);
         gameOverPanel.SetActive(false);
+
+        // set the player's movement parameters to match the saved settings
+        playerMovement.speed = currentSpeed;
+        playerMovement.angleIncrement = currentTurnRate;
+        playerMovement.jumpForce = currentJumpHeight;
 
         // reset the timers
         staminaTimer = 0.0f;

@@ -29,20 +29,26 @@ public class ShopManager : MonoBehaviour
     public void UpgradeSpeed()
     {
         gameManager.currentFeatherCount -= speedUpgradeCosts[gameManager.speedLvl - 1];
+        PlayerPrefs.SetInt("Feathers", gameManager.currentFeatherCount);
         playerMovement.speed = speedUpgrades[gameManager.speedLvl - 1];
+        PlayerPrefs.SetFloat("CurrentSpeed", playerMovement.speed);
         gameManager.speedLvl++;
 
     }
     public void UpgradeTurn()
     {
         gameManager.currentFeatherCount -= turnUpgradeCosts[gameManager.turnLvl - 1];
+        PlayerPrefs.SetInt("Feathers", gameManager.currentFeatherCount);
         playerMovement.angleIncrement = turnUpgrades[gameManager.turnLvl - 1];
+        PlayerPrefs.SetFloat("CurrentTurnRate", playerMovement.angleIncrement);
         gameManager.turnLvl++;
     }
     public void UpgradeJump()
     {
         gameManager.currentFeatherCount -= jumpUpgradeCosts[gameManager.jumpLvl - 1];
+        PlayerPrefs.SetInt("Feathers", gameManager.currentFeatherCount);
         playerMovement.jumpForce = jumpUpgrades[gameManager.jumpLvl - 1];
+        PlayerPrefs.SetFloat("CurrentJumpHeight", playerMovement.jumpForce);
         gameManager.jumpLvl++;
     }
 }
