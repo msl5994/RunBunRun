@@ -307,6 +307,9 @@ public class GameManager : MonoBehaviour
         playerMovement.angleIncrement = currentTurnRate;
         playerMovement.jumpForce = currentJumpHeight;
 
+        // increase the run animation's speed to match
+        playerMovement.anim.speed = 4.0f;
+
         // reset the timers
         staminaTimer = 0.0f;
         wolfTimer = 0.0f;
