@@ -185,12 +185,14 @@ public class PlayerMovement : MonoBehaviour {
             //rb.velocity += gameObject.transform.forward.normalized * speed / 4.0f;
             //rb.velocity += (gameObject.transform.up.normalized * -1.0f); // account for gravity
             rb.MovePosition(transform.position + transform.forward * Time.deltaTime * (speed/4.0f));
+            anim.speed = 1.0f;
         }
         else
         {
            // rb.velocity += gameObject.transform.forward.normalized * speed;
             //rb.velocity += (gameObject.transform.up.normalized * -1.0f); // account for gravity
             rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
+            anim.speed = 4.0f;
         }
         if(isJumping)
         {
