@@ -74,6 +74,7 @@ public class ButtonManager : MonoBehaviour {
     {
         gameManager.gameState = GameManager.GameState.Shop;
         gameManager.prevGameState = GameManager.GameState.SplashScreen;
+        shopManager.CanAffordUpgrades();
         gameManager.ShopScreen();
     }
 

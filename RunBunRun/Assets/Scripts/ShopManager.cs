@@ -7,21 +7,26 @@ public class ShopManager : MonoBehaviour
 {
     public GameManager gameManager;
     private PlayerMovement playerMovement;
+    public GameObject player;
 
-    private int[] speedUpgradeCosts;
-    private int[] turnUpgradeCosts;
-    private int[] jumpUpgradeCosts;
+    public int[] speedUpgradeCosts;
+    public int[] turnUpgradeCosts;
+    public int[] jumpUpgradeCosts;
     private float[] speedUpgrades;
     private float[] turnUpgrades;
     private float[] jumpUpgrades;
 
-    public Text currentFeatherCount;
-    public Text jumpCost;
-    public Text turnCost;
-    public Text speedCost;
-    public Text jumpLv;
-    public Text turnLv;
-    public Text speedLv;
+    public Text currentFeatherCountText;
+    public Text jumpCostText;
+    public Text turnCostText;
+    public Text speedCostText;
+    public Text jumpLvText;
+    public Text turnLvText;
+    public Text speedLvText;
+
+    public Button upgradeJumpButton;
+    public Button upgradeTurnButton;
+    public Button upgradeSpeedButton;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +38,49 @@ public class ShopManager : MonoBehaviour
         turnUpgrades = new float[] { 34.0f, 38.0f, 42.0f, 46.0f, 50.0f, 54.0f, 58.0f, 62.0f, 66.0f };
         jumpUpgrades = new float[] { 45.0f, 50.0f, 55.0f, 60.0f, 65.0f, 70.0f, 75.0f, 80.0f, 85.0f };
 
+        playerMovement = player.GetComponent<PlayerMovement>();
+
+        /*
+        PlayerPrefs.SetFloat("CurrentSpeed", speedUpgrades[0] - 3.0f);
+        PlayerPrefs.SetFloat("CurrentTurnRate", turnUpgrades[0] - 4.0f);
+        PlayerPrefs.SetFloat("CurrentJumpHeight", jumpUpgrades[0] - 5.0f);
+        */
+
         // adding text to the shop screen
+        jumpCostText.text = "Jump Cost: " + jumpUpgradeCosts[gameManager.jumpLvl - 1];
+        turnCostText.text = "Turn Cost: " + turnUpgradeCosts[gameManager.turnLvl - 1];
+        speedCostText.text = "Speed Cost: " + speedUpgradeCosts[gameManager.speedLvl - 1];
+        jumpLvText.text = "Jump Lv: " + gameManager.jumpLvl;
+        turnLvText.text = "Turn Lv: " + gameManager.turnLvl;
+        speedLvText.text = "Speed Lv: " + gameManager.speedLvl;
+    }
+
+    public void CanAffordUpgrades()
+    {
+        if (gameManager.currentFeatherCount < jumpUpgradeCosts[gameManager.jumpLvl - 1])
+        {
+            upgradeJumpButton.enabled = false;
+        }
+        else
+        {
+            upgradeJumpButton.enabled = true;
+        }
+        if (gameManager.currentFeatherCount < turnUpgradeCosts[gameManager.turnLvl - 1])
+        {
+            upgradeTurnButton.enabled = false;
+        }
+        else
+        {
+            upgradeTurnButton.enabled = true;
+        }
+        if (gameManager.currentFeatherCount < speedUpgradeCosts[gameManager.speedLvl - 1])
+        {
+            upgradeSpeedButton.enabled = false;
+        }
+        else
+        {
+            upgradeSpeedButton.enabled = true;
+        }
     }
 
 
@@ -41,25 +88,69 @@ public class ShopManager : MonoBehaviour
     {
         gameManager.currentFeatherCount -= speedUpgradeCosts[gameManager.speedLvl - 1];
         PlayerPrefs.SetInt("Feathers", gameManager.currentFeatherCount);
-        playerMovement.speed = speedUpgrades[gameManager.speedLvl - 1];
+        gameManager.currentSpeed = speedUpgrades[gameManager.speedLvl - 1];
         PlayerPrefs.SetFloat("CurrentSpeed", playerMovement.speed);
         gameManager.speedLvl++;
 
+        currentFeatherCountText.text = "Feathers: " + gameManager.currentFeatherCount;
+        speedCostText.text = "Speed Cost: " + speedUpgradeCosts[gameManager.speedLvl - 1];
+
+        if (gameManager.speedLvl == speedUpgrades.Length)
+        {
+            speedLvText.text = "Speed Lv: MAX";
+            upgradeSpeedButton.enabled = false;
+        }
+        else
+        {
+            speedLvText.text = "Speed Lv: " + gameManager.speedLvl;
+        }
+
+        CanAffordUpgrades();
     }
     public void UpgradeTurn()
     {
         gameManager.currentFeatherCount -= turnUpgradeCosts[gameManager.turnLvl - 1];
         PlayerPrefs.SetInt("Feathers", gameManager.currentFeatherCount);
-        playerMovement.angleIncrement = turnUpgrades[gameManager.turnLvl - 1];
+        gameManager.currentTurnRate = turnUpgrades[gameManager.turnLvl - 1];
         PlayerPrefs.SetFloat("CurrentTurnRate", playerMovement.angleIncrement);
         gameManager.turnLvl++;
+
+        currentFeatherCountText.text = "Feathers: " + gameManager.currentFeatherCount;
+        turnCostText.text = "Turn Cost: " + turnUpgradeCosts[gameManager.turnLvl - 1];
+
+        if (gameManager.turnLvl == turnUpgrades.Length)
+        {
+            turnLvText.text = "Turn Lv: MAX";
+            upgradeTurnButton.enabled = false;
+        }
+        else
+        {
+            turnLvText.text = "Turn Lv: " + gameManager.turnLvl;
+        }
+
+        CanAffordUpgrades();
     }
     public void UpgradeJump()
     {
         gameManager.currentFeatherCount -= jumpUpgradeCosts[gameManager.jumpLvl - 1];
         PlayerPrefs.SetInt("Feathers", gameManager.currentFeatherCount);
-        playerMovement.jumpForce = jumpUpgrades[gameManager.jumpLvl - 1];
+        gameManager.currentJumpHeight = jumpUpgrades[gameManager.jumpLvl - 1];
         PlayerPrefs.SetFloat("CurrentJumpHeight", playerMovement.jumpForce);
         gameManager.jumpLvl++;
+
+        currentFeatherCountText.text = "Feathers: " + gameManager.currentFeatherCount;
+        jumpCostText.text = "Jump Cost: " + jumpUpgradeCosts[gameManager.jumpLvl - 1];
+
+        if(gameManager.jumpLvl == jumpUpgrades.Length)
+        {
+            jumpLvText.text = "Jump Lv: MAX";
+            upgradeJumpButton.enabled = false;
+        }
+        else
+        {
+            jumpLvText.text = "Jump Lv: " + gameManager.jumpLvl;
+        }
+        CanAffordUpgrades();
     }
+    
 }

@@ -93,6 +93,9 @@ public class GameManager : MonoBehaviour
         {
             currentJumpHeight = 40.0f;
         }
+        speedLvl = 1;
+        turnLvl = 1;
+        jumpLvl = 1;
     }
 
     // Use this for initialization
@@ -294,6 +297,7 @@ public class GameManager : MonoBehaviour
     {
         shopPanel.SetActive(true);
         splashScreenPanel.SetActive(false);
+        this.GetComponent<ShopManager>().currentFeatherCountText.text = "Feathers: " + currentFeatherCount;
     }
     // method to start the game
     public void GamePlayStart()
