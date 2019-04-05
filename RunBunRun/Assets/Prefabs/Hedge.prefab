@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 23569700130510704}
   - component: {fileID: 65630802443110424}
   - component: {fileID: 135561999749800872}
+  - component: {fileID: 729804626551719585}
   m_Layer: 9
   m_Name: Hedge
   m_TagString: Obstacle
@@ -264,6 +265,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.75
   m_Center: {x: 0, y: -0.25, z: 0}
+--- !u!114 &729804626551719585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956632163484498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbdaa75779d3d24186ea1981de8a8af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quadrant: 0
 --- !u!1 &4443719539284146428
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public Vector3 teleportPoint;
     private Rigidbody rb;
+    public int quadrant;
 
     public float speed = 25.0f;
     public float maxSpeed = 100.0f;
@@ -71,6 +72,7 @@ public class PlayerMovement : MonoBehaviour {
         firstframe = false;
         upAlpha = true;
         numWolvesChasing = 0;
+        quadrant = 0;
 	}
 	
 	// Update is called once per frame
@@ -293,7 +295,7 @@ public class PlayerMovement : MonoBehaviour {
     // collision detection for resetting the ability to jump if the player collides with the ground or an obstacle
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Obstacle")
+        if(collision.gameObject.tag == "Obstacle" && collision.gameObject.GetComponent<Obstacle>().quadrant == quadrant)
         {
             isGrounded = true;
             //Debug.Log("Hit obstacle");

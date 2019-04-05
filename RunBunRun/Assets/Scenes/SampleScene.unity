@@ -379,7 +379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &39614074
 RectTransform:
   m_ObjectHideFlags: 0
@@ -913,6 +913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportPoint: {x: 0, y: 0, z: 0}
+  quadrant: 0
   speed: 25
   maxSpeed: 100
   angleIncrement: 30
@@ -2183,6 +2184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 257543434}
   - component: {fileID: 257543435}
+  - component: {fileID: 257543436}
   m_Layer: 0
   m_Name: Quadrant3
   m_TagString: Untagged
@@ -2217,6 +2219,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 500, y: 50, z: 500}
   m_Center: {x: 0, y: 25, z: 0}
+--- !u!114 &257543436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257543433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b631320f8e512ad45a0b2894a5ced2cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &288051006
 GameObject:
   m_ObjectHideFlags: 0
@@ -3078,6 +3092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400645613}
   - component: {fileID: 400645614}
+  - component: {fileID: 400645615}
   m_Layer: 0
   m_Name: Quadrant1
   m_TagString: Untagged
@@ -3112,6 +3127,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 500, y: 50, z: 500}
   m_Center: {x: 0, y: 25, z: 0}
+--- !u!114 &400645615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400645612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5512609c2e41cc042b5d38fd627f6940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &414693263
 GameObject:
   m_ObjectHideFlags: 0
@@ -6109,6 +6136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 877830524}
   - component: {fileID: 877830525}
+  - component: {fileID: 877830526}
   m_Layer: 0
   m_Name: Quadrant2
   m_TagString: Untagged
@@ -6143,6 +6171,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 500, y: 50, z: 500}
   m_Center: {x: 0, y: 25, z: 0}
+--- !u!114 &877830526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877830523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d252e55970a7b42a581faabf897c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &879873140
 GameObject:
   m_ObjectHideFlags: 0
@@ -7380,8 +7420,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056552197}
-  m_LocalRotation: {x: -0.0045503736, y: 0.6519031, z: 0.0039129276, w: 0.75827855}
-  m_LocalPosition: {x: -76.97238, y: -7.748801, z: -76.60253}
+  m_LocalRotation: {x: 0.07723733, y: 0.046344206, z: 0.0035941498, w: -0.9959286}
+  m_LocalPosition: {x: -142.67892, y: -205.19366, z: -900.6599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9693,6 +9733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1376488983}
   - component: {fileID: 1376488984}
+  - component: {fileID: 1376488985}
   m_Layer: 0
   m_Name: Quadrant4
   m_TagString: Untagged
@@ -9727,6 +9768,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 500, y: 50, z: 500}
   m_Center: {x: 0, y: 25, z: 0}
+--- !u!114 &1376488985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376488982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e455558882a6e48988e7c1be8c87e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1379581257
 GameObject:
   m_ObjectHideFlags: 0
@@ -12787,8 +12840,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776244625}
-  m_LocalRotation: {x: -0.013807172, y: 0.019497972, z: 0.00025201368, w: 0.99971455}
-  m_LocalPosition: {x: 398.11316, y: -1060.3887, z: -3636.036}
+  m_LocalRotation: {x: 0.07723733, y: 0.046344206, z: 0.0035941498, w: -0.9959286}
+  m_LocalPosition: {x: -142.67892, y: -205.19366, z: -900.6599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

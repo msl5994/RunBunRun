@@ -7,6 +7,7 @@ public class WolfMovement : MonoBehaviour {
     // Use this for initialization
     public Vector3 velocity, acceleration, direction, wolfPos;
     public float mass;
+    public int quadrant;
 
     public float maxSpeed;
     public float maxSightRange; // for avoidance of obstacles
@@ -37,6 +38,7 @@ public class WolfMovement : MonoBehaviour {
 
     private float angle;
     void Start () {
+        quadrant = 0;
         wolfPos = transform.position;
         rb = gameObject.GetComponent<Rigidbody>();
         bunny = GameObject.FindGameObjectWithTag("Player");
