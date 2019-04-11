@@ -31,9 +31,9 @@ public class GenerateObstacles : MonoBehaviour {
     public void SpawnObstacles()
     {
         // loop through the places in the playspace
-        for (int i = -50; i < 50; i += 2)
+        for (int i = -50; i < 50; i += 5) // was 2
         {
-            for (int j = -50; j < 50; j += 2)
+            for (int j = -50; j < 50; j += 5)
             {
                 // determine whether or not to spawn an obstacle at this location
                 int spawnCheck = Random.Range(0, 100);
@@ -61,10 +61,10 @@ public class GenerateObstacles : MonoBehaviour {
                             obstacleHeightOffset = 2.0f;
                             break;
                         case 1:
-                            obstacleHeightOffset = 1.75f;
+                            obstacleHeightOffset = 8.0f;
                             break;
                         case 2:
-                            obstacleHeightOffset = 5.0f;
+                            obstacleHeightOffset = 0.0f;
                             break;
                         case 3:
                             obstacleHeightOffset = 0.0f;
@@ -74,6 +74,12 @@ public class GenerateObstacles : MonoBehaviour {
                             break;
                         case 5:
                             obstacleHeightOffset = 0.0f;
+                            break;
+                        case 6:
+                            obstacleHeightOffset = 0.0f;
+                            break;
+                        case 7:
+                            obstacleHeightOffset = 2.0f;
                             break;
                     }
                     //float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y / 4.0f;
