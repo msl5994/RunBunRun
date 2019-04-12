@@ -147,7 +147,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -10}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &7145957
 MonoBehaviour:
@@ -379,7 +379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &39614074
 RectTransform:
   m_ObjectHideFlags: 0
@@ -921,7 +921,7 @@ MonoBehaviour:
   leftTurnTimer: 0
   rightTurnTimer: 0
   jumpForce: 40
-  maxJumpHeight: 7
+  maxJumpTimer: 0.5
   outOfStamina: 0
   gameManagerObject: {fileID: 1203359232}
   wolfIndicatorPanel: {fileID: 1836686787}
@@ -2543,8 +2543,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310985110}
-  m_LocalRotation: {x: 0.5893926, y: -0.0023442921, z: -0.0016881535, w: -0.8078416}
-  m_LocalPosition: {x: -410.9473, y: -1432.8373, z: -497.30832}
+  m_LocalRotation: {x: 0.16478044, y: 0.12099542, z: 0.020390619, w: -0.9786684}
+  m_LocalPosition: {x: 658.6622, y: -1732.778, z: -2482.8926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3275,7 +3275,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -220, y: -0.000091552734}
-  m_SizeDelta: {x: 200, y: 30}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &414693265
 MonoBehaviour:
@@ -5903,7 +5903,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000061035156, y: -135}
-  m_SizeDelta: {x: 200, y: 30}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789021144
 MonoBehaviour:
@@ -6521,7 +6521,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -220, y: -0.000049591064}
-  m_SizeDelta: {x: 200, y: 30}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879873142
 MonoBehaviour:
@@ -8442,7 +8442,8 @@ MonoBehaviour:
   currentFeatherCount: 0
   currentSpeed: 0
   currentTurnRate: 0
-  currentJumpHeight: 0
+  currentJumpForce: 0
+  currentMaxJumpTimer: 0
   player: {fileID: 68137571}
   arrow: {fileID: 1291799278}
   minimapArrow: {fileID: 1306900544}
@@ -9365,7 +9366,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000061035156, y: -180}
-  m_SizeDelta: {x: 200, y: 30}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1301933267
 MonoBehaviour:
@@ -13376,8 +13377,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776244625}
-  m_LocalRotation: {x: 0.07723733, y: 0.046344206, z: 0.0035941498, w: -0.9959286}
-  m_LocalPosition: {x: -27.304893, y: -290.9394, z: -787.0732}
+  m_LocalRotation: {x: 0.16478044, y: 0.12099542, z: 0.020390619, w: -0.9786684}
+  m_LocalPosition: {x: 658.6622, y: -1732.778, z: -2482.8926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13993,7 +13994,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -220, y: 0.000061035156}
-  m_SizeDelta: {x: 200, y: 30}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1827597869
 MonoBehaviour:
@@ -14190,7 +14191,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -90}
-  m_SizeDelta: {x: 200, y: 30}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1842493644
 MonoBehaviour:
@@ -15152,7 +15153,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 300}
-  m_SizeDelta: {x: 200, y: 60}
+  m_SizeDelta: {x: 300, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1983998962
 MonoBehaviour:

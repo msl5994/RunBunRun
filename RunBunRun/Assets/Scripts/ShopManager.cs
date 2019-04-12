@@ -15,7 +15,7 @@ public class ShopManager : MonoBehaviour
     private float[] speedUpgrades;
     private float[] turnUpgrades;
     private float[] jumpUpgrades;
-    private float[] jumpHeightUpgrades;
+    private float[] jumpTimerUpgrades;
 
     public Text currentFeatherCountText;
     public Text jumpCostText;
@@ -38,14 +38,15 @@ public class ShopManager : MonoBehaviour
         speedUpgrades = new float[] { 28.0f, 31.0f, 34.0f, 37.0f, 40.0f, 43.0f, 46.0f, 49.0f, 52.0f };
         turnUpgrades = new float[] { 34.0f, 38.0f, 42.0f, 46.0f, 50.0f, 54.0f, 58.0f, 62.0f, 66.0f };
         jumpUpgrades = new float[] { 45.0f, 50.0f, 55.0f, 60.0f, 65.0f, 70.0f, 75.0f, 80.0f, 85.0f };
-        jumpHeightUpgrades = new float[] { 8.0f, 9.0f, 10.0f, 11.0f, 12.0f, 13.0f, 14.0f, 15.0f, 16.0f };
+        //jumpTimerUpgrades = new float[] { 0.7f, 0.9f, 1.1f, 1.3f, 1.5f, 1.7f, 1.9f, 2.1f, 2.3f };
 
         playerMovement = player.GetComponent<PlayerMovement>();
 
         /*
         PlayerPrefs.SetFloat("CurrentSpeed", speedUpgrades[0] - 3.0f);
         PlayerPrefs.SetFloat("CurrentTurnRate", turnUpgrades[0] - 4.0f);
-        PlayerPrefs.SetFloat("CurrentJumpHeight", jumpUpgrades[0] - 5.0f);
+        PlayerPrefs.SetFloat("CurrentJumpForce", jumpUpgrades[0] - 5.0f);
+
         */
 
         // adding text to the shop screen
@@ -59,30 +60,40 @@ public class ShopManager : MonoBehaviour
 
     public void CanAffordUpgrades()
     {
-        if (gameManager.currentFeatherCount < jumpUpgradeCosts[gameManager.jumpLvl - 1])
+        if(!upgradeJumpButton.IsDestroyed())
         {
-            upgradeJumpButton.enabled = false;
+            if (gameManager.currentFeatherCount < jumpUpgradeCosts[gameManager.jumpLvl - 1])
+            {
+                upgradeJumpButton.enabled = false;
+            }
+            else
+            {
+                upgradeJumpButton.enabled = true;
+            }
         }
-        else
+        if(!upgradeTurnButton.IsDestroyed())
         {
-            upgradeJumpButton.enabled = true;
+            if (gameManager.currentFeatherCount < turnUpgradeCosts[gameManager.turnLvl - 1])
+            {
+                upgradeTurnButton.enabled = false;
+            }
+            else
+            {
+                upgradeTurnButton.enabled = true;
+            }
         }
-        if (gameManager.currentFeatherCount < turnUpgradeCosts[gameManager.turnLvl - 1])
+        if(!upgradeSpeedButton.IsDestroyed())
         {
-            upgradeTurnButton.enabled = false;
+            if (gameManager.currentFeatherCount < speedUpgradeCosts[gameManager.speedLvl - 1])
+            {
+                upgradeSpeedButton.enabled = false;
+            }
+            else
+            {
+                upgradeSpeedButton.enabled = true;
+            }
         }
-        else
-        {
-            upgradeTurnButton.enabled = true;
-        }
-        if (gameManager.currentFeatherCount < speedUpgradeCosts[gameManager.speedLvl - 1])
-        {
-            upgradeSpeedButton.enabled = false;
-        }
-        else
-        {
-            upgradeSpeedButton.enabled = true;
-        }
+        
     }
 
 
@@ -93,6 +104,7 @@ public class ShopManager : MonoBehaviour
         gameManager.currentSpeed = speedUpgrades[gameManager.speedLvl - 1];
         PlayerPrefs.SetFloat("CurrentSpeed", playerMovement.speed);
         gameManager.speedLvl++;
+        PlayerPrefs.SetInt("SpeedLvl", gameManager.speedLvl);
 
         currentFeatherCountText.text = "Feathers: " + gameManager.currentFeatherCount;
         speedCostText.text = "Speed Cost: " + speedUpgradeCosts[gameManager.speedLvl - 1];
@@ -100,7 +112,7 @@ public class ShopManager : MonoBehaviour
         if (gameManager.speedLvl == speedUpgrades.Length)
         {
             speedLvText.text = "Speed Lv: MAX";
-            Destroy(upgradeSpeedButton);
+            Destroy(upgradeSpeedButton.gameObject);
             Destroy(speedCostText);
             //upgradeSpeedButton.enabled = false;
         }
@@ -118,6 +130,7 @@ public class ShopManager : MonoBehaviour
         gameManager.currentTurnRate = turnUpgrades[gameManager.turnLvl - 1];
         PlayerPrefs.SetFloat("CurrentTurnRate", playerMovement.angleIncrement);
         gameManager.turnLvl++;
+        PlayerPrefs.SetInt("TurnLvl", gameManager.turnLvl);
 
         currentFeatherCountText.text = "Feathers: " + gameManager.currentFeatherCount;
         turnCostText.text = "Turn Cost: " + turnUpgradeCosts[gameManager.turnLvl - 1];
@@ -125,7 +138,7 @@ public class ShopManager : MonoBehaviour
         if (gameManager.turnLvl == turnUpgrades.Length)
         {
             turnLvText.text = "Turn Lv: MAX";
-            Destroy(upgradeTurnButton);
+            Destroy(upgradeTurnButton.gameObject);
             Destroy(turnCostText);
             //upgradeTurnButton.enabled = false;
         }
@@ -140,27 +153,28 @@ public class ShopManager : MonoBehaviour
     {
         gameManager.currentFeatherCount -= jumpUpgradeCosts[gameManager.jumpLvl - 1];
         PlayerPrefs.SetInt("Feathers", gameManager.currentFeatherCount);
-        gameManager.currentJumpHeight = jumpUpgrades[gameManager.jumpLvl - 1];
-        playerMovement.maxJumpHeight = jumpHeightUpgrades[gameManager.jumpLvl - 1];
-        PlayerPrefs.SetFloat("CurrentJumpHeight", playerMovement.jumpForce);
-        PlayerPrefs.SetFloat("MaxJumpHeight", playerMovement.maxJumpHeight);
+        gameManager.currentJumpForce = jumpUpgrades[gameManager.jumpLvl - 1];
+        //playerMovement.maxJumpTimer = jumpTimerUpgrades[gameManager.jumpLvl - 1];
+        PlayerPrefs.SetFloat("CurrentJumpForce", playerMovement.jumpForce);
+        //PlayerPrefs.SetFloat("MaxJumpTimer", playerMovement.maxJumpTimer);
         gameManager.jumpLvl++;
+        PlayerPrefs.SetInt("JumpLvl", gameManager.jumpLvl);
 
         currentFeatherCountText.text = "Feathers: " + gameManager.currentFeatherCount;
         jumpCostText.text = "Jump Cost: " + jumpUpgradeCosts[gameManager.jumpLvl - 1];
 
-        if(gameManager.jumpLvl == jumpUpgrades.Length)
+        if (gameManager.jumpLvl == jumpUpgrades.Length)
         {
             jumpLvText.text = "Jump Lv: MAX";
-            Destroy(upgradeJumpButton);
+            Destroy(upgradeJumpButton.gameObject);
             Destroy(jumpCostText);
-            //upgradeJumpButton.enabled = false;
         }
         else
         {
             jumpLvText.text = "Jump Lv: " + gameManager.jumpLvl;
         }
         CanAffordUpgrades();
+
     }
     
 }

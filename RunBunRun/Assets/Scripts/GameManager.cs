@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     public int currentFeatherCount = 0;
     public float currentSpeed = 0.0f;
     public float currentTurnRate = 0.0f;
-    public float currentJumpHeight = 0.0f;
+    public float currentJumpForce = 0.0f;
+    public float currentMaxJumpTimer = 0.5f;
 
     public GameObject player;
     public GameObject arrow;
@@ -63,13 +64,14 @@ public class GameManager : MonoBehaviour
     // check for the data as the app loads up
     private void Awake()
     {
-        if(PlayerPrefs.GetInt("Feathers") > 0)
+        //PlayerPrefs.SetInt("Feathers", 0);
+        if (PlayerPrefs.GetInt("Feathers") > 10000)
         {
             currentFeatherCount = PlayerPrefs.GetInt("Feathers"); // kept result of 3 after a test run
         }
         else
         {
-            currentFeatherCount = 0;
+            currentFeatherCount = 9999;
         }
         if(PlayerPrefs.GetFloat("CurrentSpeed") > 25.0f)
         {
@@ -87,21 +89,40 @@ public class GameManager : MonoBehaviour
         {
             currentTurnRate = 30.0f;
         }
-        if(PlayerPrefs.GetFloat("CurrentJumpHeight") > 40.0f)
+        if(PlayerPrefs.GetFloat("CurrentJumpForce") > 40.0f)
         {
-            currentJumpHeight = PlayerPrefs.GetFloat("CurrentJumpHeight");
+            currentJumpForce = PlayerPrefs.GetFloat("CurrentJumpForce");
         }
         else
         {
-            currentJumpHeight = 40.0f;
+            currentJumpForce = 40.0f;
         }
-        if(PlayerPrefs.GetFloat("MaxJumpHeight") > 7.0f)
+        if(PlayerPrefs.GetInt("SpeedLvl") > 1)
         {
-            //playerMovement.maxJumpHeight = PlayerPrefs.GetFloat("MaxJumpHeight");
+            speedLvl = PlayerPrefs.GetInt("SpeedLvl");
         }
-        speedLvl = 1;
-        turnLvl = 1;
-        jumpLvl = 1;
+        else
+        {
+            speedLvl = 1;
+        }
+        if (PlayerPrefs.GetInt("TurnLvl") > 1)
+        {
+            turnLvl = PlayerPrefs.GetInt("TurnLvl");
+        }
+        else
+        {
+            turnLvl = 1;
+        }
+        if (PlayerPrefs.GetInt("JumpLvl") > 1)
+        {
+            jumpLvl = PlayerPrefs.GetInt("JumpLvl");
+        }
+        else
+        {
+            jumpLvl = 1;
+        }
+
+        Debug.Log("Jump: " + currentJumpForce + " Turn: " + currentTurnRate + " Speed: " + currentSpeed + " JumpTimer: " + currentMaxJumpTimer);
     }
 
     // Use this for initialization
@@ -319,7 +340,7 @@ public class GameManager : MonoBehaviour
         // set the player's movement parameters to match the saved settings
         playerMovement.speed = currentSpeed;
         playerMovement.angleIncrement = currentTurnRate;
-        playerMovement.jumpForce = currentJumpHeight;
+        playerMovement.jumpForce = currentJumpForce;
 
         // increase the run animation's speed to match
         playerMovement.anim.speed = 4.0f;

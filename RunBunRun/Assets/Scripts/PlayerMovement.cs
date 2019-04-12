@@ -19,7 +19,8 @@ public class PlayerMovement : MonoBehaviour {
 
     //public Vector3 jumpVector = new Vector3(0.0f, 5.0f, 0.0f);
     public float jumpForce = 40.0f;
-    public float maxJumpHeight = 7.0f;
+    public float maxJumpTimer = 0.5f;
+    private float currentJumpTimer = 0.0f;
     private bool isGrounded = true;
     private bool isJumping = false;
 
@@ -113,9 +114,10 @@ public class PlayerMovement : MonoBehaviour {
         CheckTurning();
 
         // check if at max jump height
-        if(this.transform.position.y >= maxJumpHeight)
+        if(currentJumpTimer >= maxJumpTimer)
         {
             isJumping = false;
+            currentJumpTimer = 0.0f;
         }
 
         // flashing border
@@ -199,6 +201,7 @@ public class PlayerMovement : MonoBehaviour {
         }
         if(isJumping)
         {
+            currentJumpTimer += Time.deltaTime;
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             //disable the run animation while in the air
             //anim.enabled = false;
@@ -296,9 +299,10 @@ public class PlayerMovement : MonoBehaviour {
     // collision detection for resetting the ability to jump if the player collides with the ground or an obstacle
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Obstacle" && collision.gameObject.GetComponent<Obstacle>().quadrant == quadrant)
+        if(collision.gameObject.tag == "Obstacle")
         {
             isGrounded = true;
+            isJumping = false;
             //Debug.Log("Hit obstacle");
         }
         if(collision.gameObject.tag == "Ground")
