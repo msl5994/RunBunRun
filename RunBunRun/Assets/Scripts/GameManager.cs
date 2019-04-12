@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public float currentJumpHeight = 0.0f;
 
     public GameObject player;
+    public GameObject arrow;
+    public GameObject minimapArrow;
     private PlayerMovement playerMovement;
     private WolfSpawner wolfSpawner;
 
@@ -182,6 +184,13 @@ public class GameManager : MonoBehaviour
                 balanceTimer = 0.0f;
             }
             */
+            foreach (GameObject feather in collectibleSpawner.featherCollectibles)
+            {
+                feather.transform.LookAt(player.transform.position);
+            }
+            GameObject nearestCarrot = FindNearestCarrot();
+            arrow.transform.LookAt(nearestCarrot.transform.position);
+            minimapArrow.transform.LookAt(new Vector3(nearestCarrot.transform.position.x, minimapArrow.transform.position.y, nearestCarrot.transform.position.z));
         }
 
         if(gameState == GameState.GameOver)
@@ -196,10 +205,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        foreach(GameObject feather in collectibleSpawner.featherCollectibles)
-        {
-            feather.transform.LookAt(player.transform.position);
-        }
+        
 
         
     }
@@ -364,5 +370,20 @@ public class GameManager : MonoBehaviour
 
         // spawn new objects
         obstacleGenerator.SpawnObstacles(); // this method calls the collectible spawner as well
+    }
+
+    private GameObject FindNearestCarrot()
+    {
+        float shortestDistance = 10000000000f;
+        GameObject nearestCarrot = null;
+        foreach (GameObject carrot in collectibleSpawner.carrotCollectibles)
+        {
+            if(Vector3.Distance(player.transform.position, carrot.transform.position) < shortestDistance)
+            {
+                shortestDistance = Vector3.Distance(player.transform.position, carrot.transform.position);
+                nearestCarrot = carrot;
+            }
+        }
+        return nearestCarrot;
     }
 }

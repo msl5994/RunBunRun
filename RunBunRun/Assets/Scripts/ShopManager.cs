@@ -100,7 +100,9 @@ public class ShopManager : MonoBehaviour
         if (gameManager.speedLvl == speedUpgrades.Length)
         {
             speedLvText.text = "Speed Lv: MAX";
-            upgradeSpeedButton.enabled = false;
+            Destroy(upgradeSpeedButton);
+            Destroy(speedCostText);
+            //upgradeSpeedButton.enabled = false;
         }
         else
         {
@@ -123,7 +125,9 @@ public class ShopManager : MonoBehaviour
         if (gameManager.turnLvl == turnUpgrades.Length)
         {
             turnLvText.text = "Turn Lv: MAX";
-            upgradeTurnButton.enabled = false;
+            Destroy(upgradeTurnButton);
+            Destroy(turnCostText);
+            //upgradeTurnButton.enabled = false;
         }
         else
         {
@@ -148,7 +152,9 @@ public class ShopManager : MonoBehaviour
         if(gameManager.jumpLvl == jumpUpgrades.Length)
         {
             jumpLvText.text = "Jump Lv: MAX";
-            upgradeJumpButton.enabled = false;
+            Destroy(upgradeJumpButton);
+            Destroy(jumpCostText);
+            //upgradeJumpButton.enabled = false;
         }
         else
         {
