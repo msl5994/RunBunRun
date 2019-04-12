@@ -93,6 +93,10 @@ public class GameManager : MonoBehaviour
         {
             currentJumpHeight = 40.0f;
         }
+        if(PlayerPrefs.GetFloat("MaxJumpHeight") > 7.0f)
+        {
+            //playerMovement.maxJumpHeight = PlayerPrefs.GetFloat("MaxJumpHeight");
+        }
         speedLvl = 1;
         turnLvl = 1;
         jumpLvl = 1;

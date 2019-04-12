@@ -67,8 +67,8 @@ public class WolfMovement : MonoBehaviour {
         wolfBalanceTimer += Time.deltaTime;
         if(wolfBalanceTimer >= 10.0f)
         {
-            maxSpeed++;
-            maxSeekRange += 10.0f;
+            maxSpeed += .5f;
+            maxSeekRange += 1.0f;
             wolfBalanceTimer = 0.0f;
         }
     }

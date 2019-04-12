@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 
     //public Vector3 jumpVector = new Vector3(0.0f, 5.0f, 0.0f);
     public float jumpForce = 40.0f;
+    public float maxJumpHeight = 7.0f;
     private bool isGrounded = true;
     private bool isJumping = false;
 
@@ -112,7 +113,7 @@ public class PlayerMovement : MonoBehaviour {
         CheckTurning();
 
         // check if at max jump height
-        if(this.transform.position.y >= 7f)
+        if(this.transform.position.y >= maxJumpHeight)
         {
             isJumping = false;
         }
@@ -279,7 +280,7 @@ public class PlayerMovement : MonoBehaviour {
             turnTimer += Time.deltaTime;
             if (turnTimer > .2f)
             {
-                transform.Rotate(new Vector3(0.0f, -30.0f * Time.deltaTime, 0.0f));
+                transform.Rotate(new Vector3(0.0f, -angleIncrement * Time.deltaTime, 0.0f));
             }
         }
         if (Input.GetKey(KeyCode.D))
@@ -287,7 +288,7 @@ public class PlayerMovement : MonoBehaviour {
             turnTimer += Time.deltaTime;
             if (turnTimer > .2f)
             {
-                transform.Rotate(new Vector3(0.0f, 30.0f * Time.deltaTime, 0.0f));
+                transform.Rotate(new Vector3(0.0f, angleIncrement * Time.deltaTime, 0.0f));
             }
         }
     }
