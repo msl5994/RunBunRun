@@ -7,6 +7,7 @@ public class PickUpObject : MonoBehaviour {
 
     private GameObject gameManagerObject;
     private GameManager gameManager;
+    private ScoreManager scoreManager;
     private CollectibleSpawner collectibleSpawner;
     private AudioSource audioSource;
     private AudioClip audioClip;
@@ -21,6 +22,7 @@ public class PickUpObject : MonoBehaviour {
         gameManagerObject = GameObject.Find("GameManager");
         collectibleSpawner = gameManagerObject.GetComponent<CollectibleSpawner>();
         gameManager = gameManagerObject.GetComponent<GameManager>();
+        scoreManager = gameManagerObject.GetComponent<ScoreManager>();
         audioSource = gameObject.GetComponent<AudioSource>();
         audioClip = audioSource.clip;
         timerActive = false;
@@ -71,7 +73,7 @@ public class PickUpObject : MonoBehaviour {
             collectibleSpawner.carrotCollectibles.Remove(gameObject);
 
             // add to the score
-            gameManager.UpdateCarrotScore();
+            scoreManager.UpdateCarrotScore();
 
             // reset the stamina timer
             gameManager.ResetStamina();
@@ -103,7 +105,7 @@ public class PickUpObject : MonoBehaviour {
             collectibleSpawner.featherCollectibles.Remove(gameObject);
 
             // add to the score
-            gameManager.UpdateFeatherScore();
+            scoreManager.UpdateFeatherScore();
 
             // spawn a new collectible to replace this one
             collectibleSpawner.SpawnFeatherCollectible();            

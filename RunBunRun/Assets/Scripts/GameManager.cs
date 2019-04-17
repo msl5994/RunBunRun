@@ -7,10 +7,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Image staminaRing;
-    public Text carrotScoreText;
-    public int carrotScoreNum = 0;
-    public Text featherScoreText;
-    public int featherScoreNum = 0;
+    
+    
     public float maxStamina = 60.0f; // 1 minute for now
     public float staminaTimer = 0.0f;
     public float wolfTimer = 0.0f;
@@ -29,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject minimapArrow;
     private PlayerMovement playerMovement;
     private WolfSpawner wolfSpawner;
+    private ScoreManager scoreManager;
 
     public bool gameOver = false;
 
@@ -65,13 +64,13 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         //PlayerPrefs.SetInt("Feathers", 0);
-        if (PlayerPrefs.GetInt("Feathers") > 10000)
+        if (PlayerPrefs.GetInt("Feathers") > 0)
         {
             currentFeatherCount = PlayerPrefs.GetInt("Feathers"); // kept result of 3 after a test run
         }
         else
         {
-            currentFeatherCount = 9999;
+            currentFeatherCount = 0;
         }
         if(PlayerPrefs.GetFloat("CurrentSpeed") > 25.0f)
         {
@@ -142,6 +141,7 @@ public class GameManager : MonoBehaviour
         obstacleGenerator = gameObject.GetComponent<GenerateObstacles>();
         collectibleSpawner = gameObject.GetComponent<CollectibleSpawner>();
         audioSource = gameObject.GetComponent<AudioSource>();
+        scoreManager = gameObject.GetComponent<ScoreManager>();
         firstFrame = true;
 	}
 	
@@ -225,25 +225,6 @@ public class GameManager : MonoBehaviour
                 firstFrame = false;
             }
         }
-
-        
-
-        
-    }
-
-    // method to update the carrot score
-    public void UpdateCarrotScore()
-    {
-        carrotScoreNum++;
-        carrotScoreText.text = "Carrots: " + carrotScoreNum;
-    }
-
-    // method to update the score
-    public void UpdateFeatherScore()
-    {
-        featherScoreNum++;
-        currentFeatherCount++;
-        featherScoreText.text = "Feathers: " + featherScoreNum;
     }
 
     // call this method when a carrot has been picked up
@@ -349,11 +330,7 @@ public class GameManager : MonoBehaviour
         staminaTimer = 0.0f;
         wolfTimer = 0.0f;
 
-        // reset scores
-        featherScoreNum = 0;
-        carrotScoreNum = 0;
-        carrotScoreText.text = "Carrots: " + carrotScoreNum;
-        featherScoreText.text = "Feathers: " + featherScoreNum;
+        
 
         // reset the wolf and obstacle lists
         foreach (GameObject wolf in wolfSpawner.wolfList)
