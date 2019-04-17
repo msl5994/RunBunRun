@@ -31,9 +31,9 @@ public class GenerateObstacles : MonoBehaviour {
     public void SpawnObstacles()
     {
         // loop through the places in the playspace
-        for (int i = -50; i < 50; i += 5) // was 2
+        for (int i = -50; i < 50; i += 3) // was 2
         {
-            for (int j = -50; j < 50; j += 5)
+            for (int j = -50; j < 50; j += 3)
             {
                 // determine whether or not to spawn an obstacle at this location
                 int spawnCheck = Random.Range(0, 100);

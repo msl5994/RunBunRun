@@ -244,15 +244,19 @@ public class GameManager : MonoBehaviour
         //PlayerPrefs.SetFloat("CurrentTurnRate", currentTurnSpeed);
         //PlayerPrefs.SetFloat("CurrentJumpHeight", player.JumpHeight);
         PlayerPrefs.Save();
-        
-        foreach(GameObject wolf in wolfSpawner.wolfList)
+
+        foreach (GameObject wolf in wolfSpawner.wolfList)
         {
             // stop all of the wolves movement
             wolf.GetComponent<WolfMovement>().enabled = false;
             wolf.GetComponent<Rigidbody>().isKinematic = true;
+            Destroy(wolf);
         }
         //wolfSpawner.wolfList.Clear();
         // stop the player movement
+        playerMovement.isJumping = false;
+        playerMovement.isGrounded = true;
+        playerMovement.currentJumpTimer = 0.0f;
         playerMovement.enabled = false;
         player.GetComponent<Animator>().enabled = false;
         player.GetComponent<MeshRenderer>().enabled = false;
@@ -262,6 +266,9 @@ public class GameManager : MonoBehaviour
 
         // set the UI panel to be active
         gameOverPanel.SetActive(true);
+
+        // reset audio to normal speed
+        audioSource.pitch = 1.0f;
     }
 
     // method to show the splash screen

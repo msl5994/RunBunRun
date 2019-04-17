@@ -20,9 +20,9 @@ public class PlayerMovement : MonoBehaviour {
     //public Vector3 jumpVector = new Vector3(0.0f, 5.0f, 0.0f);
     public float jumpForce = 40.0f;
     public float maxJumpTimer = 0.5f;
-    private float currentJumpTimer = 0.0f;
-    private bool isGrounded = true;
-    private bool isJumping = false;
+    public float currentJumpTimer = 0.0f;
+    public bool isGrounded = true;
+    public bool isJumping = false;
 
     private Vector3 touchVectorStart;
     private Vector3 touchVectorEnd;
@@ -127,9 +127,9 @@ public class PlayerMovement : MonoBehaviour {
             {
                 Debug.Log("In Up Alpha");
                 Color temp = indicatorImage.color;
-                temp.a += 0.5f * Time.deltaTime;
+                temp.a += 1.5f * Time.deltaTime;
                 indicatorImage.color = temp;
-                if (indicatorImage.color.a >= 0.8f)
+                if (indicatorImage.color.a >= 0.5f)
                 {
                     Debug.Log("Alpha Down");
                     upAlpha = false;
