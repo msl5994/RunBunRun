@@ -922,6 +922,9 @@ MonoBehaviour:
   rightTurnTimer: 0
   jumpForce: 40
   maxJumpTimer: 0.5
+  currentJumpTimer: 0
+  isGrounded: 1
+  isJumping: 0
   outOfStamina: 0
   gameManagerObject: {fileID: 1203359232}
   wolfIndicatorPanel: {fileID: 1836686787}
@@ -4690,11 +4693,11 @@ RectTransform:
   m_Father: {fileID: 288051007}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -20, y: -200}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &678002463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7881,7 +7884,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056552197}
   m_LocalRotation: {x: 0.07723733, y: 0.046344206, z: 0.0035941498, w: -0.9959286}
-  m_LocalPosition: {x: 270.61813, y: -361.30826, z: -328.27713}
+  m_LocalPosition: {x: 0.37607458, y: -0.9890562, z: -3.7793012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11647,7 +11650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1566121772
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15586,7 +15589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2113007628
 RectTransform:
   m_ObjectHideFlags: 0
