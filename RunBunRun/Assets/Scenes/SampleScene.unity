@@ -379,7 +379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &39614074
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2502,7 +2502,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'Score: 0'
 --- !u!222 &298530503
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8704,13 +8704,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a53465efe92dd24bb57a5770cca54ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 298530502}
   carrotScoreText: {fileID: 181095261}
   featherScoreText: {fileID: 7145957}
   score: 0
   carrotScoreNum: 0
   featherScoreNum: 0
-  timeAlive: 0
   gameManager: {fileID: 0}
 --- !u!1 &1221885974
 GameObject:
