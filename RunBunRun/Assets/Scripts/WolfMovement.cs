@@ -221,9 +221,9 @@ public class WolfMovement : MonoBehaviour {
     private GameObject FindMostThreateningObstacle(Vector3 ahead, Vector3 ahead2)
     {
         GameObject mostThreateningObstacle = null;
-        for (int i  = 0; i < obstacleSpawner.Obstacles.Count; i++)
+        for (int i  = 0; i < obstacleSpawner.LargeObstacles.Count; i++)
         {
-            GameObject obstacle = obstacleSpawner.Obstacles[i];
+            GameObject obstacle = obstacleSpawner.LargeObstacles[i];
             bool willCollide = LineIntersectsCircle(ahead, ahead2, obstacle);
             if (willCollide && (mostThreateningObstacle == null || Vector3.Distance(wolfPos, obstacle.transform.position) < Vector3.Distance(wolfPos, mostThreateningObstacle.transform.position)))
             {

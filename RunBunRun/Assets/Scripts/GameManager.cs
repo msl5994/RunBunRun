@@ -375,11 +375,23 @@ public class GameManager : MonoBehaviour
             Destroy(wolf);
         }
         wolfSpawner.wolfList.Clear();
-        for (int i = 0; i < obstacleGenerator.Obstacles.Count; i++)
+        for (int i = 0; i < obstacleGenerator.LargeObstacles.Count; i++)
         {
-            GameObject temp = obstacleGenerator.Obstacles[i];
+            GameObject temp = obstacleGenerator.LargeObstacles[i];
             Destroy(temp);
-            obstacleGenerator.Obstacles.Remove(temp);
+            obstacleGenerator.LargeObstacles.Remove(temp);
+        }
+        for (int i = 0; i < obstacleGenerator.MediumObstacles.Count; i++)
+        {
+            GameObject temp = obstacleGenerator.MediumObstacles[i];
+            Destroy(temp);
+            obstacleGenerator.MediumObstacles.Remove(temp);
+        }
+        for (int i = 0; i < obstacleGenerator.SmallObstacles.Count; i++)
+        {
+            GameObject temp = obstacleGenerator.SmallObstacles[i];
+            Destroy(temp);
+            obstacleGenerator.SmallObstacles.Remove(temp);
         }
         for (int i = 0; i < collectibleSpawner.carrotCollectibles.Count; i++)
         {

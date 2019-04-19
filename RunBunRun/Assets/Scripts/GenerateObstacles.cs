@@ -65,10 +65,10 @@ public class GenerateObstacles : MonoBehaviour {
                     {
                         case 0:
                             //obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y /2.0f;
-                            obstacleHeightOffset = 2.0f;
+                            obstacleHeightOffset = 9.0f; // Tree01
                             break;
                         case 1:
-                            obstacleHeightOffset = 8.0f;
+                            obstacleHeightOffset = 2.0f; // Tree02
                             break;
                         case 2:
                             obstacleHeightOffset = 0.0f;
@@ -77,19 +77,10 @@ public class GenerateObstacles : MonoBehaviour {
                             obstacleHeightOffset = 0.0f;
                             break;
                         case 4:
-                            obstacleHeightOffset = 0.0f;
+                            obstacleHeightOffset = 2.0f; // Hedge
                             break;
                         case 5:
                             obstacleHeightOffset = 0.0f;
-                            break;
-                        case 6:
-                            obstacleHeightOffset = 0.0f;
-                            break;
-                        case 7:
-                            obstacleHeightOffset = 2.0f;
-                            break;
-                        case 8:
-                            obstacleHeightOffset = 1.5f;
                             break;
                         default:
                             obstacleHeightOffset = 0.0f;
@@ -140,43 +131,25 @@ public class GenerateObstacles : MonoBehaviour {
                     int xIndex = (Random.Range(i * 10, 1000) % 10) + i * 10;
                     int zIndex = (Random.Range(j * 10, 1000) % 10) + j * 10;
                     int obstacleIndex = Random.Range(0, MediumObstaclePrefabs.Count);
-                    //float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.position.y + (obstaclePrefabs[obstacleIndex].transform.localScale.y);
                     float obstacleHeightOffset = 0.0f;
                     switch (obstacleIndex)
                     {
                         case 0:
-                            //obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y /2.0f;
-                            obstacleHeightOffset = 2.0f;
+                            obstacleHeightOffset = 2.0f; // Bush01
                             break;
                         case 1:
-                            obstacleHeightOffset = 8.0f;
+                            obstacleHeightOffset = 0.0f;
                             break;
                         case 2:
-                            obstacleHeightOffset = 0.0f;
+                            obstacleHeightOffset = 2.0f; // Stump
                             break;
                         case 3:
                             obstacleHeightOffset = 0.0f;
-                            break;
-                        case 4:
-                            obstacleHeightOffset = 0.0f;
-                            break;
-                        case 5:
-                            obstacleHeightOffset = 0.0f;
-                            break;
-                        case 6:
-                            obstacleHeightOffset = 0.0f;
-                            break;
-                        case 7:
-                            obstacleHeightOffset = 2.0f;
-                            break;
-                        case 8:
-                            obstacleHeightOffset = 1.5f;
                             break;
                         default:
                             obstacleHeightOffset = 0.0f;
                             break;
                     }
-                    //float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y / 4.0f;
                     Vector3 obstacleSpawnPosition = new Vector3(xIndex, obstacleHeightOffset, zIndex);
 
                     // get a random rotation for the obstacle
@@ -221,16 +194,14 @@ public class GenerateObstacles : MonoBehaviour {
                     int xIndex = (Random.Range(i * 10, 1000) % 10) + i * 10;
                     int zIndex = (Random.Range(j * 10, 1000) % 10) + j * 10;
                     int obstacleIndex = Random.Range(0, SmallObstaclePrefabs.Count);
-                    //float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.position.y + (obstaclePrefabs[obstacleIndex].transform.localScale.y);
                     float obstacleHeightOffset = 0.0f;
                     switch (obstacleIndex)
                     {
                         case 0:
-                            //obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y /2.0f;
-                            obstacleHeightOffset = 2.0f;
+                            obstacleHeightOffset = 0.0f;
                             break;
                         case 1:
-                            obstacleHeightOffset = 8.0f;
+                            obstacleHeightOffset = 0.0f;
                             break;
                         case 2:
                             obstacleHeightOffset = 0.0f;
@@ -248,16 +219,12 @@ public class GenerateObstacles : MonoBehaviour {
                             obstacleHeightOffset = 0.0f;
                             break;
                         case 7:
-                            obstacleHeightOffset = 2.0f;
-                            break;
-                        case 8:
-                            obstacleHeightOffset = 1.5f;
+                            obstacleHeightOffset = 0.0f;
                             break;
                         default:
                             obstacleHeightOffset = 0.0f;
                             break;
                     }
-                    //float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y / 4.0f;
                     Vector3 obstacleSpawnPosition = new Vector3(xIndex, obstacleHeightOffset, zIndex);
 
                     // get a random rotation for the obstacle
