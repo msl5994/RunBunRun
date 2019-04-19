@@ -20,6 +20,7 @@ public class WolfMovement : MonoBehaviour {
     // for increasing difficulty
     private float wolfBalanceTimer = 0.0f;
     private float maxSeekRange = 100.0f;
+    private float maxSquirrelSeekRange = 50.0f;
 
     // references to the invisible walls
     private GameObject terrain;
@@ -37,6 +38,8 @@ public class WolfMovement : MonoBehaviour {
     private GameObject bunny;
 
     private float angle;
+
+    private SquirrelSpawner squirrelSpawner;
     void Start () {
         quadrant = 0;
         wolfPos = transform.position;
@@ -46,6 +49,7 @@ public class WolfMovement : MonoBehaviour {
         gameManagerObject = GameObject.Find("GameManager");
         obstacleSpawner = gameManagerObject.GetComponent<GenerateObstacles>();
         terrain = GameObject.Find("Terrain");
+        squirrelSpawner = gameManagerObject.GetComponent<SquirrelSpawner>();
         // get the wall hitboxes
         /*
         wall1 = GameObject.Find("InvisibleWall1");
@@ -82,24 +86,33 @@ public class WolfMovement : MonoBehaviour {
         //direction = direction.normalized;
         //rb.AddForce(SeekForce(bunny.transform.position));
         //rb.AddForceAtPosition(SeekForce(bunny.transform.position), wolfPos);
-        
-        if (Vector3.Distance(wolfPos, bunny.transform.position) < maxSeekRange)
+
+        GameObject nearestSquirrel = FindNearestSquirrel();
+        if(Vector3.Distance(wolfPos, nearestSquirrel.transform.position) < maxSquirrelSeekRange)
         {
-            //Debug.Log("seeking");
-            rb.AddForceAtPosition(PursueForce(bunny.transform.position) * 5, wolfPos);
-            //rb.AddForceAtPosition(SeekForce(bunny.transform.position), wolfPos);
-        }        
+            rb.AddForceAtPosition(SeekForce(nearestSquirrel.transform.position) * 5, wolfPos);
+            Debug.Log("Seeking Squirrel");
+        }
         else
         {
-            if(wanderTimer >= 5.0f)
+            if (Vector3.Distance(wolfPos, bunny.transform.position) < maxSeekRange)
             {
-                // change the wander direction
-                rb.AddForceAtPosition(WanderForce(), wolfPos);
-                // reset the timer
-                wanderTimer = 0.0f;
+                //Debug.Log("seeking");
+                rb.AddForceAtPosition(PursueForce(bunny.transform.position) * 5, wolfPos);
+                //rb.AddForceAtPosition(SeekForce(bunny.transform.position), wolfPos);
+            }
+            else
+            {
+                if (wanderTimer >= 5.0f)
+                {
+                    // change the wander direction
+                    rb.AddForceAtPosition(WanderForce(), wolfPos);
+                    // reset the timer
+                    wanderTimer = 0.0f;
+                }
             }
         }
-
+       
         //rb.MoveRotation(Quaternion.Euler(direction.x, direction.y, direction.z));
         rb.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
         transform.forward = direction;
@@ -220,6 +233,21 @@ public class WolfMovement : MonoBehaviour {
         return mostThreateningObstacle;
     }
 
+    private GameObject FindNearestSquirrel()
+    {
+        float shortestDistance = 10000000000f;
+        GameObject nearestSquirrel = null;
+        foreach (GameObject squirrel in squirrelSpawner.squirrelList)
+        {
+            if (Vector3.Distance(wolfPos, squirrel.transform.position) < shortestDistance)
+            {
+                shortestDistance = Vector3.Distance(wolfPos, squirrel.transform.position);
+                nearestSquirrel = squirrel;
+            }
+        }
+        return nearestSquirrel;
+    }
+
     public Vector3 WanderForce()
     {
         //Debug.Log("wandering");
@@ -255,6 +283,13 @@ public class WolfMovement : MonoBehaviour {
         {
             //Debug.Log("Steering To Center");
             rb.AddForce(StayInBounds());
+        }
+        // if it hit a squirrel, kill it and spawn another
+        if(collider.gameObject.name == "Squirrel")
+        {
+            Destroy(collider.gameObject);
+            squirrelSpawner.squirrelList.Remove(collider.gameObject);
+            squirrelSpawner.SpawnSquirrel();
         }
     }
 

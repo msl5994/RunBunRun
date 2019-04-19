@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject minimapArrow;
     private PlayerMovement playerMovement;
     private WolfSpawner wolfSpawner;
+    private SquirrelSpawner squirrelSpawner;
     private ScoreManager scoreManager;
 
     public bool gameOver = false;
@@ -138,6 +139,7 @@ public class GameManager : MonoBehaviour
         playerMovement = player.GetComponent<PlayerMovement>();
         playerMovement.enabled = false; // start the player as not moving
         wolfSpawner = gameObject.GetComponent<WolfSpawner>();
+        squirrelSpawner = gameObject.GetComponent<SquirrelSpawner>();
         obstacleGenerator = gameObject.GetComponent<GenerateObstacles>();
         collectibleSpawner = gameObject.GetComponent<CollectibleSpawner>();
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -252,6 +254,12 @@ public class GameManager : MonoBehaviour
             wolf.GetComponent<Rigidbody>().isKinematic = true;
             Destroy(wolf);
         }
+
+        foreach (GameObject squirrel in squirrelSpawner.squirrelList)
+        {
+            Destroy(squirrel);
+        }
+
         //wolfSpawner.wolfList.Clear();
         // stop the player movement
         playerMovement.isJumping = false;
@@ -337,9 +345,7 @@ public class GameManager : MonoBehaviour
         staminaTimer = 0.0f;
         wolfTimer = 0.0f;
 
-        
-
-        // reset the wolf and obstacle lists
+        // reset the wolf and squirrel and obstacle lists
         foreach (GameObject wolf in wolfSpawner.wolfList)
         {
             // stop all of the wolves movement
@@ -365,6 +371,10 @@ public class GameManager : MonoBehaviour
             Destroy(temp);
             collectibleSpawner.featherCollectibles.Remove(temp);
         }
+        foreach (GameObject squirrel in squirrelSpawner.squirrelList)
+        {
+            Destroy(squirrel);
+        }
 
         // reset the player variables
         player.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
@@ -375,6 +385,12 @@ public class GameManager : MonoBehaviour
 
         // spawn new objects
         obstacleGenerator.SpawnObstacles(); // this method calls the collectible spawner as well
+
+        // spawn new squirrels
+        for(int i = 1; i <= squirrelSpawner.numToSpawn; i++)
+        {
+            squirrelSpawner.SpawnSquirrel();
+        }
     }
 
     private GameObject FindNearestCarrot()

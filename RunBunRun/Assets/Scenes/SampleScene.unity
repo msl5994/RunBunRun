@@ -2625,12 +2625,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310985110}
-  m_LocalRotation: {x: 0.11952631, y: 0.5501729, z: 0.07996619, w: -0.82257444}
-  m_LocalPosition: {x: 16.424927, y: -1.4550165, z: -12.66069}
+  m_LocalRotation: {x: 0.345151, y: 0.62175256, z: 0.35296628, w: -0.60803735}
+  m_LocalPosition: {x: 709.1192, y: -1046.0099, z: -127.40791}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!45 &310985113
 Skybox:
@@ -2741,8 +2741,38 @@ Transform:
   - {fileID: 1490787791}
   - {fileID: 927640434}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
+--- !u!1 &316102663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 316102664}
+  m_Layer: 0
+  m_Name: SquirrelParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &316102664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316102663}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -233.09045, y: -78.56221, z: 90.42529}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &329599169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6321,7 +6351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04a6876120efbf64ab6d98ccc8c8bc0c, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04a6876120efbf64ab6d98ccc8c8bc0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7888,7 +7918,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066012312
 GameObject:
@@ -8433,6 +8463,7 @@ GameObject:
   - component: {fileID: 1203359239}
   - component: {fileID: 1203359240}
   - component: {fileID: 1203359241}
+  - component: {fileID: 1203359242}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8714,6 +8745,24 @@ MonoBehaviour:
   carrotScoreNum: 0
   featherScoreNum: 0
   gameManager: {fileID: 0}
+--- !u!114 &1203359242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203359232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c518b6948e3d24896b6590de0ad84e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squirrelList: []
+  squirrelPrefab: {fileID: 6657670326971646097, guid: 892bc46c32d926847a3d6c3aa86803c2,
+    type: 3}
+  ground: {fileID: 892667725}
+  numToSpawn: 3
+  squirrelParent: {fileID: 316102663}
 --- !u!1 &1221885974
 GameObject:
   m_ObjectHideFlags: 0
@@ -9330,7 +9379,7 @@ Transform:
   - {fileID: 1887456118}
   - {fileID: 2108682244}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 270}
 --- !u!1 &1284054670
 GameObject:
@@ -9683,7 +9732,7 @@ Transform:
   - {fileID: 257543434}
   - {fileID: 1376488983}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1321542717
 GameObject:
@@ -10011,7 +10060,7 @@ Transform:
   m_LocalScale: {x: 101, y: 1, z: 101}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!1 &1356951066
 GameObject:
@@ -10159,7 +10208,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1365289138
 GameObject:
@@ -13058,7 +13107,7 @@ Transform:
   - {fileID: 361840792}
   - {fileID: 1284054671}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 90}
 --- !u!1 &1684780573
 GameObject:
@@ -13197,7 +13246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 6f821c245bbd1bb4dbbee8bf10cc656e, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 6f821c245bbd1bb4dbbee8bf10cc656e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13476,12 +13525,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776244625}
-  m_LocalRotation: {x: 0.16478044, y: 0.12099542, z: 0.020390619, w: -0.9786684}
-  m_LocalPosition: {x: 531.59546, y: -1551.951, z: -1976.8462}
+  m_LocalRotation: {x: 0.345151, y: 0.62175256, z: 0.35296628, w: -0.60803735}
+  m_LocalPosition: {x: 709.1192, y: -1046.0099, z: -127.40791}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1798207082
 GameObject:
@@ -15215,7 +15264,7 @@ Transform:
   - {fileID: 26537268}
   - {fileID: 1877169028}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 180}
 --- !u!1 &1983998960
 GameObject:

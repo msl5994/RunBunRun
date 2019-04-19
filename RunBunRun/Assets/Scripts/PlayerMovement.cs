@@ -328,9 +328,7 @@ public class PlayerMovement : MonoBehaviour {
         if(other.gameObject.tag == "Wolf")
         {
             Debug.Log("Pitched Up");
-            gameManagerObject.GetComponent<AudioSource>().pitch = 1.5f;
-            wolfIndicatorPanel.SetActive(true);
-            changeAlpha = true;
+            StartFlashingBorder();
             numWolvesChasing++;
         }
     }
@@ -343,10 +341,22 @@ public class PlayerMovement : MonoBehaviour {
             if (numWolvesChasing == 0)
             {
                 Debug.Log("Pitched Down");
-                gameManagerObject.GetComponent<AudioSource>().pitch = 1.0f;
-                wolfIndicatorPanel.SetActive(false);
-                changeAlpha = false;
+                StopFlashingBorder();
             }
         }
+    }
+
+    public void StartFlashingBorder()
+    {
+        gameManagerObject.GetComponent<AudioSource>().pitch = 1.5f;
+        wolfIndicatorPanel.SetActive(true);
+        changeAlpha = true;
+    }
+
+    public void StopFlashingBorder()
+    {
+        gameManagerObject.GetComponent<AudioSource>().pitch = 1.0f;
+        wolfIndicatorPanel.SetActive(false);
+        changeAlpha = false;
     }
 }
