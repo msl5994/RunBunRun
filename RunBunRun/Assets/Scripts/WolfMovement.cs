@@ -284,13 +284,7 @@ public class WolfMovement : MonoBehaviour {
             //Debug.Log("Steering To Center");
             rb.AddForce(StayInBounds());
         }
-        // if it hit a squirrel, kill it and spawn another
-        if(collider.gameObject.name == "Squirrel")
-        {
-            Destroy(collider.gameObject);
-            squirrelSpawner.squirrelList.Remove(collider.gameObject);
-            squirrelSpawner.SpawnSquirrel();
-        }
+        
     }
 
     private void OnTriggerStay(Collider collider)
@@ -299,6 +293,18 @@ public class WolfMovement : MonoBehaviour {
         {
             //Debug.Log("Steering To Center");
             rb.AddForce(StayInBounds());
+        }
+    }
+
+    // if the wolf touches the squirrel
+    private void OnCollisionEnter(Collision collision)
+    {
+        // if it hit a squirrel, kill it and spawn another
+        if (collision.gameObject.tag == "Squirrel")
+        {
+            Destroy(collision.gameObject);
+            squirrelSpawner.squirrelList.Remove(collision.gameObject);
+            squirrelSpawner.SpawnSquirrel();
         }
     }
 

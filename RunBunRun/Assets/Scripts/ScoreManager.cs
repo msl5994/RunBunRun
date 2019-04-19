@@ -8,6 +8,9 @@ public class ScoreManager : MonoBehaviour {
     public Text scoreText;
     public Text carrotScoreText;
     public Text featherScoreText;
+    public Text finalScoreText;
+    public Text newHighScoreText;
+    public Text highScoreText;
 
     public float score = 0;
     public int carrotScoreNum = 0;

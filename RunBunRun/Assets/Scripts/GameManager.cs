@@ -122,6 +122,12 @@ public class GameManager : MonoBehaviour
             jumpLvl = 1;
         }
 
+        if(!(PlayerPrefs.GetInt("HighScore") > 0))
+        {
+            PlayerPrefs.SetInt("HighScore", 0);
+        }
+        
+
         Debug.Log("Jump: " + currentJumpForce + " Turn: " + currentTurnRate + " Speed: " + currentSpeed + " JumpTimer: " + currentMaxJumpTimer);
     }
 
@@ -259,7 +265,20 @@ public class GameManager : MonoBehaviour
         {
             Destroy(squirrel);
         }
+        squirrelSpawner.squirrelList.Clear();
 
+        if (scoreManager.score <= PlayerPrefs.GetInt("HighScore"))
+        {
+            scoreManager.newHighScoreText.text = "";
+        }
+        else
+        {
+            scoreManager.newHighScoreText.text = "NEW HIGH SCORE!!!";
+            PlayerPrefs.SetInt("HighScore", Mathf.RoundToInt(scoreManager.score));
+        }
+
+        scoreManager.finalScoreText.text = "Final Score: " + Mathf.RoundToInt(scoreManager.score);
+        scoreManager.highScoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
         //wolfSpawner.wolfList.Clear();
         // stop the player movement
         playerMovement.isJumping = false;
@@ -268,10 +287,14 @@ public class GameManager : MonoBehaviour
         playerMovement.enabled = false;
         player.GetComponent<Animator>().enabled = false;
         player.GetComponent<MeshRenderer>().enabled = false;
+        scoreManager.score = 0;
+        scoreManager.featherScoreNum = 0;
+        scoreManager.carrotScoreNum = 0;
 
         // reset all necessary timers
         wolfTimer = 0.0f;
 
+        
         // set the UI panel to be active
         gameOverPanel.SetActive(true);
 
@@ -371,10 +394,12 @@ public class GameManager : MonoBehaviour
             Destroy(temp);
             collectibleSpawner.featherCollectibles.Remove(temp);
         }
+        /*
         foreach (GameObject squirrel in squirrelSpawner.squirrelList)
         {
             Destroy(squirrel);
-        }
+        }*/
+        
 
         // reset the player variables
         player.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
@@ -382,6 +407,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<MeshRenderer>().enabled = true;
         player.GetComponent<Animator>().enabled = true;
         playerMovement.outOfStamina = false;
+        
 
         // spawn new objects
         obstacleGenerator.SpawnObstacles(); // this method calls the collectible spawner as well
@@ -391,6 +417,10 @@ public class GameManager : MonoBehaviour
         {
             squirrelSpawner.SpawnSquirrel();
         }
+
+        scoreManager.carrotScoreText.text = "Carrots: " + scoreManager.carrotScoreNum;
+        scoreManager.featherScoreText.text = "Feathers: " + scoreManager.featherScoreNum;
+        
     }
 
     private GameObject FindNearestCarrot()
