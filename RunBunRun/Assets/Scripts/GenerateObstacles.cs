@@ -11,6 +11,7 @@ public class GenerateObstacles : MonoBehaviour {
     public List<GameObject> MediumObstacles;
     public List<GameObject> SmallObstaclePrefabs;
     public List<GameObject> SmallObstacles;
+    private Component[] meshes;
     private GameObject obstacle;
     private bool spawnObstacleHere = false; // boolean to determine whether or not to spawn an obstacle at that position for this run
     public GameObject ObstacleListParent;
@@ -68,7 +69,7 @@ public class GenerateObstacles : MonoBehaviour {
                             obstacleHeightOffset = 9.0f; // Tree01
                             break;
                         case 1:
-                            obstacleHeightOffset = 2.0f; // Tree02
+                            obstacleHeightOffset = 1.0f; // Tree02
                             break;
                         case 2:
                             obstacleHeightOffset = 0.0f;
@@ -101,6 +102,16 @@ public class GenerateObstacles : MonoBehaviour {
 
                     // set the parent to help clean up the scene
                     tempObstacle.transform.SetParent(ObstacleListParent.transform);
+
+                    // disable the appearance
+                    //List<MeshRenderer> meshes = new List<MeshRenderer>();
+                    //meshes.Add(tempObstacle.gameObject.GetComponentInChildren<MeshRenderer>());
+                    //tempObstacle.GetComponent<MeshRenderer>().enabled = false;
+                    meshes = tempObstacle.GetComponentsInChildren<MeshRenderer>();
+                    foreach (MeshRenderer mesh in meshes)
+                    {
+                        mesh.enabled = false;
+                    }
 
                     // add that object to the list of obstacles
                     LargeObstacles.Add(tempObstacle);
@@ -164,6 +175,13 @@ public class GenerateObstacles : MonoBehaviour {
 
                     // set the parent to help clean up the scene
                     tempObstacle.transform.SetParent(ObstacleListParent.transform);
+
+                    // disable the appearance
+                    meshes = tempObstacle.GetComponentsInChildren<MeshRenderer>();
+                    foreach (MeshRenderer mesh in meshes)
+                    {
+                        mesh.enabled = false;
+                    }
 
                     // add that object to the list of obstacles
                     MediumObstacles.Add(tempObstacle);
@@ -239,6 +257,13 @@ public class GenerateObstacles : MonoBehaviour {
 
                     // set the parent to help clean up the scene
                     tempObstacle.transform.SetParent(ObstacleListParent.transform);
+
+                    // disable the appearance
+                    meshes = tempObstacle.GetComponentsInChildren<MeshRenderer>();
+                    foreach (MeshRenderer mesh in meshes)
+                    {
+                        mesh.enabled = false;
+                    }
 
                     // add that object to the list of obstacles
                     SmallObstacles.Add(tempObstacle);

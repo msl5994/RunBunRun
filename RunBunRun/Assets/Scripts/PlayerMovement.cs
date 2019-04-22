@@ -338,7 +338,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             numWolvesChasing--;
             // only stop the panic if no more wolves are chasing
-            if (numWolvesChasing == 0)
+            if (numWolvesChasing <= 0)
             {
                 Debug.Log("Pitched Down");
                 StopFlashingBorder();

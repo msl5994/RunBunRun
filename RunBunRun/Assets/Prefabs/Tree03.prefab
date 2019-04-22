@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2531442773570091974}
   m_Layer: 0
   m_Name: Tree03
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,9 +86,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.27
-  m_Height: 6
+  m_Height: 6.81
   m_Direction: 1
-  m_Center: {x: 0, y: 3, z: 0}
+  m_Center: {x: 0, y: 2.7, z: 0}
 --- !u!136 &2531442773570091974
 CapsuleCollider:
   m_ObjectHideFlags: 0

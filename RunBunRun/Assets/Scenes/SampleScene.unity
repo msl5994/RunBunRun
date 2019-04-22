@@ -2575,7 +2575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &310985111
 Camera:
   m_ObjectHideFlags: 0
@@ -2625,8 +2625,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310985110}
-  m_LocalRotation: {x: 0.25061736, y: 0.05950684, z: 0.01545506, w: -0.966132}
-  m_LocalPosition: {x: -174.5376, y: -172.86475, z: -541.07446}
+  m_LocalRotation: {x: -0.13052617, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: -8.86, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4847,6 +4847,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678002461}
   m_CullTransparentMesh: 0
+--- !u!1 &679319791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 679319792}
+  - component: {fileID: 679319794}
+  - component: {fileID: 679319793}
+  m_Layer: 10
+  m_Name: FogOfWarObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &679319792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679319791}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 68137572}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &679319793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679319791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74da9e5744478e94ba92931bbd4e7eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &679319794
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679319791}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 100
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &682569567
 GameObject:
   m_ObjectHideFlags: 0
@@ -7208,6 +7265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water4Simple (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 843740dbe549a4a6ba9556d1b80001f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 843740dbe549a4a6ba9556d1b80001f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 50
@@ -7883,6 +7944,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water4Simple
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 843740dbe549a4a6ba9556d1b80001f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 843740dbe549a4a6ba9556d1b80001f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -50
@@ -8033,7 +8098,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!45 &1056552198
 Skybox:
   m_ObjectHideFlags: 0
@@ -8092,8 +8157,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056552197}
-  m_LocalRotation: {x: 0.14035045, y: 0.05047368, z: 0.0071644015, w: -0.98878855}
-  m_LocalPosition: {x: 0.016092867, y: -0.7075032, z: -2.7961097}
+  m_LocalRotation: {x: -0.13052617, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: -8.86, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13610,7 +13675,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &1776244626
 Camera:
   m_ObjectHideFlags: 0
@@ -13660,8 +13725,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776244625}
-  m_LocalRotation: {x: 0.049782, y: 0.016481273, z: 0.0008398066, w: -0.9986238}
-  m_LocalPosition: {x: 547.602, y: -1180.6566, z: -2548.511}
+  m_LocalRotation: {x: 0.4745953, y: 0.03774697, z: 0.020376844, w: -0.8791583}
+  m_LocalPosition: {x: 40.321507, y: -716.6405, z: -468.6949}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

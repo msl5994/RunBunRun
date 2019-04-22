@@ -10,6 +10,7 @@ TagManager:
   - Feather
   - Wolf
   - Squirrel
+  - Plant
   layers:
   - Default
   - TransparentFX
