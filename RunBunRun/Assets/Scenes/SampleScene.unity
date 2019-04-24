@@ -219,9 +219,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1193131051}
   m_Father: {fileID: 1652473221}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1142,11 +1143,11 @@ RectTransform:
   m_Children:
   - {fileID: 1702256477}
   m_Father: {fileID: 1652473221}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -144}
+  m_AnchoredPosition: {x: 0, y: -130}
   m_SizeDelta: {x: 250, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &82130239
@@ -3716,7 +3717,7 @@ RectTransform:
   m_Children:
   - {fileID: 1460213846}
   m_Father: {fileID: 1652473221}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8542,7 +8543,7 @@ GameObject:
   - component: {fileID: 1193131053}
   - component: {fileID: 1193131052}
   m_Layer: 10
-  m_Name: Team Credits
+  m_Name: Developer Names
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8555,16 +8556,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193131050}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1652473221}
-  m_RootOrder: 2
+  m_Father: {fileID: 7351429}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: -49.999985}
   m_SizeDelta: {x: 300, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1193131052
@@ -11230,7 +11231,7 @@ RectTransform:
   m_Children:
   - {fileID: 1585754685}
   m_Father: {fileID: 1652473221}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11400,13 +11401,13 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Sound Effects:
 
-    Most sound effects under Creative Commons 0 License from Freesound.org
+    Most sound effects under "Creative Commons 0 License" from Freesound.org
 
     Attribution Licenses from Freesound.org:
 
-    "Jingle_Lose_00.wav" by LittleRobotSoundFactory
+    "Jingle_Lose_00.wav" - LittleRobotSoundFactory
 
-    "Chewing, Carrot, A.wav" by InspectorJ
+    "Chewing, Carrot, A.wav" - InspectorJ
 
 
     Music: https://www.bensound.com'
@@ -13125,7 +13126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1652473221
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13139,11 +13140,10 @@ RectTransform:
   m_Children:
   - {fileID: 1643150051}
   - {fileID: 1022620584}
-  - {fileID: 1193131051}
   - {fileID: 7351429}
-  - {fileID: 1440965658}
   - {fileID: 486544886}
   - {fileID: 82130238}
+  - {fileID: 1440965658}
   m_Father: {fileID: 288051007}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13496,8 +13496,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -85}
-  m_SizeDelta: {x: 450, y: 140}
+  m_AnchoredPosition: {x: 0, y: -90}
+  m_SizeDelta: {x: 465, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1702256478
 MonoBehaviour:
@@ -13532,10 +13532,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Most Environment Assets taken from Unity Low-Poly Nature Pack
+  m_Text: 'Nature Pack - Kenney
 
+    White Rabbit - Niwashi Games
 
-    Other Art and Assets created by Joseph Campanelli and Matthew Lefurge'
+    Wolf - TS Work''s LowPoly Fantasy Monsters Pack
+
+    All above models taken from Unity''s Asset Store.
+
+    Others fall under Creative Commons Attribution.
+
+    Misc. - Joseph Campanelli and Matthew Lefurge'
 --- !u!222 &1702256479
 CanvasRenderer:
   m_ObjectHideFlags: 0
