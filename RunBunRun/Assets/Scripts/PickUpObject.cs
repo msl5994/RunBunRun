@@ -62,7 +62,7 @@ public class PickUpObject : MonoBehaviour {
                     // disable mesh renderer and collider
                     carrot.transform.GetChild(0).gameObject.SetActive(false);
                     carrot.GetComponent<CapsuleCollider>().enabled = false;
-                    carrot.GetComponentInChildren<MeshRenderer>().enabled = false;
+                    //carrot.GetComponentInChildren<MeshRenderer>().enabled = false;
                 }
             }
 
