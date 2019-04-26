@@ -57,8 +57,8 @@ public class GenerateObstacles : MonoBehaviour {
                 if (spawnObstacleHere)
                 {
                     // set a random position in the area
-                    int xIndex = (Random.Range(i * 10, 1000) % 10) + i * 10;
-                    int zIndex = (Random.Range(j * 10, 1000) % 10) + j * 10;
+                    double xIndex = (Random.Range(i * 10, 1000) % 10) + i * 9.5;
+                    double zIndex = (Random.Range(j * 10, 1000) % 10) + j * 9.5;
                     int obstacleIndex = Random.Range(0, LargeObstaclePrefabs.Count);
                     //float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.position.y + (obstaclePrefabs[obstacleIndex].transform.localScale.y);
                     float obstacleHeightOffset = 0.0f;
@@ -88,7 +88,7 @@ public class GenerateObstacles : MonoBehaviour {
                             break;
                     }
                     //float obstacleHeightOffset = obstaclePrefabs[obstacleIndex].transform.localScale.y / 4.0f;
-                    Vector3 obstacleSpawnPosition = new Vector3(xIndex, obstacleHeightOffset, zIndex);
+                    Vector3 obstacleSpawnPosition = new Vector3((float)xIndex, obstacleHeightOffset, (float)zIndex);
 
                     // get a random rotation for the obstacle
                     float angle = Random.Range(0, 360);
@@ -139,8 +139,8 @@ public class GenerateObstacles : MonoBehaviour {
                 if (spawnObstacleHere)
                 {
                     // set a random position in the area
-                    int xIndex = (Random.Range(i * 10, 1000) % 10) + i * 10;
-                    int zIndex = (Random.Range(j * 10, 1000) % 10) + j * 10;
+                    double xIndex = (Random.Range(i * 10, 1000) % 10) + i * 9.7;
+                    double zIndex = (Random.Range(j * 10, 1000) % 10) + j * 9.7;
                     int obstacleIndex = Random.Range(0, MediumObstaclePrefabs.Count);
                     float obstacleHeightOffset = 0.0f;
                     switch (obstacleIndex)
@@ -161,7 +161,7 @@ public class GenerateObstacles : MonoBehaviour {
                             obstacleHeightOffset = 0.0f;
                             break;
                     }
-                    Vector3 obstacleSpawnPosition = new Vector3(xIndex, obstacleHeightOffset, zIndex);
+                    Vector3 obstacleSpawnPosition = new Vector3((float)xIndex, obstacleHeightOffset, (float)zIndex);
 
                     // get a random rotation for the obstacle
                     float angle = Random.Range(0, 360);
@@ -209,8 +209,8 @@ public class GenerateObstacles : MonoBehaviour {
                 if (spawnObstacleHere)
                 {
                     // set a random position in the area
-                    int xIndex = (Random.Range(i * 10, 1000) % 10) + i * 10;
-                    int zIndex = (Random.Range(j * 10, 1000) % 10) + j * 10;
+                    double xIndex = (Random.Range(i * 10, 1000) % 10) + i * 9.9;
+                    double zIndex = (Random.Range(j * 10, 1000) % 10) + j * 9.9;
                     int obstacleIndex = Random.Range(0, SmallObstaclePrefabs.Count);
                     float obstacleHeightOffset = 0.0f;
                     switch (obstacleIndex)
@@ -243,7 +243,7 @@ public class GenerateObstacles : MonoBehaviour {
                             obstacleHeightOffset = 0.0f;
                             break;
                     }
-                    Vector3 obstacleSpawnPosition = new Vector3(xIndex, obstacleHeightOffset, zIndex);
+                    Vector3 obstacleSpawnPosition = new Vector3((float)xIndex, obstacleHeightOffset, (float)zIndex);
 
                     // get a random rotation for the obstacle
                     float angle = Random.Range(0, 360);
