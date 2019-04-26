@@ -213,9 +213,12 @@ public class GameManager : MonoBehaviour
                 balanceTimer = 0.0f;
             }
             */
-            foreach (GameObject feather in collectibleSpawner.featherCollectibles)
+            if(collectibleSpawner.featherCollectibles.Count > 0)
             {
-                feather.transform.LookAt(player.transform.position);
+                foreach (GameObject feather in collectibleSpawner.featherCollectibles)
+                {
+                    feather.transform.LookAt(player.transform.position);
+                }
             }
             GameObject nearestCarrot = FindNearestCarrot();
             arrow.transform.LookAt(nearestCarrot.transform.position);
@@ -253,6 +256,7 @@ public class GameManager : MonoBehaviour
         //PlayerPrefs.SetFloat("CurrentJumpHeight", player.JumpHeight);
         PlayerPrefs.Save();
 
+        // destory and reset collectible and wolf lists
         foreach (GameObject wolf in wolfSpawner.wolfList)
         {
             // stop all of the wolves movement
@@ -266,6 +270,16 @@ public class GameManager : MonoBehaviour
             Destroy(squirrel);
         }
         squirrelSpawner.squirrelList.Clear();
+
+        foreach (GameObject feather in collectibleSpawner.featherCollectibles)
+        {
+            Destroy(feather);
+        }
+
+        foreach (GameObject carrot in collectibleSpawner.carrotCollectibles)
+        {
+            Destroy(carrot);
+        }
 
         if (scoreManager.score <= PlayerPrefs.GetInt("HighScore"))
         {

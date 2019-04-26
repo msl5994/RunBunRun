@@ -80,6 +80,8 @@ public class CollectibleSpawner : MonoBehaviour {
         int num = Random.Range(0, spriteArray.Length);
         tempCollectible.GetComponent<SpriteRenderer>().sprite = spriteArray[num];
 
+        tempCollectible.GetComponent<SpriteRenderer>().enabled = false;
+
         // set its parent
 
         // set the parent of the collectibles

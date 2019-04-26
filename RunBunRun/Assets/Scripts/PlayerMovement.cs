@@ -125,26 +125,26 @@ public class PlayerMovement : MonoBehaviour {
         {
             if(upAlpha)
             {
-                Debug.Log("In Up Alpha");
+                //Debug.Log("In Up Alpha");
                 Color temp = indicatorImage.color;
                 temp.a += 1.5f * Time.deltaTime;
                 indicatorImage.color = temp;
                 if (indicatorImage.color.a >= 0.5f)
                 {
-                    Debug.Log("Alpha Down");
+                    //Debug.Log("Alpha Down");
                     upAlpha = false;
                 }
             }
             else
             {
-                Debug.Log("In Down Alpha");
+                //Debug.Log("In Down Alpha");
                 Color temp = indicatorImage.color;
                 temp.a -= 0.5f * Time.deltaTime;
                 indicatorImage.color = temp;
                 if (indicatorImage.color.a <= 0.02f)
                 {
                     upAlpha = true;
-                    Debug.Log("Alpha Up");
+                    //Debug.Log("Alpha Up");
                 }
             }
         }
@@ -327,7 +327,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         if(other.gameObject.tag == "Wolf")
         {
-            Debug.Log("Pitched Up");
+            //Debug.Log("Pitched Up");
             StartFlashingBorder();
             numWolvesChasing++;
         }
@@ -340,7 +340,7 @@ public class PlayerMovement : MonoBehaviour {
             // only stop the panic if no more wolves are chasing
             if (numWolvesChasing <= 0)
             {
-                Debug.Log("Pitched Down");
+                //Debug.Log("Pitched Down");
                 StopFlashingBorder();
             }
         }

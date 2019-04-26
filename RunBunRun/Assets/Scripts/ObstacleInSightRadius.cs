@@ -23,7 +23,7 @@ public class ObstacleInSightRadius : MonoBehaviour
     {
         if (other.gameObject.tag == "Obstacle")
         {
-            Debug.Log("Obstacle Found");
+            //Debug.Log("Obstacle Found");
             meshes = other.gameObject.GetComponentsInChildren<MeshRenderer>();
             foreach(MeshRenderer mesh in meshes)
             {
@@ -32,7 +32,7 @@ public class ObstacleInSightRadius : MonoBehaviour
         }
         if (other.gameObject.tag == "Plant")
         {
-            Debug.Log("Plant Found");
+            //Debug.Log("Plant Found");
             meshes = other.gameObject.GetComponentsInChildren<MeshRenderer>();
             foreach (MeshRenderer mesh in meshes)
             {
@@ -45,7 +45,7 @@ public class ObstacleInSightRadius : MonoBehaviour
     {
         if (other.gameObject.tag == "Obstacle")
         {
-            Debug.Log("Obstacle Found");
+            //Debug.Log("Obstacle Found");
             meshes = other.gameObject.GetComponentsInChildren<MeshRenderer>();
             foreach (MeshRenderer mesh in meshes)
             {
@@ -54,7 +54,7 @@ public class ObstacleInSightRadius : MonoBehaviour
         }
         if (other.gameObject.tag == "Plant")
         {
-            Debug.Log("Plant Found");
+            //Debug.Log("Plant Found");
             meshes = other.gameObject.GetComponentsInChildren<MeshRenderer>();
             foreach (MeshRenderer mesh in meshes)
             {
