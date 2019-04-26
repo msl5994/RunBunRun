@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
 
             // wolf spawning
             wolfTimer += Time.deltaTime;
-            if (wolfTimer >= wolfSpawnTimer)
+            if (wolfTimer >= wolfSpawnTimer && wolfSpawner.wolfList.Count < 10)
             {
                 wolfSpawner.SpawnWolf();
                 wolfTimer = 0.0f;
