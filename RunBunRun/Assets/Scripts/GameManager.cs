@@ -215,10 +215,15 @@ public class GameManager : MonoBehaviour
             */
             if(collectibleSpawner.featherCollectibles.Count > 0)
             {
+                for(int i = 0; i < collectibleSpawner.featherCollectibles.Count; i++)
+                {
+                    collectibleSpawner.featherCollectibles[i].transform.LookAt(player.transform.position);
+                }
+                /*
                 foreach (GameObject feather in collectibleSpawner.featherCollectibles)
                 {
                     feather.transform.LookAt(player.transform.position);
-                }
+                }*/
             }
             GameObject nearestCarrot = FindNearestCarrot();
             arrow.transform.LookAt(nearestCarrot.transform.position);
