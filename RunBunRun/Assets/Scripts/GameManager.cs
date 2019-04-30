@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Image staminaRing;
-    
+    public Image staminaRing2;
     
     public float maxStamina = 60.0f; // 1 minute for now
     public float staminaTimer = 0.0f;
+    public float staminaTimer2 = 0.0f;
     public float wolfTimer = 0.0f;
     public float wolfSpawnTimer = 30.0f;
     private float balanceTimer = 0.0f;
@@ -192,6 +193,25 @@ public class GameManager : MonoBehaviour
                 // clamp the value
                 staminaTimer = maxStamina;
 
+                // start counting the next bar
+                staminaTimer2 += Time.deltaTime;
+
+                // updates the visual
+                staminaRing2.fillAmount = staminaTimer2 / maxStamina;
+
+                // kill the player
+                if (staminaTimer2 >= maxStamina)
+                {
+                    // end the game
+                    playerMovement.wolfIndicatorPanel.SetActive(false);
+                    playerMovement.changeAlpha = false;
+                    audioSource.pitch = 1.0f;
+                    firstFrame = true;
+                    gameState = GameState.GameOver;
+                    prevGameState = GameState.Game;
+                    GameOver();
+                }
+
                 // let the playerMovement script know
                 playerMovement.outOfStamina = true;
             }
@@ -247,6 +267,7 @@ public class GameManager : MonoBehaviour
     public void ResetStamina()
     {
         staminaTimer = 0.0f; // reset timer
+        staminaTimer2 = 0.0f; // reset 2nd timer
         playerMovement.outOfStamina = false; // reset boolean
     }
 
@@ -385,6 +406,7 @@ public class GameManager : MonoBehaviour
 
         // reset the timers
         staminaTimer = 0.0f;
+        staminaTimer2 = 0.0f;
         wolfTimer = 0.0f;
 
         // reset the wolf and squirrel and obstacle lists
