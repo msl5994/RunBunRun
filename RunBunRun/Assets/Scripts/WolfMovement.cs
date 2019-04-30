@@ -103,10 +103,12 @@ public class WolfMovement : MonoBehaviour {
             }
             else
             {
+                Debug.Log("wolf wandering speed: " + rb.velocity);
                 if (wanderTimer >= 5.0f)
                 {
                     // change the wander direction
-                    rb.AddForceAtPosition(WanderForce(), wolfPos);
+                    rb.velocity = Vector3.zero;
+                    rb.AddForceAtPosition(WanderForce() * 5, wolfPos);
                     // reset the timer
                     wanderTimer = 0.0f;
                 }
@@ -153,9 +155,9 @@ public class WolfMovement : MonoBehaviour {
         return SeekForce(targetFuturePos);
     }
 
-    private Vector3 SeekForce(Vector3 bunnyPos)
+    private Vector3 SeekForce(Vector3 targetPos)
     {
-        Vector3 desiredV = bunnyPos - wolfPos;
+        Vector3 desiredV = targetPos - wolfPos;
         desiredV = desiredV.normalized;
 
         desiredV *= maxSpeed;
