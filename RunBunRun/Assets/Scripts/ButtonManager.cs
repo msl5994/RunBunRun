@@ -98,4 +98,8 @@ public class ButtonManager : MonoBehaviour {
     {
         shopManager.UpgradeSpeed();
     }
+    public void UpgradeStamina()
+    {
+        shopManager.UpgradeStamina();
+    }
 }

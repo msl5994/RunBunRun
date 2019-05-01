@@ -61,11 +61,22 @@ public class GameManager : MonoBehaviour
     public int speedLvl;
     public int turnLvl;
     public int jumpLvl;
+    public int staminaLvl;
 
     // check for the data as the app loads up
     private void Awake()
     {
-        //PlayerPrefs.SetInt("Feathers", 0);
+        /*
+        PlayerPrefs.SetInt("Feathers", 1000);
+        PlayerPrefs.SetInt("SpeedLvl", 1);
+        PlayerPrefs.SetInt("JumpLvl", 1);
+        PlayerPrefs.SetInt("TurnLvl", 1);
+        PlayerPrefs.SetInt("StaminaLvl", 1);
+        PlayerPrefs.SetFloat("CurrentSpeed", 25.0f);
+        PlayerPrefs.SetFloat("CurrentTurnRate", 30.0f);
+        PlayerPrefs.SetFloat("CurrentJumpForce", 40.0f);
+        PlayerPrefs.SetFloat("MaxStamina", 60.0f);*/
+
         if (PlayerPrefs.GetInt("Feathers") > 0)
         {
             currentFeatherCount = PlayerPrefs.GetInt("Feathers"); // kept result of 3 after a test run
@@ -98,7 +109,15 @@ public class GameManager : MonoBehaviour
         {
             currentJumpForce = 40.0f;
         }
-        if(PlayerPrefs.GetInt("SpeedLvl") > 1)
+        if (PlayerPrefs.GetFloat("MaxStamina") > 60.0f)
+        {
+            maxStamina = PlayerPrefs.GetFloat("MaxStamina");
+        }
+        else
+        {
+            maxStamina = 60.0f;
+        }
+        if (PlayerPrefs.GetInt("SpeedLvl") > 1)
         {
             speedLvl = PlayerPrefs.GetInt("SpeedLvl");
         }
@@ -122,14 +141,23 @@ public class GameManager : MonoBehaviour
         {
             jumpLvl = 1;
         }
+        if (PlayerPrefs.GetInt("StaminaLvl") > 1)
+        {
+            staminaLvl = PlayerPrefs.GetInt("StaminaLvl");
+        }
+        else
+        {
+            staminaLvl = 1;
+        }
 
-        if(!(PlayerPrefs.GetInt("HighScore") > 0))
+        if (!(PlayerPrefs.GetInt("HighScore") > 0))
         {
             PlayerPrefs.SetInt("HighScore", 0);
         }
         
-
-        Debug.Log("Jump: " + currentJumpForce + " Turn: " + currentTurnRate + " Speed: " + currentSpeed + " JumpTimer: " + currentMaxJumpTimer);
+        
+        Debug.Log("Jump: " + currentJumpForce + " Turn: " + currentTurnRate + " Speed: " + currentSpeed + " Stamina: " + maxStamina);
+        Debug.Log("Jump Lv: " + jumpLvl + " Turn Lv: " + turnLvl + " Speed Lv: " + speedLvl + " Stamina Lv: " + staminaLvl);
     }
 
     // Use this for initialization
