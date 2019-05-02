@@ -50,6 +50,8 @@ public class ScoreManager : MonoBehaviour {
     {
         carrotScoreNum++;
         carrotScoreText.text = "Carrots: " + carrotScoreNum;
+        // adding to player score as well
+        score += 500;
     }
 
     // method to update the score
@@ -58,5 +60,7 @@ public class ScoreManager : MonoBehaviour {
         featherScoreNum++;
         gameManager.GetComponent<GameManager>().currentFeatherCount++;
         featherScoreText.text = "Feathers: " + featherScoreNum;
+        // adding to player score as well
+        score += 500;
     }
 }
