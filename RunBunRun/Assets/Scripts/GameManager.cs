@@ -66,8 +66,8 @@ public class GameManager : MonoBehaviour
     // check for the data as the app loads up
     private void Awake()
     {
-        /*
-        PlayerPrefs.SetInt("Feathers", 1000);
+       /*
+        PlayerPrefs.SetInt("Feathers", 0);
         PlayerPrefs.SetInt("SpeedLvl", 1);
         PlayerPrefs.SetInt("JumpLvl", 1);
         PlayerPrefs.SetInt("TurnLvl", 1);
