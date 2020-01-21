@@ -9,7 +9,7 @@ Infinite runner mobile game in a 3D playspace. The player plays as a bunny in a 
 ## Notes:
 Due to some unforseen omptimization issues and the nature of having a large number of gameobjects in the scene at the same time, we added fog to the edge of the player's view to help mask the loading/unloading of obstacles' meshes that we disable and re-enable using a distance based rendering system.
 
-This project is playable on the Google Play Store at https://play.google.com/store/apps/details?id=com.TeamBortt.RunBunRun.
+This project was playable on the Google Play Store at https://play.google.com/store/apps/details?id=com.TeamBortt.RunBunRun, up until August 2019, when it was removed for not updating to adhere to the new 64-bit support requirement.
 
 ## Screenshots:
 ![alt tag](https://i.ibb.co/HThT8mB/Main-Screen.png) ![alt tag](https://i.ibb.co/vHfPbvF/Gameplay01.png) ![alt tag](https://i.ibb.co/TRhVQQN/Gameover-Screen.png) ![alt tag](https://i.ibb.co/SKTHxkg/Shop-Screen.png)
